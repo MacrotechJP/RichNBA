@@ -5,6 +5,7 @@
   &_left{
     width:20%;
     height:100%;
+    float: left;
     &_top{
       overflow: auto;
       padding-top: 15px;
@@ -40,5 +41,51 @@
         }
       }
     }
+  }
+  &_center{
+    width:50%;
+    height:100%;
+    float:left;
+    &_top{
+      i{
+        position: absolute;
+        top: 26px;
+        left: 62%;
+        color: #FDBD19;
+      }
+      input[type=search] {
+        -webkit-appearance: none;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 15px;
+        padding: 10px;
+        width: 85%;
+        height: 45px;
+        font-size: 100%;
+        box-sizing: border-box;
+        border-radius: 5px 0 0 5px;
+        border: 1px solid #ccc;
+        border-right: none;
+      }
+      input[type=submit] {
+        -webkit-appearance: none;
+        display: inline-block;
+        padding: 0 10px;
+        width: 10%;
+        height: 45px;
+        font-size: 100%;
+        vertical-align: top;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        background: #737373;
+        margin-top: 20px;
+      }
+    }
+  }
+  &_right{
+    width:30%;
+    height:100%;
+    float:left;
+    background-color: antiquewhite;
   }
 }
