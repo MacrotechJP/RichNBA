@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave'
 gem "font-awesome-rails"
+gem "jquery-rails"
+gem 'jquery-ui-rails'

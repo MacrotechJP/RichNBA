@@ -11,15 +11,33 @@
     </div>
     <div class="head_center">
       <div class="head_center_top">
-        <input type="search" name="q" value="" placeholder="kyrie"><input type="submit" name="btn_search" value="">
-        <%= link_to(content_tag(:i, '', class: 'fab fa-searchengin fa-2x'),"",type:"submit")%>
+        <input type="search" name="search" placeholder="kyrie">
+        <%= button_tag type:"submit", class:"search_button" do %>
+          <%= content_tag(:i, '', class: 'fab fa-searchengin fa-3x') %>
+        <% end %>
       </div>
       <div class="head_center_bottom">
-
+        <span>|</span><%= link_to "アデドクンボ","/" %>
+        <span>|</span><%= link_to "レナード","/" %>
+        <span>|</span><%= link_to "レブロン","/" %>
+        <span>|</span><%= link_to "カリー","/" %>
+        <span>|</span><%= link_to "ハーデン","/" %>
+        <span>|</span><%= link_to "リラード","/" %>
+        <span>|</span>
       </div>
     </div>
     <div class="head_right">
-
+      <div class="head_right_top">
+        <%= content_tag(:i, '', class: 'fas fa-comment-dots fa-3x') %>
+        <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') %>
+        <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') %>
+        <%# <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') %>
+      </div>
+      <div class="head_right_bottom">
+        <p>お知らせ</p>
+        <p>取り置き<br>グッズ</p>
+        <p>ユーザー<br>未ログイン</p>
+      </div>
     </div>
   </div>
   <div class="main">
