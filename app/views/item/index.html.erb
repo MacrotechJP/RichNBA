@@ -35,6 +35,8 @@
               <p>お知らせ</p>
             <% end %>
           <% end %>
+          <div class="head_right_top_logo_bottom">
+          </div> 
         </div>
         <div class="head_right_top_logo">
           <%= link_to("#") do %>
@@ -42,16 +44,18 @@
               <p>取り置きグッズ</p>
             <% end %>
           <% end %>
+          <div class="head_right_top_logo_bottom">
+          </div> 
         </div>
         <div class="head_right_top_logo">
           <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
             <p>未ログイン中</p>
           <% end %>
+          <div class="head_right_top_logo_bottom">
+            <p>新規登録</p>
+            <p>ログイン</p>
+          </div> 
         </div>
-        <%# <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') %>
-      </div>
-      <div class="head_right_bottom">
-
       </div>
     </div>
   </div>
