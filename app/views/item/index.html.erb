@@ -28,15 +28,30 @@
     </div>
     <div class="head_right">
       <div class="head_right_top">
-        <%= content_tag(:i, '', class: 'fas fa-comment-dots fa-3x') %>
-        <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') %>
-        <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') %>
+        <div class="head_right_top_logo">
+          <%= link_to("#") do %>
+            <%= content_tag(:i, '', class: 'fas fa-comment-dots fa-3x') do %>
+              <%= content_tag(:i, '', class: 'fas fa-sync-alt fa-1x new_comment') %>
+              <p>お知らせ</p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="head_right_top_logo">
+          <%= link_to("#") do %>
+            <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') do %>
+              <p>取り置きグッズ</p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="head_right_top_logo">
+          <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
+            <p>未ログイン中</p>
+          <% end %>
+        </div>
         <%# <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') %>
       </div>
       <div class="head_right_bottom">
-        <p>お知らせ</p>
-        <p>取り置き<br>グッズ</p>
-        <p>ユーザー<br>未ログイン</p>
+
       </div>
     </div>
   </div>
