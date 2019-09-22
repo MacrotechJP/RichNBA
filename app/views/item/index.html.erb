@@ -35,7 +35,8 @@
               <p>お知らせ</p>
             <% end %>
           <% end %>
-          <div class="head_right_top_logo_bottom">
+          <div class="head_right_top_logo_hover">
+            <%= render partial: "index_header_info" %>
           </div> 
         </div>
         <div class="head_right_top_logo">
@@ -44,16 +45,21 @@
               <p>取り置きグッズ</p>
             <% end %>
           <% end %>
-          <div class="head_right_top_logo_bottom">
+          <div class="head_right_top_logo_hover">
+            <%= render partial: "index_header_goods" %>
           </div> 
         </div>
         <div class="head_right_top_logo">
           <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
             <p>未ログイン中</p>
           <% end %>
-          <div class="head_right_top_logo_bottom">
-            <p>新規登録</p>
-            <p>ログイン</p>
+          <div class="head_right_top_logo_hover">
+            <div class="head_right_top_logo_hover_log">
+              <p>新規登録</p>
+              <p>ログイン</p>
+              <input type="email" placeholder="email">
+              <input type="email" placeholder="password">
+            </div>
           </div> 
         </div>
       </div>

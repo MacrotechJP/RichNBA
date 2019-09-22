@@ -117,13 +117,14 @@
         float: left;
         &:hover{
           border:1px solid #FDBD19;
-          .head_right_top_logo_bottom{
+          .head_right_top_logo_hover{
             visibility: visible;
           }
           i{
             color:#FDBD19;
             .new_comment{animation: rotate_anime 1s;}
             p{text-decoration: underline;}
+            .info-icon{color:#999999;}
           }
         }
         i{
@@ -131,7 +132,7 @@
           color:#999999;
           .new_comment{
             margin:0;
-            color:red;
+            color:#FDBD19;
             position:absolute;
             font-size:large;
             // visibility: hidden;
@@ -141,14 +142,55 @@
             font-size: 12px;
           }
         }
-        &_bottom{
-          width:15%;
-          height:500px;
+        &_hover{
+          overflow: auto;
           border:1px solid #FDBD19;
           box-sizing: border-box;
           margin-top:10px;
           position: absolute;
           visibility: hidden;
+          &_info,&_goods{
+            width: 216px;
+            height:40px;
+            background-color: white;
+            border-bottom: 1px solid silver;
+            &:last-child{
+              border-bottom: none;
+            }
+            &:hover{
+              background-color: #E9E9E9;
+              p{
+                text-decoration: underline;
+              }
+            }
+            i{
+              width:20%;
+              margin-top:12.5px;
+              float:left;
+            }
+            &_word{
+              width:calc(100% - 20%);
+              height:100%;
+              float: left;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-left:1px solid #737373;
+              box-sizing: border-box;
+              p{
+                width:100%;
+                overflow:visible;
+                color:gray;
+                font-size: 12px;
+                padding-left: 10px;
+              }
+            }
+          }
+          &_log{
+            overflow: auto;
+            width:216px;
+            background-color: #737373;
+          }
         }
       }
     }
