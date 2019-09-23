@@ -322,10 +322,51 @@ $baby-blue: #f8faff;
 
 .main{
   height:2000px;
-  background-color: #737373;
-  img{
-    width:100px;
-    // height:100px;
+  padding:2% 5% 0;
+  background-color: #F2F2F2;
+  &_top{
+    height:500px;
+    width:90vw;
+    border-bottom:1px solid #E9E9E9;
+    box-sizing: border-box;
+    &_left,&_right{
+      height:100%;
+      width:15%;
+      float: left;
+      ul{
+        overflow: auto;
+        li{
+          width:100%;
+          height:calc(500px / 15);
+          border-bottom:1px solid #E9E9E9;
+          box-sizing: border-box;
+          background-color: white;
+          &:hover{
+            background-color: #999999
+          }
+          img{
+            width:calc(500px / 15);
+            float: left;
+          }
+          p{
+            color: black;
+            width:calc(100% - (500px / 15));
+            height: 100%;
+            float: left;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          }
+        }
+      }
+    }
+    img{
+      width:70%;
+      float: left;
+      height:100%;
+    }
   }
 }
 
