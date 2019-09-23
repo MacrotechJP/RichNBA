@@ -1,0 +1,72 @@
+<div class="head">
+  <div class="head_left">
+    <%= link_to("/") do %>
+      <div class="head_left_top">
+        <%=image_tag "favicon.ico"%>
+        <p>Rich NBA</p>
+      </div>
+      <div class="head_left_bottom">
+        <p>賢くnbaグッズを探そう</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="head_center">
+    <div class="head_center_top">
+      <input type="search" name="search" placeholder="kyrie">
+      <%= button_tag type:"submit", class:"search_button" do %>
+        <%= content_tag(:i, '', class: 'fab fa-searchengin fa-3x') %>
+      <% end %>
+    </div>
+    <div class="head_center_bottom">
+      <span>|</span><%= link_to "アデドクンボ","/" %>
+      <span>|</span><%= link_to "レナード","/" %>
+      <span>|</span><%= link_to "レブロン","/" %>
+      <span>|</span><%= link_to "カリー","/" %>
+      <span>|</span><%= link_to "ハーデン","/" %>
+      <span>|</span><%= link_to "リラード","/" %>
+      <span>|</span>
+    </div>
+  </div>
+  <div class="head_right">
+    <div class="head_right_top">
+      <div class="head_right_top_logo">
+        <%= link_to("#") do %>
+          <%= content_tag(:i, '', class: 'fas fa-comment-dots fa-3x') do %>
+            <%= content_tag(:i, '', class: 'fas fa-sync-alt fa-1x new_comment') %>
+            <p>お知らせ</p>
+          <% end %>
+        <% end %>
+        <div class="head_right_top_logo_hover">
+          <%= render partial: "index_header_info" %>
+        </div> 
+      </div>
+      <div class="head_right_top_logo">
+        <%= link_to("#") do %>
+          <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') do %>
+            <p>取り置きグッズ</p>
+          <% end %>
+        <% end %>
+        <div class="head_right_top_logo_hover">
+          <%= render partial: "index_header_goods" %>
+        </div> 
+      </div>
+      <div class="head_right_top_logo">
+        <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
+        <%# <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') do %>
+          <p>未ログイン中</p>
+        <% end %>
+        <div class="head_right_top_logo_hover">
+          <div class="head_right_top_logo_hover_log">
+            <button class="log-button">新規登録</button>
+          </div>
+          <div class="head_right_top_logo_hover_log">
+            <input type="email" placeholder="email">
+            <input type="password" placeholder="password">
+            <button class="log-button">ログイン</button>
+            <%= link_to "パスワードお忘れの方","#" %>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
