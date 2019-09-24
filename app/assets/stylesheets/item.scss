@@ -325,7 +325,7 @@ $baby-blue: #f8faff;
   padding:2% 5% 0;
   background-color: #F2F2F2;
   &_top{
-    height:500px;
+    height:550px;
     width:90vw;
     border-bottom:1px solid #E9E9E9;
     box-sizing: border-box;
@@ -337,20 +337,21 @@ $baby-blue: #f8faff;
         overflow: auto;
         li{
           width:100%;
-          height:calc(500px / 15);
+          height:calc(550px / 16);
           border-bottom:1px solid #E9E9E9;
           box-sizing: border-box;
           background-color: white;
-          &:hover{
-            background-color: #999999
-          }
           img{
-            width:calc(500px / 15);
+            width:calc(550px / 16);
+            float: left;
+          }
+          .rank{
+            width:20px;
             float: left;
           }
           p{
             color: black;
-            width:calc(100% - (500px / 15));
+            width:calc(100% - (550px / 16));
             height: 100%;
             float: left;
             font-size: 13px;
@@ -359,13 +360,24 @@ $baby-blue: #f8faff;
             align-items: center;
             text-align: center;
           }
+          #rank{
+            width:calc(100% - (550px / 16) - 20px);
+          }
         }
       }
     }
-    img{
+    &_center{
       width:70%;
       float: left;
       height:100%;
+    }
+    &_player{
+      width:70%;
+      height:100%;
+      position: relative;
+      left:15%;
+      background-color: #E9E9E9;
+      visibility: hidden;
     }
   }
 }

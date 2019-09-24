@@ -4,75 +4,84 @@
     <div class="main_top">
       <div class="main_top_left">
         <ul>
-          <a href="#"><li><%= image_tag "http://urx.red/lVlO" %><p>ダラス<br>マーベリックス</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/gGAV" %><p>ヒューストン<br>ロケッツ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/UdoO" %><p>メンフィス<br>グリズリーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/nLiv" %><p>ニューオーリンズ<br>ペリカンズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/aVAS" %><p>サンアントニオ<br>スパーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/U77R" %><p>デンバー<br>ナゲッツ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/wfpy" %><p>ミネソタ<br>ティンバーウルブズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/qRwr" %><p>オクラホマシティ<br>サンダー</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/Xpp4" %><p>ポートランド<br>トレイルブレイザーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/ZJ6i" %><p>ユタ<br>ジャズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/vLJF" %><p>ゴールデンステート<br>ウォリアーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/vs6s" %><p>ロサンゼルス<br>クリッパーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/vS1X" %><p>ロサンゼルス<br>レイカーズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/PaW1" %><p>フェニックス<br>サンズ</p></li></a>
-          <a href="#"><li><%= image_tag "http://urx.red/KeWS" %><p>サクラメント<br>キングス</p></li></a>
+          <li><%= image_tag "nba_west" %><p>イースタンカンファレンス</p></li>
+          <a href="#"><li id="nba_map1"><%=image_tag"http://urx.red/lVlO"%>
+                                        <%=image_tag"1th",class:"rank"%><p id="rank">ダラス<br>マーベリックス</p></li></a>
+          <a href="#"><li id="nba_map2"><%= image_tag "http://urx.red/gGAV" %>
+                                        <%=image_tag"2th",class:"rank"%><p id="rank">ヒューストン<br>ロケッツ</p></li></a>
+          <a href="#"><li id="nba_map3"><%= image_tag "http://urx.red/UdoO" %>
+                                        <%=image_tag"3th",class:"rank"%><p id="rank">メンフィス<br>グリズリーズ</p></li></a>
+          <a href="#"><li id="nba_map4"><%= image_tag "http://urx.red/nLiv" %><p>ニューオーリンズ<br>ペリカンズ</p></li></a>
+          <a href="#"><li id="nba_map5"><%= image_tag "http://urx.red/aVAS" %><p>サンアントニオ<br>スパーズ</p></li></a>
+          <a href="#"><li id="nba_map6"><%= image_tag "http://urx.red/U77R" %><p>デンバー<br>ナゲッツ</p></li></a>
+          <a href="#"><li id="nba_map7"><%= image_tag "http://urx.red/wfpy" %><p>ミネソタ<br>ティンバーウルブズ</p></li></a>
+          <a href="#"><li id="nba_map8"><%= image_tag "http://urx.red/qRwr" %><p>オクラホマシティ<br>サンダー</p></li></a>
+          <a href="#"><li id="nba_map9"><%= image_tag "http://urx.red/Xpp4" %><p>ポートランド<br>トレイルブレイザーズ</p></li></a>
+          <a href="#"><li id="nba_map10"><%= image_tag "http://urx.red/ZJ6i" %><p>ユタ<br>ジャズ</p></li></a>
+          <a href="#"><li id="nba_map11"><%= image_tag "http://urx.red/vLJF" %><p>ゴールデンステート<br>ウォリアーズ</p></li></a>
+          <a href="#"><li id="nba_map12"><%= image_tag "http://urx.red/vs6s" %><p>ロサンゼルス<br>クリッパーズ</p></li></a>
+          <a href="#"><li id="nba_map13"><%= image_tag "http://urx.red/vS1X" %><p>ロサンゼルス<br>レイカーズ</p></li></a>
+          <a href="#"><li id="nba_map14"><%= image_tag "http://urx.red/PaW1" %><p>フェニックス<br>サンズ</p></li></a>
+          <a href="#"><li id="nba_map15"><%= image_tag "http://urx.red/KeWS" %><p>サクラメント<br>キングス</p></li></a>
         </ul>
       </div>
-      <%= image_tag "nba_teamlogo.png" ,usemap:"#nba" %>
+      <%= image_tag "nba_teamlogo.png" ,usemap:"#nba",class:"main_top_center" %>
       <map name="nba" >
-        <area shape="rect" alt="ダラス・マーベリックス" coords="425,291,515,307" href="#">
-        <area shape="rect" alt="ヒューストン・ロケッツ" coords="498,375,557,392" href="#">
-        <area shape="rect" alt="メンフィス・グリズリーズ" coords="640,246,723,263" href="#">
-        <area shape="rect" alt="ニューオーリンズ・ペリカンズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="サンアントニオ・スパーズ" coords="417,352,480,369" href="#">
-        <area shape="rect" alt="デンバー・ナゲッツ" coords="366,178,428,195" href="#">
-        <area shape="rect" alt="ミネソタ・ティンバーウルブズ" coords="465,68,575,85" href="#">
-        <area shape="rect" alt="オクラホマシティ・サンダー" coords="465,237,535,254" href="#">
-        <area shape="rect" alt="ポートランド・トレイルブレイザーズ" coords="187,63,310,80" href="#">
-        <area shape="rect" alt="ユタ・ジャズ" coords="288,143,337,160" href="#">
-        <area shape="rect" alt="ゴールデンステート・ウォリアーズ" coords="165,185,258,201" href="#">
-        <area shape="rect" alt="ロサンゼルス・クリッパーズ" coords="160,247,240,263" href="#">
-        <area shape="rect" alt="ロサンゼルス・レイカーズ" coords="175,282,250,298" href="#">
-        <area shape="rect" alt="フェニックス・サンズ" coords="280,257,330,274" href="#">
-        <area shape="rect" alt="サクラメント・キングス" coords="130,144,192,160" href="#">
-
-        <area shape="rect" alt="ボストン・セルティックス" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="ブルックリン・ネッツ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="ニューヨーク・ニックス" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="フィラデルフィア・セブンティシクサーズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="トロント・ラプターズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="シカゴ・ブルズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="クリーブランド・キャバリアーズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="デトロイト・ピストンズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="インディアナ・ペイサーズ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="ミルウォーキー・バックス" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="アトランタ・ホークス" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="シャーロット・ホーネッツ" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="マイアミ・ヒート" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="オーランド・マジック" coords="573,332,650,349" href="#">
-        <area shape="rect" alt="ワシントン・ウィザーズ" coords="573,332,650,349" href="#">
+        <area shape="rect" class="nba_map1" alt="ダラス・マーベリックス" coords="425,321,515,337" href="#">
+        <area shape="rect" class="nba_map2" alt="ヒューストン・ロケッツ" coords="498,413,557,430" href="#">
+        <area shape="rect" class="nba_map3" alt="メンフィス・グリズリーズ" coords="640,270,723,287" href="#">
+        <area shape="rect" class="nba_map4" alt="ニューオーリンズ・ペリカンズ" coords="573,365,650,381" href="#">
+        <area shape="rect" class="nba_map5" alt="サンアントニオ・スパーズ" coords="417,388,480,405" href="#">
+        <area shape="rect" class="nba_map6" alt="デンバー・ナゲッツ" coords="366,195,428,215" href="#">
+        <area shape="rect" class="nba_map7" alt="ミネソタ・ティンバーウルブズ" coords="465,75,575,92" href="#">
+        <area shape="rect" class="nba_map8" alt="オクラホマシティ・サンダー" coords="465,260,535,278" href="#">
+        <area shape="rect" class="nba_map9" alt="ポートランド・トレイルブレイザーズ" coords="187,70,310,87" href="#">
+        <area shape="rect" class="nba_map10" alt="ユタ・ジャズ" coords="288,157,337,175" href="#">
+        <area shape="rect" class="nba_map11" alt="ゴールデンステート・ウォリアーズ" coords="165,203,258,220" href="#">
+        <area shape="rect" class="nba_map12" alt="ロサンゼルス・クリッパーズ" coords="160,272,240,287" href="#">
+        <area shape="rect" class="nba_map13" alt="ロサンゼルス・レイカーズ" coords="175,310,250,327" href="#">
+        <area shape="rect" class="nba_map14" alt="フェニックス・サンズ" coords="280,282,330,300" href="#">
+        <area shape="rect" class="nba_map15" alt="サクラメント・キングス" coords="130,158,192,175" href="#">
+        <area shape="rect" class="nba_map16" alt="ボストン・セルティックス" coords="780,108,865,123" href="#">
+        <area shape="rect" class="nba_map17" alt="ブルックリン・ネッツ" coords="818,148,865,165" href="#">
+        <area shape="rect" class="nba_map18" alt="ニューヨーク・ニックス" coords="758,130,815,149" href="#">
+        <area shape="rect" class="nba_map19" alt="フィラデルフィア・セブンティシクサーズ" coords="745,155,805,172" href="#">
+        <area shape="rect" class="nba_map20" alt="トロント・ラプターズ" coords="696,98,765,113" href="#">
+        <area shape="rect" class="nba_map21" alt="シカゴ・ブルズ" coords="566,170,628,185" href="#">
+        <area shape="rect" class="nba_map22" alt="クリーブランド・キャバリアーズ" coords="678,190,762,207" href="#">
+        <area shape="rect" class="nba_map23" alt="デトロイト・ピストンズ" coords="655,149,725,166" href="#">
+        <area shape="rect" class="nba_map24" alt="インディアナ・ペイサーズ" coords="597,212,673,229" href="#">
+        <area shape="rect" class="nba_map25" alt="ミルウォーキー・バックス" coords="566,130,628,147" href="#">
+        <area shape="rect" class="nba_map26" alt="アトランタ・ホークス" coords="693,340,747,357" href="#">
+        <area shape="rect" class="nba_map27" alt="シャーロット・ホーネッツ" coords="788,266,865,284" href="#">
+        <area shape="rect" class="nba_map28" alt="マイアミ・ヒート" coords="733,435,787,450" href="#">
+        <area shape="rect" class="nba_map29" alt="オーランド・マジック" coords="703,395,757,412" href="#">
+        <area shape="rect" class="nba_map30" alt="ワシントン・ウィザーズ" coords="768,215,837,232" href="#">
       </map>
       <div class="main_top_right">
         <ul>
-          <a href="#"><li><p>ボストン<br>セルティックス</p><%= image_tag "http://urx.red/VbS8" %></li></a>
-          <a href="#"><li><p>ブルックリン<br>ネッツ</p><%= image_tag "http://urx.red/d7vQ" %></li></a>
-          <a href="#"><li><p>ニューヨーク<br>ニックス</p><%= image_tag "http://urx.red/VEdg" %></li></a>
-          <a href="#"><li><p>フィラデルフィア<br>セブンティシクサーズ</p><%= image_tag "http://urx.red/Ww0w" %></li></a>
-          <a href="#"><li><p>トロント<br>ラプターズ</p><%= image_tag "http://urx.red/59CW" %></li></a>
-          <a href="#"><li><p>シカゴ<br>ブルズ</p><%= image_tag "http://urx.red/P0WA" %></li></a>
-          <a href="#"><li><p>クリーブランド<br>キャバリアーズ</p><%= image_tag "http://urx.red/vz2k" %></li></a>
-          <a href="#"><li><p>デトロイト<br>ピストンズ</p><%= image_tag "http://urx.red/Rg31" %></li></a>
-          <a href="#"><li><p>インディアナ<br>ペイサーズ</p><%= image_tag "http://urx.red/ZvmE" %></li></a>
-          <a href="#"><li><p>ミルウォーキー<br>バックス</p><%= image_tag "http://urx.red/qhwZ" %></li></a>
-          <a href="#"><li><p>アトランタ<br>ホークス</p><%= image_tag "http://urx.red/AeVe" %></li></a>
-          <a href="#"><li><p>シャーロット<br>ホーネッツ</p><%= image_tag "http://urx.red/MBVU" %></li></a>
-          <a href="#"><li><p>マイアミ<br>ヒート</p><%= image_tag "http://urx.red/SkzV" %></li></a>
-          <a href="#"><li><p>オーランド<br>マジック</p><%= image_tag "http://urx.red/VpMZ" %></li></a>
-          <a href="#"><li><p>ワシントン<br>ウィザーズ</p><%= image_tag "http://urx.red/yW3U" %></li></a>
+          <li><p>ウェスタンカンファレンス</p><%= image_tag "nba_east" %></li>
+          <a href="#"><li id="nba_map16"><p id="rank">ボストン<br>セルティックス</p>
+                      <%=image_tag"1th",class:"rank"%><%= image_tag "http://urx.red/VbS8" %></li></a>
+          <a href="#"><li id="nba_map17"><p id="rank">ブルックリン<br>ネッツ</p>
+                      <%=image_tag"2th",class:"rank"%><%= image_tag "http://urx.red/d7vQ" %></li></a>
+          <a href="#"><li id="nba_map18"><p id="rank">ニューヨーク<br>ニックス</p>
+                      <%=image_tag"3th",class:"rank"%><%= image_tag "http://urx.red/VEdg" %></li></a>
+          <a href="#"><li id="nba_map19"><p>フィラデルフィア<br>セブンティシクサーズ</p><%= image_tag "http://urx.red/Ww0w" %></li></a>
+          <a href="#"><li id="nba_map20"><p>トロント<br>ラプターズ</p><%= image_tag "http://urx.red/59CW" %></li></a>
+          <a href="#"><li id="nba_map21"><p>シカゴ<br>ブルズ</p><%= image_tag "http://urx.red/P0WA" %></li></a>
+          <a href="#"><li id="nba_map22"><p>クリーブランド<br>キャバリアーズ</p><%= image_tag "http://urx.red/vz2k" %></li></a>
+          <a href="#"><li id="nba_map23"><p>デトロイト<br>ピストンズ</p><%= image_tag "http://urx.red/Rg31" %></li></a>
+          <a href="#"><li id="nba_map24"><p>インディアナ<br>ペイサーズ</p><%= image_tag "http://urx.red/ZvmE" %></li></a>
+          <a href="#"><li id="nba_map25"><p>ミルウォーキー<br>バックス</p><%= image_tag "http://urx.red/qhwZ" %></li></a>
+          <a href="#"><li id="nba_map26"><p>アトランタ<br>ホークス</p><%= image_tag "http://urx.red/AeVe" %></li></a>
+          <a href="#"><li id="nba_map27"><p>シャーロット<br>ホーネッツ</p><%= image_tag "http://urx.red/MBVU" %></li></a>
+          <a href="#"><li id="nba_map28"><p>マイアミ<br>ヒート</p><%= image_tag "http://urx.red/SkzV" %></li></a>
+          <a href="#"><li id="nba_map29"><p>オーランド<br>マジック</p><%= image_tag "http://urx.red/VpMZ" %></li></a>
+          <a href="#"><li id="nba_map30"><p>ワシントン<br>ウィザーズ</p><%= image_tag "http://urx.red/yW3U" %></li></a>
         </ul>
+      </div>
+      <div class="main_top_player">
       </div>
     </div>
   </div>
