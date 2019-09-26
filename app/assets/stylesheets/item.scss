@@ -372,14 +372,40 @@ $baby-blue: #f8faff;
       height:100%;
     }
     &_player{
-      width:70%;
-      height:100%;
-      position: relative;
-      left:15%;
-      background-color: #E9E9E9;
-      visibility: hidden;
+      width: 63%;
+      height: 550px;
+      position: absolute;
+      left: 18.5%;
+      top: calc(100px + 2vw);
+      border: 1px solid #FDBD19;
+      box-sizing: border-box;
+      background-color: white;
+      display: none;
+      &_left{
+        float: left;
+        width:30%;
+        height:100%;
+        position: absolute;
+      }
+      &_right{
+        float: left;
+        width:70%;
+        height:100%;
+        background-color: #FF8C00;
+        position: absolute;
+        left:30%;
+      }
     }
   }
 }
-
+.sample{
+  &:hover{
+    li{
+      background-color:#FDBD19;
+    }
+    .main_top_player{
+      display: block;
+    }
+  }
+}
 
