@@ -333,8 +333,12 @@ $baby-blue: #f8faff;
       height:100%;
       width:15%;
       float: left;
-      ul{
-        overflow: auto;
+      &_team{
+        &:hover{
+          li{background-color:#FDBD19;}
+          .main_top_right_team_player{display: block;}
+          .main_top_left_team_player{display: block;}
+        }
         li{
           width:100%;
           height:calc(550px / 16);
@@ -364,6 +368,67 @@ $baby-blue: #f8faff;
             width:calc(100% - (550px / 16) - 20px);
           }
         }
+        &_player{
+          width: 63%;
+          height: 550px;
+          position: absolute;
+          left: 18.5%;
+          top: calc(100px + 2vw);
+          border: 1px solid #FDBD19;
+          box-sizing: border-box;
+          background-color: white;
+          display: none;
+          &_left{
+            float: left;
+            width:30%;
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &_center{
+              width:90%;
+              height:88%;
+              overflow: scroll;
+              &_star{
+                height: 15%;
+                width:100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:last-child{
+                  border: none;  
+                }
+                @mixin star_player($font-color:#333,$background:#f0e800,$font-shadow:rgb(255, 255, 255)){
+                  font:bold 30px/1.6 Arial, Helvetica, sans-serif;
+                  text-align:center;
+                  color:$font-color;
+                  background:$background;
+                  width:85%;
+                  -moz-transform: rotate(-3deg) skew(-3deg);
+                  -o-transform: rotate(-3deg) skew(-3deg);
+                  -ms-transform: rotate(-3deg) skew(-3deg);
+                  transform: rotate(-3deg) skew(-3deg);
+                  text-shadow:1px 1px 0 $font-shadow;
+                  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.6),
+                              30px 0 0 0 $background,
+                              -30px 0 0 0 $background;
+                }
+                h3[id^="heat"] { @include star_player(black,#98002e,rgb(255,255,255)); }
+                h3[id^="magic"] { @include star_player(#0077c0,silver,rgb(255,255,255)); }
+                h3[id^="wizards"] { @include star_player(white,#e31837,rgb(0,0,0)); }
+                h3:hover{
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          &_right{
+            float: left;
+            width:70%;
+            height:100%;
+            background-color: #FF8C00;
+          }
+        }
       }
     }
     &_center{
@@ -371,41 +436,5 @@ $baby-blue: #f8faff;
       float: left;
       height:100%;
     }
-    &_player{
-      width: 63%;
-      height: 550px;
-      position: absolute;
-      left: 18.5%;
-      top: calc(100px + 2vw);
-      border: 1px solid #FDBD19;
-      box-sizing: border-box;
-      background-color: white;
-      display: none;
-      &_left{
-        float: left;
-        width:30%;
-        height:100%;
-        position: absolute;
-      }
-      &_right{
-        float: left;
-        width:70%;
-        height:100%;
-        background-color: #FF8C00;
-        position: absolute;
-        left:30%;
-      }
-    }
   }
 }
-.sample{
-  &:hover{
-    li{
-      background-color:#FDBD19;
-    }
-    .main_top_player{
-      display: block;
-    }
-  }
-}
-

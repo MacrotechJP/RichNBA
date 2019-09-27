@@ -27,17 +27,4 @@ $(function(){
       $("#"+$(this).attr("class")).css("background-color","white");
     }
   );
-  //nbaマップ図サイドホバーアニメーション//
-  $('li[id^="nba_map"]').hover(
-    function() {
-      // $(this).css("background-color","#FDBD19");
-      // $("*[name="+$(this).attr("id")+"]").css("visibility","visible");
-      // $("*[name="+$(this).attr("id")+"]").css("display","block");
-    },
-    function() {
-      // $(this).css("background-color","white");
-      // $("*[name="+$(this).attr("id")+"]").css("visibility","hidden");
-      // $("*[name="+$(this).attr("id")+"]").css("display","none");
-    }
-  );
 })
