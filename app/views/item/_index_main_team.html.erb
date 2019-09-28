@@ -10,18 +10,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Mavericks1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Mavericks2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Mavericks3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Mavericks4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "16").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Mavericks<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -34,18 +27,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Rockets1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Rockets2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Rockets3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Rockets4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "17").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Rockets<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -58,18 +44,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Grizzlies1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Grizzlies2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Grizzlies3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Grizzlies4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "18").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Grizzlies<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -80,18 +59,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pelicans1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pelicans2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pelicans3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pelicans4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "19").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Pelicans<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -102,18 +74,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "20").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Spurs<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -124,18 +89,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nuggets1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nuggets2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nuggets3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nuggets4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "21").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Nuggets<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -146,18 +104,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Timberwolves1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Timberwolves2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Timberwolves3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Timberwolves4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "22").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Timberwolves<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -168,18 +119,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "23").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Thunder<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -190,18 +134,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "24").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Blazers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -212,18 +149,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "25").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Jazz<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -234,18 +164,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Warriors1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Warriors2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Warriors3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Warriors4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "26").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Warriors<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -256,18 +179,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Clippers1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Clippers2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Clippers3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Clippers4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "27").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Clippers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -278,18 +194,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Lakers1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Lakers2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Lakers3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Lakers4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "28").each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Lakers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -300,18 +209,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "29").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Suns<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -322,18 +224,11 @@
       <div class="main_top_left_team_player">
         <div class="main_top_left_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "30").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Kings<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="main_top_left_team_player_right"></div>
@@ -387,18 +282,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Celtics1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Celtics2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Celtics3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Celtics4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "1").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Celtics<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -411,18 +299,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nets1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nets2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nets3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Nets4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "2").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Nets<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -435,18 +316,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Knicks1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Knicks2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Knicks3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Knicks4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "3").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Knicks<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -457,18 +331,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "4").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="76ers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -479,18 +346,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="thunder4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "5").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Raptors<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -501,18 +361,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bulls1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bulls2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bulls3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bulls4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "6").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Bulls<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -523,18 +376,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Cavaliers1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Cavaliers2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Cavaliers3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Cavaliers4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "7").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Cavaliers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -545,18 +391,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pistons1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pistons2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pistons3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pistons4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "8").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Pistons<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -567,18 +406,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pacers1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pacers2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pacers3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Pacers4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "9").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Pacers<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -589,18 +421,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bucks1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bucks2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bucks3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Bucks4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "10").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Bucks<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -611,18 +436,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hawks1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hawks2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hawks3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hawks4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "11").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Hawks<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -633,18 +451,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hornets1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hornets2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hornets3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Hornets4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "12").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Hornets<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -655,12 +466,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Heat1">Keep out!</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Heat2">Keep out!</h3>
-            </div>
+            <% Player.where(team_id: "13").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Heat<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -671,12 +481,11 @@
         <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Magic1">Keep out!</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="Magic2">Keep out!</h3>
-            </div>
+            <% Player.where(team_id: "14").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Magic<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -684,21 +493,18 @@
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map30"><p>ワシントン<br>ウィザーズ</p><%= image_tag "http://urx.red/yW3U" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
+        <div class="main_top_right_team_player_right">
+          <div id="player_video"></div>
+        </div>
+        <div class="main_top_right_team_player_hide">
+        </div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="wizards1">John Wall</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="wizards2">Bradley Beal</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="wizards3">Isaiah Thomas</h3>
-            </div>
-            <div class="main_top_right_team_player_left_center_star">
-              <h3 id="wizards4">八村　塁</h3>
-            </div>
+            <% Player.where(team_id: "15").order(:name).each do |player| %>
+              <div class="main_top_right_team_player_left_center_star">
+                <h3 id="Wizards<%= player.id %>"><%= player.name %></h3>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
