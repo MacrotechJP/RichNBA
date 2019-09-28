@@ -460,9 +460,15 @@ $baby-blue: #f8faff;
                 h3[id^="Pelicans"] { @include star_player(white,#002b5c,rgb(0,0,0));
                 &:hover{background: url(https://www.nba.com/assets/logos/teams/primary/web/NOP.svg) center center/100% no-repeat;
                         color:white;text-shadow:1px 1px 0 rgb(0,0,0);}}
-                h3[id^="Knicks"] { @include star_player(white,#98002e,rgb(0,0,0)); }
-                h3[id^="Thunder"] { @include star_player(white,#98002e,rgb(0,0,0)); }
-                h3[id^="Magic"] { @include star_player(#0077c0,silver,rgb(255,255,255)); }
+                h3[id^="Knicks"] { @include star_player(#f58426,#006bb6,rgb(255,255,255));
+                &:hover{background: url(https://www.nba.com/assets/logos/teams/primary/web/NYK.svg) center center/100% no-repeat;
+                        color:white;text-shadow:1px 1px 0 rgb(0,0,0);}}
+                h3[id^="Thunder"] { @include star_player(white,#f05133,rgb(0,45,98));
+                &:hover{background: url(https://www.nba.com/assets/logos/teams/primary/web/OKC.svg) center center/100% no-repeat;
+                        color:white;text-shadow:1px 1px 0 rgb(0,0,0);}}
+                h3[id^="Magic"] { @include star_player(#0077c0,silver,rgb(255,255,255));
+                &:hover{background: url(https://www.nba.com/assets/logos/teams/primary/web/ORL.svg) center center/100% no-repeat;
+                        color:white;text-shadow:1px 1px 0 rgb(0,0,0);}}
                 h3[id^="76ers"] { @include star_player(white,#98002e,rgb(0,0,0)); }
                 h3[id^="Suns"] { @include star_player(white,#98002e,rgb(0,0,0)); }
                 h3[id^="Blazers"] { @include star_player(white,#98002e,rgb(0,0,0)); }
