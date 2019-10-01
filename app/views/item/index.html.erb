@@ -7,26 +7,24 @@
   </div>
   <div class="footer">
   </div>
-  <div class="btb">
-    <div class="swiper-container">
-	<!-- メイン表示部分 -->
-	<div class="swiper-wrapper">
-		<!-- 各スライド -->
-		<div class="swiper-slide"><img src="https://haniwaman.com/wp-content/uploads/2018/05/swiper01.png" alt="Swiper01"></div>
-      <div class="swiper-slide"><video src="https://haniwaman.com/wp-content/uploads/2018/05/swiper5.mp4" autoplay loop muted></video></div>
-      <div class="swiper-slide"><img src="https://haniwaman.com/wp-content/uploads/2018/05/swiper03.png" alt="Swiper03"></div>
-    </div>
-	<div class="swiper-pagination"></div>
-</div>
-  </div>
+  
 </div>
 <script>
-var mySwiper = new Swiper('.swiper-container', {
-	pagination: {
-		el: '.swiper-pagination',
-		type: 'bullets',
-		clickable: true
-	}
+var swiper = new Swiper('.swiper-container', {
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  loop: true,
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: true
+  // },
+  pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
 });
 </script>
 

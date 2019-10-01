@@ -296,7 +296,30 @@
         <p id="rank">ブルックリン<br>ネッツ</p><%=image_tag"2th",class:"rank"%><%= image_tag "http://urx.red/d7vQ" %>
       </li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
+        <div class="main_top_right_team_player_right">
+          <div class="main_top_right_team_player_right_slider">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://clutchpoints.com/wp-content/uploads/2019/09/Brooklyn-to-give-away-10000-Kyrie-Irving-jerseys-at-Oct.-25-game-vs.jpg" alt="Swiper01"></div>
+                <div class="swiper-slide"><div id="player_video"></div><div id="video_cover"></div></div>
+                <div class="swiper-slide"><img src="https://clutchpoints.com/wp-content/uploads/2019/07/Boston_wanted_to_offer_Kyrie_Irving_an_extension_last_summer_but_knew_he_wouldn_t_take_it_because_rules_capped_the_salary.jpg" alt="Swiper03"></div>
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="main_top_right_team_player_right_item">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <%# <li></li>
+              <li></li>
+              <li></li> %>
+            </ul>
+          </div>
+        </div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "2").order(:name).each do |player| %>
@@ -494,9 +517,6 @@
       <a href="#"><li id="nba_map30"><p>ワシントン<br>ウィザーズ</p><%= image_tag "http://urx.red/yW3U" %></li></a>
       <div class="main_top_right_team_player">
         <div class="main_top_right_team_player_right">
-          <div id="player_video"></div>
-        </div>
-        <div class="main_top_right_team_player_hide">
         </div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
