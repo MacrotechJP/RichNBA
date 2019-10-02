@@ -38,11 +38,11 @@ function autoScroll() {
     var $sampleBox = document.getElementById( "main_top_right_team_player_right_item" );
     $sampleBox.scrollLeft = ++$scrollX;
     if( $scrollX < $sampleBox.scrollWidth - $sampleBox.clientWidth ){
-        setTimeout( "autoScroll()", 20 );
+        setTimeout( "autoScroll()", 25 );
     }else{
         $scrollX = 0;
         $sampleBox.scrollLeft = 0;
-        setTimeout( "autoScroll()", 20 );
+        setTimeout( "autoScroll()", 25 );
     }
 }
 </script>
