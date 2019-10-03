@@ -17,7 +17,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Mavericks",teamnumber:"16"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -34,7 +34,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Rockets",teamnumber:"17"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -51,7 +51,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Grizzlies",teamnumber:"18"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -66,7 +66,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Pelicans",teamnumber:"19"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -81,7 +81,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Spurs",teamnumber:"20"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -96,7 +96,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Nuggets",teamnumber:"21"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -111,7 +111,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Timberwolves",teamnumber:"22"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -126,7 +126,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Thunder",teamnumber:"23"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -141,7 +141,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Blazers",teamnumber:"24"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -156,7 +156,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Jazz",teamnumber:"25"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -171,7 +171,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Warriors",teamnumber:"26"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -186,7 +186,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Clippers",teamnumber:"27"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -201,7 +201,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Lakers",teamnumber:"28"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -216,7 +216,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Suns",teamnumber:"29"} %>
       </div>
     </div>
     <div class="main_top_left_team">
@@ -231,7 +231,7 @@
             <% end %>
           </div>
         </div>
-        <div class="main_top_left_team_player_right"></div>
+        <%= render partial: "index_main_player", locals: {teamname: "Kings",teamnumber:"30"} %>
       </div>
     </div>
   </ul>
@@ -279,7 +279,6 @@
         <p id="rank">ボストン<br>セルティックス</p><%=image_tag"1th",class:"rank"%><%= image_tag "http://urx.red/VbS8" %>
       </li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "1").order(:name).each do |player| %>
@@ -289,6 +288,7 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Celtics",teamnumber:"1"} %>
       </div>
     </div>
     <div class="main_top_right_team">
@@ -296,30 +296,6 @@
         <p id="rank">ブルックリン<br>ネッツ</p><%=image_tag"2th",class:"rank"%><%= image_tag "http://urx.red/d7vQ" %>
       </li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right">
-          <div class="main_top_right_team_player_right_slider">
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="" alt="Swiper01"></div>
-                <div class="swiper-slide"><div id="sample01"></div><div id="sample02"></div><div id="video_cover"></div></div>
-                <div class="swiper-slide"><img src="" alt="Swiper03"></div>
-              </div>
-              <div class="swiper-pagination"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-          </div>
-          <div class="main_top_right_team_player_right_item">
-            <div id="main_top_right_team_player_right_item">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </div>
-          </div>
-        </div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "2").order(:name).each do |player| %>
@@ -329,6 +305,7 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Nets",teamnumber:"2"} %>
       </div>
     </div>
     <div class="main_top_right_team">
@@ -336,7 +313,6 @@
         <p id="rank">ニューヨーク<br>ニックス</p><%=image_tag"3th",class:"rank"%><%= image_tag "http://urx.red/VEdg" %>
       </li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "3").order(:name).each do |player| %>
@@ -346,12 +322,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Knicks",teamnumber:"3"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map19"><p>フィラデルフィア<br>セブンティシクサーズ</p><%= image_tag "http://urx.red/Ww0w" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "4").order(:name).each do |player| %>
@@ -361,12 +337,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "76ers",teamnumber:"4"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map20"><p>トロント<br>ラプターズ</p><%= image_tag "http://urx.red/59CW" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "5").order(:name).each do |player| %>
@@ -376,12 +352,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Raptors",teamnumber:"5"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map21"><p>シカゴ<br>ブルズ</p><%= image_tag "http://urx.red/P0WA" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "6").order(:name).each do |player| %>
@@ -391,12 +367,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Bulls",teamnumber:"6"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map22"><p>クリーブランド<br>キャバリアーズ</p><%= image_tag "http://urx.red/vz2k" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "7").order(:name).each do |player| %>
@@ -406,12 +382,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Cavaliers",teamnumber:"7"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map23"><p>デトロイト<br>ピストンズ</p><%= image_tag "http://urx.red/Rg31" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "8").order(:name).each do |player| %>
@@ -421,12 +397,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Pistons",teamnumber:"8"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map24"><p>インディアナ<br>ペイサーズ</p><%= image_tag "http://urx.red/ZvmE" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "9").order(:name).each do |player| %>
@@ -436,12 +412,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Pacers",teamnumber:"9"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map25"><p>ミルウォーキー<br>バックス</p><%= image_tag "http://urx.red/qhwZ" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "10").order(:name).each do |player| %>
@@ -451,12 +427,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Bucks",teamnumber:"10"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map26"><p>アトランタ<br>ホークス</p><%= image_tag "http://urx.red/AeVe" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "11").order(:name).each do |player| %>
@@ -466,12 +442,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Hawks",teamnumber:"11"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map27"><p>シャーロット<br>ホーネッツ</p><%= image_tag "http://urx.red/MBVU" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "12").order(:name).each do |player| %>
@@ -481,12 +457,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Hornets",teamnumber:"12"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map28"><p>マイアミ<br>ヒート</p><%= image_tag "http://urx.red/SkzV" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "13").order(:name).each do |player| %>
@@ -496,12 +472,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Heat",teamnumber:"13"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map29"><p>オーランド<br>マジック</p><%= image_tag "http://urx.red/VpMZ" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right"></div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "14").order(:name).each do |player| %>
@@ -511,13 +487,12 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Magic",teamnumber:"14"} %>
       </div>
     </div>
     <div class="main_top_right_team">
       <a href="#"><li id="nba_map30"><p>ワシントン<br>ウィザーズ</p><%= image_tag "http://urx.red/yW3U" %></li></a>
       <div class="main_top_right_team_player">
-        <div class="main_top_right_team_player_right">
-        </div>
         <div class="main_top_right_team_player_left">
           <div class="main_top_right_team_player_left_center">
             <% Player.where(team_id: "15").order(:name).each do |player| %>
@@ -527,6 +502,7 @@
             <% end %>
           </div>
         </div>
+        <%= render partial: "index_main_player", locals: {teamname: "Wizards",teamnumber:"15"} %>
       </div>
     </div>
   </ul>

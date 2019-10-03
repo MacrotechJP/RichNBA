@@ -28,21 +28,3 @@ var swiper = new Swiper('.swiper-container', {
 });
 </script>
 
-<%# プレイヤー画像表示時の商品自動スクロール %>
-<script type="text/javascript">
-window.onload = function () {
-    autoScroll();
-}
-var $scrollX = 0;
-function autoScroll() {
-    var $sampleBox = document.getElementById( "main_top_right_team_player_right_item" );
-    $sampleBox.scrollLeft = ++$scrollX;
-    if( $scrollX < $sampleBox.scrollWidth - $sampleBox.clientWidth ){
-        setTimeout( "autoScroll()", 25 );
-    }else{
-        $scrollX = 0;
-        $sampleBox.scrollLeft = 0;
-        setTimeout( "autoScroll()", 25 );
-    }
-}
-</script>

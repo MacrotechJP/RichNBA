@@ -542,7 +542,7 @@ $baby-blue: #f8faff;
   margin: 0 5%;
   height: 29%;
   overflow: hidden;
-  #main_top_right_team_player_right_item{
+  [id^=main_top_right_team_player_right_item]{
     height: 100%;
     overflow-x: auto;
     white-space: nowrap;
@@ -555,6 +555,10 @@ $baby-blue: #f8faff;
     }
   }
 }
-#sample02{
-  display: none;
-}
+
+// #sample02{
+//   display: none;
+// }
+// [id^=teamvideo_]{
+//   display: none;
+// }
