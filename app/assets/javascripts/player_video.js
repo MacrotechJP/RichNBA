@@ -40,16 +40,16 @@ var ytWidth = 640;
 var ytHeight = 313;
 // 各動画情報
 var ytData = [
-  {id: 'wbqOCoBkGvg',area: 'teamvideo_Celtics'}, {id: 'K0vdUSOge4Y',area: 'teamvideo_Nets'}, {id: 'wbqOCoBkGvg',area: 'teamvideo_Knicks'}, 
-    {id: 'wbqOCoBkGvg',area: 'teamvideo_76ers'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Raptors'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Bulls'},
-      {id: 'wbqOCoBkGvg',area: 'teamvideo_Cavaliers'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Pistons'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Pacers'},
-        {id: 'wbqOCoBkGvg',area: 'teamvideo_Bucks'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Hawks'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Hornets'},
-          {id: 'wbqOCoBkGvg',area: 'teamvideo_Heat'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Magic'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Wizards'},
-  {id: 'wbqOCoBkGvg',area: 'teamvideo_Mavericks'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Rockets'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Grizzlies'},
-    {id: 'wbqOCoBkGvg',area: 'teamvideo_Pelicans'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Spurs'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Nuggets'},
-      {id: 'wbqOCoBkGvg',area: 'teamvideo_Timberwolves'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Thunder'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Blazers'},
-        {id: 'wbqOCoBkGvg',area: 'teamvideo_Jazz'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Warriors'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Clippers'},
-          {id: 'wbqOCoBkGvg',area: 'teamvideo_Lakers'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Suns'},{id: 'wbqOCoBkGvg',area: 'teamvideo_Kings'}
+  {id: 'MQs0F-9IwT0',area: 'teamvideo_Celtics'}, {id: 'K0vdUSOge4Y',area: 'teamvideo_Nets'}, {id: 'MQs0F-9IwT0',area: 'teamvideo_Knicks'}, 
+    {id: 'MQs0F-9IwT0',area: 'teamvideo_76ers'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Raptors'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Bulls'},
+      {id: 'MQs0F-9IwT0',area: 'teamvideo_Cavaliers'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Pistons'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Pacers'},
+        {id: 'MQs0F-9IwT0',area: 'teamvideo_Bucks'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Hawks'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Hornets'},
+          {id: 'MQs0F-9IwT0',area: 'teamvideo_Heat'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Magic'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Wizards'},
+  {id: 'MQs0F-9IwT0',area: 'teamvideo_Mavericks'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Rockets'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Grizzlies'},
+    {id: 'MQs0F-9IwT0',area: 'teamvideo_Pelicans'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Spurs'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Nuggets'},
+      {id: 'MQs0F-9IwT0',area: 'teamvideo_Timberwolves'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Thunder'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Blazers'},
+        {id: 'MQs0F-9IwT0',area: 'teamvideo_Jazz'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Warriors'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Clippers'},
+          {id: 'MQs0F-9IwT0',area: 'teamvideo_Lakers'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Suns'},{id: 'MQs0F-9IwT0',area: 'teamvideo_Kings'}
 ];
  
 // 各プレーヤーの埋め込み
@@ -78,8 +78,8 @@ function onYouTubeIframeAPIReady() {
  
 // 各プレーヤー準備完了後の処理
 function onPlayerReady(e) {
-  e.target.playVideo();
-    e.target.mute();
+  // e.target.playVideo();
+  //   e.target.mute();
 }
 var loopCount = 0;
 function onPlayerStateChange(event) {
