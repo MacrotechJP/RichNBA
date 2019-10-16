@@ -1,0 +1,11 @@
+<div class="main_category">
+  <div class="main_category_title">Popular</div>
+  <% Item.all.each do |item| %>
+      <div class="main_category_items">
+        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{Itemimage.find_by(item_id:item.id).url}" %></a>
+        <div class="main_category_items_detail">
+          <%= "¥#{item.price.to_s(:delimited)}" %>
+        </div>
+      </div>
+  <% end %>
+</div>
