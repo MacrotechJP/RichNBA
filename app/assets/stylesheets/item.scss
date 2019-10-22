@@ -236,8 +236,9 @@ $baby-blue: #f8faff;
               color:#FDBD19;
             }
             .log-button{
+              width:80%;
+              height:40px;
               font-size: 1em;
-              padding: 0.5em 3em;
               margin: 15px;
               background-color: #ff0081;
               color: #fff;
@@ -247,7 +248,7 @@ $baby-blue: #f8faff;
               position: relative;
               transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
               z-index: 100;
-              
+              text-decoration: none;
               &:focus {
                 outline: 0;
               }

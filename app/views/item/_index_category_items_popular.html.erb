@@ -1,5 +1,5 @@
 <div class="main_category">
-  <div class="main_category_title">Popular</div>
+  <div class="main_category_title">最新の商品</div>
   <% Item.all.each do |item| %>
       <div class="main_category_items">
         <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{Itemimage.find_by(item_id:item.id).url}" %></a>

@@ -51,21 +51,36 @@
         </div> 
       </div>
       <div class="head_right_top_logo">
-        <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
-        <%# <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') do %>
-          <p>未ログイン中</p>
+        <% if user_signed_in? %>
+          <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') do %>
+            <p>ログイン中</p>
+          <% end %>
+          <div class="head_right_top_logo_hover">
+            <div class="head_right_top_logo_hover_log">
+              <%= button_to "マイページ",{controller: 'devise/sessions', action: 'destroy'}, {method: :delete, class: "log-button"} %>
+            </div>
+            <div class="head_right_top_logo_hover_log">
+              <%= button_to "ログアウト",{controller: 'devise/sessions', action: 'destroy'}, {method: :delete, class: "log-button"} %>
+            </div>
+          </div> 
+        <% else %>
+          <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
+            <p>未ログイン中</p>
+          <% end %>
+          <div class="head_right_top_logo_hover">
+            <div class="head_right_top_logo_hover_log">
+              <%= button_to "新規作成",{controller: 'devise/registrations', action: 'new'}, {method: :get, class: "log-button"} %>
+            </div>
+            <div class="head_right_top_logo_hover_log">
+              <%= form_tag(user_session_path, method: :post) do %>
+                <input type="email" placeholder="email" name="user[email]" required>
+                <input type="password" placeholder="password" name="user[password]" required>
+                <button class="log-button" type="submit" >ログイン</button>
+              <% end %>
+              <%= link_to "パスワードお忘れの方", new_user_password_path %>
+            </div>
+          </div> 
         <% end %>
-        <div class="head_right_top_logo_hover">
-          <div class="head_right_top_logo_hover_log">
-            <button class="log-button">新規登録</button>
-          </div>
-          <div class="head_right_top_logo_hover_log">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="password">
-            <button class="log-button">ログイン</button>
-            <%= link_to "パスワードお忘れの方","#" %>
-          </div>
-        </div> 
       </div>
     </div>
   </div>
