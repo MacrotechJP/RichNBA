@@ -20,17 +20,17 @@ class Scraping
   #   end
   # end
   ## Stage各商品URLの画像を複数保存
-  Item.all.where(ecsite_id:4).each do |item|
+  # Item.all.where(ecsite_id:4).each do |item|
 
-    agent = Mechanize.new
-    page = agent.get(item.siteurl)
-    element = page.search('.slider_image_box img')
-    element.each do |ele|
-      puts ele.get_attribute(:src)
-      Itemimage.create(url:ele.get_attribute(:src),item_id:item.id)
-    end
+  #   agent = Mechanize.new
+  #   page = agent.get(item.siteurl)
+  #   element = page.search('.slider_image_box img')
+  #   element.each do |ele|
+  #     puts ele.get_attribute(:src)
+  #     Itemimage.create(url:ele.get_attribute(:src),item_id:item.id)
+  #   end
     
-  end
+  # end
 
 
   ## BB KONG商品一覧より各商品URLをDBに保存
