@@ -58,11 +58,15 @@ ActiveRecord::Schema.define(version: 2019_10_22_043217) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.bigint "team_id"
+    t.bigint "player_id"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["player_id"], name: "index_users_on_player_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "itemimages", "items"
@@ -70,4 +74,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_043217) do
   add_foreign_key "items", "players"
   add_foreign_key "items", "teams"
   add_foreign_key "players", "teams"
+  add_foreign_key "users", "players"
+  add_foreign_key "users", "teams"
 end
