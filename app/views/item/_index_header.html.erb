@@ -12,18 +12,20 @@
   </div>
   <div class="head_center">
     <div class="head_center_top">
-      <input type="search" name="search" placeholder="kyrie">
-      <%= button_tag type:"submit", class:"search_button" do %>
-        <%= content_tag(:i, '', class: 'fab fa-searchengin fa-3x') %>
+      <%= form_tag(search_path) do %>
+        <input type="search" name="search" placeholder="kyrie">
+        <%= button_tag type:"submit", class:"search_button" do %>
+          <%= content_tag(:i, '', class: 'fab fa-searchengin fa-3x') %>
+        <% end %>
       <% end %>
     </div>
     <div class="head_center_bottom">
-      <span>|</span><%= link_to "アデドクンボ","/" %>
-      <span>|</span><%= link_to "レナード","/" %>
-      <span>|</span><%= link_to "レブロン","/" %>
-      <span>|</span><%= link_to "カリー","/" %>
-      <span>|</span><%= link_to "ハーデン","/" %>
-      <span>|</span><%= link_to "リラード","/" %>
+      <span>|</span><%= link_to "アデドクンボ", {controller: "item", action: "search", search:"アデドクンボ"}, method: :post %>
+      <span>|</span><%= link_to "レナード", {controller: "item", action: "search", search:"レナード"}, method: :post %>
+      <span>|</span><%= link_to "レブロン", {controller: "item", action: "search", search:"レブロン"}, method: :post %>
+      <span>|</span><%= link_to "カリー", {controller: "item", action: "search", search:"カリー"}, method: :post %>
+      <span>|</span><%= link_to "ハーデン", {controller: "item", action: "search", search:"ハーデン"}, method: :post %>
+      <span>|</span><%= link_to "リラード", {controller: "item", action: "search", search:"リラード"}, method: :post %>
       <span>|</span>
     </div>
   </div>

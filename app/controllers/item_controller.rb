@@ -1,6 +1,6 @@
 class ItemController < ApplicationController
 
-  def index
+  def search
     
   end
 
