@@ -1,3 +1,4 @@
+//パスワード表示・非表示
 $(function(){
     var pw = document.getElementById('password');
     var pwCheck = document.getElementById('password-check');

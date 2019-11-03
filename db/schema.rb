@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_043217) do
   create_table "itemimages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url"
     t.bigint "item_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_itemimages_on_item_id"
   end
 
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 2019_10_22_043217) do
     t.string "name"
     t.string "siteurl"
     t.integer "price"
+    t.integer "click", default: 0
     t.bigint "player_id"
     t.bigint "team_id"
     t.bigint "ecsite_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["ecsite_id"], name: "index_items_on_ecsite_id"
     t.index ["player_id"], name: "index_items_on_player_id"
     t.index ["team_id"], name: "index_items_on_team_id"

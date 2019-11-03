@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get "/mypage" ,to:"mypage#index"
   get "/mypage/checkitem" ,to:"mypage#checkitem"
 
+  # 商品クリック時非同期DB操作
+  get "item/click" ,to:"item#click"
 end
