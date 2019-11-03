@@ -71,3 +71,4 @@ gem "jquery-rails"
 gem 'jquery-ui-rails'
 gem 'mechanize'
 gem 'devise'
+gem 'kaminari'

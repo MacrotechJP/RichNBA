@@ -1,6 +1,6 @@
 <div class="main_category">
   <div class="main_category_title">最新の商品</div>
-  <% Item.all.limit(100).each do |item| %>
+  <% @items_all.each do |item| %>
       <div class="main_category_items">
         <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{Itemimage.find_by(item_id:item.id).url}" %></a>
         <div class="main_category_items_detail">
@@ -8,4 +8,5 @@
         </div>
       </div>
   <% end %>
+  <%= paginate @items_all %>
 </div>
