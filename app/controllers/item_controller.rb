@@ -2,9 +2,9 @@ class ItemController < ApplicationController
 
   def index
 
-    @items_popular = Item.all.where("click > ?", 1)
+    @items_popular = Item.all.order(click: "DESC").limit(10)
     @items_all = Item.all.page(params[:page])
-
+    
   end
 
   # 非同期クリック処理

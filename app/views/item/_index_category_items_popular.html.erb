@@ -1,8 +1,16 @@
 <div class="main_category 2">
-  <div class="main_category_title">最新の商品</div>
+  <div class="main_category_title">最新の商品</div><p>全<%=Item.all.count%>件</p>
   <% @items_all.each do |item| %>
       <div class="main_category_items">
-        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{item.imageurl}" %></a>
+        <a href="<%=item.siteurl%>" target="_blank">
+          <%= image_tag "#{item.imageurl}" %>
+          <div class="main_category_items_cover">
+            <div class="main_category_items_cover_top">
+              <p><%=item.name%></p>
+            </div>
+            <div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>
+          </div>
+        </a>
         <div class="main_category_items_detail">
           <%= "¥#{item.price.to_s(:delimited)}" %>
         </div>

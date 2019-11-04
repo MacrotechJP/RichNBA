@@ -23,6 +23,12 @@ $(function(){
                           '<div class="main_category_items add">'+
                             '<a href='+item.siteurl+' target="_blank">'+
                               '<img src='+item.imageurl+'>'+
+                              '<div class="main_category_items_cover">'+
+                                '<div class="main_category_items_cover_top">'+
+                                  '<p>'+item.name+'</p>'+
+                                '</div>'+
+                                '<div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>'+
+                              '</div>'+
                             '</a>'+
                             '<div class="main_category_items_detail">'+
                             '¥'+item.price.toLocaleString()+
@@ -39,7 +45,6 @@ $(function(){
 
   //商品クリック数非同期増加
   $(document).on("click", ".main_category_items a", function () {
-    alert($(this).attr("href"))
     var siteurl = $(this).attr("href");
     $.ajax({
       url: '/item/click',
@@ -56,5 +61,16 @@ $(function(){
 
       });
   })
+
+  //商品ホバー時商品名表示
+  $(document).on('mouseenter','.main_category_items_cover',function(){
+    $(this).find(".main_category_items_cover_top").css("transition","0.5s ease-in-out");
+    $(this).find(".main_category_items_cover_top").css("opacity","1.0");
+    $(this).find(".main_category_items_cover_top").css("height","92%");
+  });
+  $(document).on('mouseleave','.main_category_items_cover',function(){
+    $(this).find(".main_category_items_cover_top").css("opacity","0");
+    $(this).find(".main_category_items_cover_top").css("height","0px");
+  });
   
 })
