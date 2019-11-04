@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_043217) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "siteurl"
+    t.string "imageurl"
     t.integer "price"
     t.integer "click", default: 0
     t.bigint "player_id"

@@ -1,12 +1,11 @@
-<div class="main_category">
+<div class="main_category 2">
   <div class="main_category_title">最新の商品</div>
   <% @items_all.each do |item| %>
       <div class="main_category_items">
-        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{Itemimage.find_by(item_id:item.id).url}" %></a>
+        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{item.imageurl}" %></a>
         <div class="main_category_items_detail">
           <%= "¥#{item.price.to_s(:delimited)}" %>
         </div>
       </div>
   <% end %>
-  <%= paginate @items_all %>
 </div>

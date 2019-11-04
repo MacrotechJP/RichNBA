@@ -1,8 +1,8 @@
-<div class="main_category">
+<div class="main_category 1">
   <div class="main_category_title">人気の商品</div>
-  <% @item_popular.each do |item| %>
+  <% @items_popular.each do |item| %>
       <div class="main_category_items">
-        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{Itemimage.find_by(item_id:item.id).url}" %></a>
+        <a href="<%=item.siteurl%>" target="_blank"><%= image_tag "#{item.imageurl}" %></a>
         <div class="main_category_items_detail">
           <%= "¥#{item.price.to_s(:delimited)}" %>
         </div>
