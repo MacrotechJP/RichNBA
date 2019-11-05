@@ -59,10 +59,10 @@
           <% end %>
           <div class="head_right_top_logo_hover">
             <div class="head_right_top_logo_hover_log">
-              <%= button_to "マイページ",{controller: 'mypage', action: 'index'}, {method: :get, class: "log-button"} %>
+              <%= link_to "マイページ",mypage_path, class: "log-button" %>
             </div>
             <div class="head_right_top_logo_hover_log">
-              <%= button_to "ログアウト",{controller: 'devise/sessions', action: 'destroy'}, {method: :delete, class: "log-button"} %>
+              <%= link_to "ログアウト",destroy_user_session_path, class: "log-button" %>
             </div>
           </div> 
         <% else %>

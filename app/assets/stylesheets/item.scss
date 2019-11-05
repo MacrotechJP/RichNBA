@@ -165,7 +165,6 @@ $baby-blue: #f8faff;
             color:#FDBD19;
             position:absolute;
             font-size:large;
-            // visibility: hidden;
           }
           p{
             margin-top: 5px;
@@ -254,6 +253,7 @@ $baby-blue: #f8faff;
               transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
               z-index: 100;
               text-decoration: none;
+              @include 上下左右中央();
               &:focus {
                 outline: 0;
               }

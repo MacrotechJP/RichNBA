@@ -1,1 +1,50 @@
 <%= render partial: "item/index_header" %>
+<div class="mypage">
+  <h1 class="mypage_head">ログインユーザーサービス</h1>
+  <div class="mypage_main">
+    <div class="mypage_main_top">
+      <%= link_to(info_path) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-comment-dots"></i>
+          <p>お知らせ</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_path) do %>
+        <div class="mypage_main_top_menunow">
+          <i class="fas fa-user-lock"></i>
+          <p>ユーザー情報</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_checkitem_path) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-clipboard-check"></i>
+          <p>取り置きグッズ</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="mypage_main_user">
+      <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
+        <div class="field">
+          <p>e-mailアドレス</p>
+          <%=f.email_field :email,autofocus:true,autocomplete:"email",placeholder:"Eメールアドレス",class:"field_item",required:"true" %>
+        </div>
+        <div class="field">
+          <p>パスワード</p>
+          <%= f.password_field :password, autocomplete: "new-password",placeholder:"パスワード",class:"field_item",id:"password",minlength:6 %>
+          <input type="checkbox" id="password-check" />パスワードを表示する
+        </div>
+        <div class="field">
+          <p>お気に入りのチーム</p>
+          <%= f.collection_select :team_id,Team.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
+        </div>
+        <div class="field">
+          <p>お気に入りの選手</p>
+          <%= f.collection_select :player_id,Player.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
+        </div>
+        <div class="field_submit">
+          <%= f.submit "更新する" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

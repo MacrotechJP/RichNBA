@@ -1,1 +1,40 @@
 <%= render partial: "item/index_header" %>
+<div class="mypage">
+  <h1 class="mypage_head">ログインユーザーサービス</h1>
+  <div class="mypage_main">
+    <div class="mypage_main_top">
+      <%= link_to(info_path) do %>
+        <div class="mypage_main_top_menunow">
+          <i class="fas fa-comment-dots"></i>
+          <p>お知らせ</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_path) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-user-lock"></i>
+          <p>ユーザー情報</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_checkitem_path) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-clipboard-check"></i>
+          <p>取り置きグッズ</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="mypage_main_info">
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　StayHungry,StayFoolish(スティーブジョブス)","#" %>
+      <%= link_to "2019年11月05日　　人生を懸けることのできる自分の登りたい山を探せ(孫正義)","#" %>
+      <%= link_to "2019年11月05日　　先日修正した、バグについてのお詫びと感謝の謝礼","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+      <%= link_to "2019年11月05日　　サイト新規開設について","#" %>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get "/info" ,to:"infomation#index"
   get "/mypage" ,to:"mypage#index"
   get "/mypage/checkitem" ,to:"mypage#checkitem"
-
+  
+  # ユーザー情報アップデート
+  post "mypage/profile_update",to:"mypage#profile_update"
+  patch "mypage/profile_update",to:"mypage#profile_update"
   # 商品クリック時非同期DB操作
   get "item/click" ,to:"item#click"
   get "item/additem" ,to:"item#additem"
