@@ -24,8 +24,15 @@ $(function(){
                             '<a href='+item.siteurl+' target="_blank">'+
                               '<img src='+item.imageurl+'>'+
                               '<div class="main_category_items_cover">'+
-                                '<div class="main_category_items_cover_top">'+
-                                  '<p>'+item.name+'</p>'+
+                                '<div class="main_category_items_cover_item">'+
+                                  '<div class="main_category_items_cover_item_name">'+
+                                    '<p>'+item.name+'</p>'+
+                                  '</div>'+
+                                  '<div class="main_category_items_cover_item_check">'+
+                                    '<div class="main_category_items_cover_item_check_circle">'+
+                                      '<i class="far fa-clipboard not_check"></i>'+
+                                    '</div>'+
+                                  '</div>'+
                                 '</div>'+
                                 '<div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>'+
                               '</div>'+
@@ -62,15 +69,36 @@ $(function(){
       });
   })
 
+  //個別商品取り置きボタン押下時非同期通信
+  $(document).on("click",".main_category_items_cover_item_check_circle",function(){
+    event.preventDefault();
+    // alert($(this).parent().parent().parent().parent().parent().find("a").attr("href"))
+    $(this).find("i").attr("class","fas fa-clipboard-check yet_check")
+  })
+
+  //「商品名を表示する」押下で全商品名表示
+  $('.main_category p input').change(function() {
+    var judge = $(this).prop('checked');
+    if(judge == true){
+      $(".main_category_items_cover_item").css("transition","0.5s ease-in-out");
+      $(".main_category_items_cover_item").css("opacity","1.0");
+      $(".main_category_items_cover_item").css("height","92%");
+    }else{
+      $(".main_category_items_cover_item").css("opacity","0");
+      $(".main_category_items_cover_item").css("height","0px");
+    }
+    
+})
+
   //商品ホバー時商品名表示
   $(document).on('mouseenter','.main_category_items_cover',function(){
-    $(this).find(".main_category_items_cover_top").css("transition","0.5s ease-in-out");
-    $(this).find(".main_category_items_cover_top").css("opacity","1.0");
-    $(this).find(".main_category_items_cover_top").css("height","92%");
+    $(this).find(".main_category_items_cover_item").css("transition","0.5s ease-in-out");
+    $(this).find(".main_category_items_cover_item").css("opacity","1.0");
+    $(this).find(".main_category_items_cover_item").css("height","92%");
   });
   $(document).on('mouseleave','.main_category_items_cover',function(){
-    $(this).find(".main_category_items_cover_top").css("opacity","0");
-    $(this).find(".main_category_items_cover_top").css("height","0px");
+    $(this).find(".main_category_items_cover_item").css("opacity","0");
+    $(this).find(".main_category_items_cover_item").css("height","0px");
   });
   
 })

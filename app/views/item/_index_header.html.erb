@@ -62,7 +62,7 @@
               <%= link_to "マイページ",mypage_path, class: "log-button" %>
             </div>
             <div class="head_right_top_logo_hover_log">
-              <%= link_to "ログアウト",destroy_user_session_path, class: "log-button" %>
+              <%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: "log-button" %>
             </div>
           </div> 
         <% else %>

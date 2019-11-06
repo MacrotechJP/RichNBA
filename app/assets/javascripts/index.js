@@ -1,4 +1,8 @@
 $(function(){
+
+  //flashメッセージ自動非表示
+  $(".notifications").fadeOut(6000);
+
   //新規登録・ログインボタンアニメーション//
   var animateButton = function(e) {
 
@@ -27,4 +31,5 @@ $(function(){
       $("#"+$(this).attr("class")).css("background-color","white");
     }
   );
+
 })

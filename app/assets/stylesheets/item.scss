@@ -528,6 +528,9 @@ $baby-blue: #f8faff;
       line-height: 28px;
       margin-bottom: 16px;
     }
+    &_info{
+      line-height: 2.2em;
+    }
     &_items{
       float: left;
       width:17%;
@@ -548,17 +551,39 @@ $baby-blue: #f8faff;
         height:calc(100% - 40px);
         position: absolute;
         top: 0;
-        &_top{
+        &_item{
+          height: 92%;
           width: 100%;
-          height: 0;
-          @include 上下左右中央();
           color:white;
-          background-color: rgba(150, 150, 150, 0.8);
           opacity: 0;
+          background-color: rgba(150, 150, 150, 0.5);
+          &_name,&_check{
+            width: 100%;
+            @include 上下左右中央();
+          }
+          &_name{
+            height:60%;
+          }
+          &_check{
+            height:40%;
+            &_circle{
+              height:65%;
+              @include 上下左右中央();
+              width: 30%;
+              border: 1px solid black;
+              border-radius: 50%;
+              font-size: 35px;
+              &:hover{
+                color:#f9a01b;
+                background-color: rgba(150, 150, 150, 0.5);
+              }
+              .yet_check{color:#f9a01b;}
+            }
+          }
         }
         &_bottom{
-          width: 100%;
           height:8%;
+          width: 100%;
           @include 上下左右中央();
           color:white;
           background-color: rgba(150, 150, 150, 0.8);

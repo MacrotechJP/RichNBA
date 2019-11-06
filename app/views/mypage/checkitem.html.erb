@@ -1,28 +1,28 @@
 <%= render partial: "item/index_header" %>
-<div class="contents">
-  <h1 class="contents_head">ログインユーザーサービス</h1>
-  <div class="contents_main">
-    <div class="contents_main_top">
+<div class="mypage">
+  <h1 class="mypage_head">ログインユーザーサービス</h1>
+  <div class="mypage_main">
+    <div class="mypage_main_top">
       <%= link_to(info_path) do %>
-        <div class="contents_main_top_menu">
+        <div class="mypage_main_top_menu">
           <i class="fas fa-comment-dots"></i>
           <p>お知らせ</p>
         </div>
       <% end %>
       <%= link_to(mypage_path) do %>
-        <div class="contents_main_top_menu">
+        <div class="mypage_main_top_menu">
           <i class="fas fa-user-lock"></i>
           <p>ユーザー情報</p>
         </div>
       <% end %>
       <%= link_to(mypage_checkitem_path) do %>
-        <div class="contents_main_top_menunow">
+        <div class="mypage_main_top_menunow">
           <i class="fas fa-clipboard-check"></i>
           <p>取り置きグッズ</p>
         </div>
       <% end %>
     </div>
-    <div class="contents_main_checkitem">
+    <div class="mypage_main_checkitem">
       
     </div>
   </div>
