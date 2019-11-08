@@ -2,9 +2,9 @@ class ItemController < ApplicationController
 
   def index
 
-    @items_popular = Item.all.order(click: "DESC").limit(10)
-    @items_all = Item.all.page(params[:page])
-    
+    @items_popular = Item.all.order(click: "DESC").limit(10) #人気の商品
+    @items_all = Item.all.page(params[:page])                #最新の商品
+
   end
 
   # 非同期クリック処理

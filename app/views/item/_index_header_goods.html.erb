@@ -1,16 +1,22 @@
-<div class="head_right_top_logo_hover_goods">
-  <%= link_to("#") do %>
-    <%= content_tag(:i, '', class: 'fas fa-clipboard-list') %>
-    <div class="head_right_top_logo_hover_goods_word">
-      <p>カイリーアービング専用オリジナルシューズオリジナルシューズ</p>
+<% if user_signed_in? %>
+  <% @item_checkitem.each do |checkitem| %>
+    <div class="head_right_top_logo_hover_goods">
+      <%= link_to("#{checkitem.siteurl}") do %>
+        <%= content_tag(:i, '', class: 'fas fa-clipboard-list') %>
+        <div class="head_right_top_logo_hover_goods_word">
+          <p><%= checkitem.name %></p>
+        </div>
+      <% end %>
     </div>
   <% end %>
-</div>
-<div class="head_right_top_logo_hover_goods">
-  <%= link_to("#") do %>
-    <%= content_tag(:i, '', class: 'fa fa-ellipsis-h') %>
-    <div class="head_right_top_logo_hover_goods_word">
-      <p>その他１０件</p>
+  <% if @item_checkitem.size() > 5 %>
+    <div class="head_right_top_logo_hover_goods">
+      <%= link_to(mypage_checkitem_path) do %>
+        <%= content_tag(:i, '', class: 'fa fa-ellipsis-h') %>
+        <div class="head_right_top_logo_hover_goods_word">
+          <p class="head_right_top_logo_hover_goods_word_and">その他<%= @item_checkitem.size()-5 %>件</p>
+        </div>
+      <% end %>
     </div>
   <% end %>
-</div>
+<% end %>

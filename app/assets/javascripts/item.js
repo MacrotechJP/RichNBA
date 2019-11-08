@@ -72,8 +72,11 @@ $(function(){
   //個別商品取り置きボタン押下時非同期通信
   $(document).on("click",".main_category_items_cover_item_check_circle",function(){
     event.preventDefault();
-    // alert($(this).parent().parent().parent().parent().parent().find("a").attr("href"))
-    $(this).find("i").attr("class","fas fa-clipboard-check yet_check")
+    if($(this).find("i").attr("class") == "far fa-clipboard not_check"){
+      $(this).find("i").attr("class","fas fa-clipboard-check yet_check")
+    }else{
+      $(this).find("i").attr("class","far fa-clipboard not_check")
+    }
   })
 
   //「商品名を表示する」押下で全商品名表示
