@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def header_itemcheck
-    @item_check = ItemUser.where(["user_id = ? ", current_user.id]).select(:id)      #取り置き商品
-    @item_checkitem = Item.where("id IN (?) " ,@item_check)
+    if user_signed_in? then
+      @item_check = ItemUser.where(["user_id = ? ", current_user.id]).select(:item_id).distinct      #取り置き商品
+      @item_checkitem = Item.where("id IN (?) " ,@item_check)
+    end
   end
 
 end

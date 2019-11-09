@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-  <% @item_checkitem.each do |checkitem| %>
+  <% @item_checkitem.first(5).each do |checkitem| %>
     <div class="head_right_top_logo_hover_goods">
-      <%= link_to("#{checkitem.siteurl}") do %>
+      <%= link_to("#{checkitem.siteurl}",target: :_blank) do %>
         <%= content_tag(:i, '', class: 'fas fa-clipboard-list') %>
         <div class="head_right_top_logo_hover_goods_word">
           <p><%= checkitem.name %></p>

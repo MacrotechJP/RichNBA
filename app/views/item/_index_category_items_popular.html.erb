@@ -10,7 +10,13 @@
               <div class="main_category_items_cover_item_name"><p><%=item.name%></p></div>
               <div class="main_category_items_cover_item_check">
                 <div class="main_category_items_cover_item_check_circle">
-                  <i class="far fa-clipboard not_check"></i>
+                  <% if user_signed_in? then %>
+                    <% if ItemUser.where(item_id:item.id,user_id:current_user.id).exists? then %>  
+                      <i class="fas fa-clipboard-check yet_check"></i>
+                    <% else %>
+                      <i class="far fa-clipboard not_check"></i>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>

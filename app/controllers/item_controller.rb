@@ -14,11 +14,21 @@ class ItemController < ApplicationController
     # 今回はDB操作のみな為データは返さない
     # render json: @now_click
   end
-
   # 非同期スクロール商品読み込み
   def additem
     @items_all = Item.all.page(params[:page]).page(params[:url])
-    render json: @items_all
+    @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
+    @ajax_items = [@items_all,@checkitem]
+    render json: @ajax_items
+  end
+  # 非同期取り置きアイテムチェック処理
+  def checkitem
+    @item = Item.find_by(siteurl:params[:siteurl]).id
+    if params[:check] == "true" then
+      ItemUser.create(item_id:@item,user_id:current_user.id)
+    else
+      ItemUser.where(item_id:@item,user_id:current_user.id).destroy_all	
+    end
   end
 
 end

@@ -1,5 +1,7 @@
 $(function(){
 
+  var itemhover_flg = true
+
   //トップページスクロール時非同期商品読込
   var site_page = 1
   $(window).on('load scroll', function () {
@@ -17,8 +19,12 @@ $(function(){
         dataType: 'json'
       }).done(function(data){
           /* 通信成功時 */
-          // alert(data.length);
-          $.each(data, function(index, item){
+          $.each(data[0], function(index, item){
+            if(data[1].indexOf(item.id) >= 0){
+              var checkitem = '<i class="fas fa-clipboard-check yet_check"></i>'
+            }else{
+              var checkitem = '<i class="far fa-clipboard not_check"></i>'
+            }
             var add_item = 
                           '<div class="main_category_items add">'+
                             '<a href='+item.siteurl+' target="_blank">'+
@@ -29,9 +35,7 @@ $(function(){
                                     '<p>'+item.name+'</p>'+
                                   '</div>'+
                                   '<div class="main_category_items_cover_item_check">'+
-                                    '<div class="main_category_items_cover_item_check_circle">'+
-                                      '<i class="far fa-clipboard not_check"></i>'+
-                                    '</div>'+
+                                    '<div class="main_category_items_cover_item_check_circle">'+checkitem+'</div>'+
                                   '</div>'+
                                 '</div>'+
                                 '<div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>'+
@@ -50,8 +54,31 @@ $(function(){
     }
   });
 
-  //商品クリック数非同期増加
-  $(document).on("click", ".main_category_items a", function () {
+  //個別商品取り置きボタン押下時非同期通信
+  $(document).on("click",".main_category_items_cover_item_check_circle",function(){
+    event.preventDefault();
+    itemhover_flg = false
+    var checkitem_flg
+    var siteurl = $(this).parent().parent().parent().parent().parent().find("a").attr("href");
+    if($(this).find("i").attr("class") == "far fa-clipboard not_check"){
+      $(this).find("i").attr("class","fas fa-clipboard-check yet_check")
+      checkitem_flg = true
+    }else{
+      $(this).find("i").attr("class","far fa-clipboard not_check")
+      checkitem_flg = false
+    }
+    $.ajax({
+      url: '/item/checkitem',
+      type: 'GET',
+      data: {
+        check: checkitem_flg,siteurl: siteurl
+      },
+      dataType: 'json'
+    })
+  })
+
+  //商品クリック数(ヘッダー)非同期増加
+  $(document).on("click", ".head_right_top_logo_hover_goods a", function () {
     var siteurl = $(this).attr("href");
     $.ajax({
       url: '/item/click',
@@ -60,22 +87,22 @@ $(function(){
         url: siteurl
       },
       dataType: 'json'
-    }).done(function(data){
-        /* 通信成功時 */
-
-      }).fail(function(data){
-        /* 通信失敗時 */
-
-      });
+    })
   })
-
-  //個別商品取り置きボタン押下時非同期通信
-  $(document).on("click",".main_category_items_cover_item_check_circle",function(){
-    event.preventDefault();
-    if($(this).find("i").attr("class") == "far fa-clipboard not_check"){
-      $(this).find("i").attr("class","fas fa-clipboard-check yet_check")
+  //商品クリック数(メイン)非同期増加
+  $(document).on("click", ".main_category_items a", function () {
+    if(itemhover_flg == true){
+      var siteurl = $(this).attr("href");
+      $.ajax({
+        url: '/item/click',
+        type: 'GET',
+        data: {
+          url: siteurl
+        },
+        dataType: 'json'
+      })
     }else{
-      $(this).find("i").attr("class","far fa-clipboard not_check")
+      itemhover_flg = true
     }
   })
 

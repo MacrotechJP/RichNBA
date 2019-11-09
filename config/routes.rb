@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # 商品クリック時非同期DB操作
   get "item/click" ,to:"item#click"
   get "item/additem" ,to:"item#additem"
+  get "item/checkitem" ,to:"item#checkitem"
 end
