@@ -38,17 +38,17 @@
             <p>お知らせ</p>
           <% end %>
         <% end %>
-        <div class="head_right_top_logo_hover">
+        <div class="head_right_top_logo_hover" id="headauto">
           <%= render partial: "item/index_header_info" %>
         </div> 
       </div>
       <div class="head_right_top_logo">
-        <%= link_to("/mypage/checkitem") do %>
+        <%= link_to(mypage_checkitem_path,method: :post) do %>
           <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') do %>
             <p>取り置きグッズ</p>
           <% end %>
         <% end %>
-        <div class="head_right_top_logo_hover">
+        <div class="head_right_top_logo_hover" id="headauto">
           <%= render partial: "item/index_header_goods" %>
         </div> 
       </div>
@@ -57,7 +57,7 @@
           <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') do %>
             <p>ログイン中</p>
           <% end %>
-          <div class="head_right_top_logo_hover">
+          <div class="head_right_top_logo_hover 3">
             <div class="head_right_top_logo_hover_log">
               <%= link_to "マイページ",mypage_path, class: "log-button" %>
             </div>

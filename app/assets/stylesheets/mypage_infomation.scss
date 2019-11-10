@@ -57,10 +57,10 @@
       box-sizing: border-box;
       border-radius:0 0 10px 10px;
       overflow: scroll;
-      padding:3% 10%;
       background-color: #F9F9F9;
     }
     &_info{
+      padding:3% 10%;
       a{
         display: table;
         margin-bottom: 15px;
@@ -70,6 +70,7 @@
       }
     }
     &_user{
+      padding:3% 10%;
       .field{
         margin-bottom: 30px;
         input[type="email"],input[type="password"],input[type="text"],select{
@@ -97,6 +98,37 @@
           border-radius:5px;
           font-size: 20px;
           &:hover{cursor: pointer;}
+        }
+      }
+    }
+    &_checkitem{
+      padding:2% 10%;
+      form{
+        margin-bottom:15px;
+        select{
+          width:25%;
+          height:25px;
+        }
+      }
+      .main_category{
+        margin: 0;
+        &_items{
+          width:14%;
+          &:nth-of-type(6n){
+            margin: 0 0 2% 0;
+          }
+          a{
+            img{
+              width: 99%;
+              height: 100px;
+            }
+          }
+          &_cover_bottom{
+            i{font-size: 10px;}
+          }
+          &_detail{
+            font-size: 25px;
+          }
         }
       }
     }

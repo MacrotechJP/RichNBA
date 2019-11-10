@@ -1,22 +1,20 @@
 <% if user_signed_in? %>
-  <% @item_checkitem.first(5).each do |checkitem| %>
+  <% @item_checkitem.each do |checkitem| %>
     <div class="head_right_top_logo_hover_goods">
       <%= link_to("#{checkitem.siteurl}",target: :_blank) do %>
-        <%= content_tag(:i, '', class: 'fas fa-clipboard-list') %>
+        <%= image_tag("#{checkitem.imageurl}") %>
         <div class="head_right_top_logo_hover_goods_word">
           <p><%= checkitem.name %></p>
         </div>
       <% end %>
     </div>
   <% end %>
-  <% if @item_checkitem.size() > 5 %>
-    <div class="head_right_top_logo_hover_goods">
-      <%= link_to(mypage_checkitem_path) do %>
-        <%= content_tag(:i, '', class: 'fa fa-ellipsis-h') %>
-        <div class="head_right_top_logo_hover_goods_word">
-          <p class="head_right_top_logo_hover_goods_word_and">その他<%= @item_checkitem.size()-5 %>件</p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="head_right_top_logo_hover_goods">
+    <%= link_to(mypage_checkitem_path) do %>
+      <%= content_tag(:i, '', class: 'fa fa-ellipsis-h') %>
+      <div class="head_right_top_logo_hover_goods_word">
+        <p class="head_right_top_logo_hover_goods_word_and">全<%= @item_checkitem.size() %>件の取り置き商品</p>
+      </div>
+    <% end %>
+  </div>
 <% end %>

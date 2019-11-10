@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/search" ,to:"item#search"
   get "/info" ,to:"infomation#index"
   get "/mypage" ,to:"mypage#index"
-  get "/mypage/checkitem" ,to:"mypage#checkitem"
+  post "/mypage/checkitem" ,to:"mypage#checkitem"
   
   # ユーザー情報アップデート
   post "mypage/profile_update",to:"mypage#profile_update"

@@ -1,27 +1,25 @@
 <%= render partial: "item/index_header" %>
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="sign_in">
+  <div class="sign_in_cover">
+    <div class="sign_in_cover_center">
+      <div class="sign_in_cover_center_top">
+        <p>ログイン</p>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%=f.email_field :email,autofocus:true,autocomplete:"email",placeholder:"Eメールアドレス",class:"field_item",required:"true" %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password, placeholder:"パスワード",class:"field_item",id:"password",required:"true" %>
+          <input type="checkbox" id="password-check" />パスワードを表示する
+        </div>
+        <div class="field">
+          <%= link_to "パスワードお忘れの方", new_user_password_path %>
+        </div>
+        <div class="field_submit">
+          <%= f.submit "送信" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

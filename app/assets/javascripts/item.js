@@ -49,12 +49,28 @@ $(function(){
           }) 
       }).fail(function(data){
           /* 通信失敗時 */
-          alert("失敗");
+          // alert("失敗");
       });
     }
   });
 
-  //個別商品取り置きボタン押下時非同期通信
+  //個別商品取り置きアイコン(取り置きページ)押下時非同期通信
+  $(document).on("click",".mypage_main_checkitem .main_category_items_cover_item_name i",function(){
+    $(this).parent().parent().parent().parent().parent().remove();
+    event.preventDefault();
+    itemhover_flg = false
+    var checkitem_flg = false
+    var siteurl = $(this).parent().parent().parent().parent().parent().find("a").attr("href");
+    $.ajax({
+      url: '/item/checkitem',
+      type: 'GET',
+      data: {
+        check: checkitem_flg,siteurl: siteurl
+      },
+      dataType: 'json'
+    })
+  })
+  //個別商品取り置きアイコン(メイン)押下時非同期通信
   $(document).on("click",".main_category_items_cover_item_check_circle",function(){
     event.preventDefault();
     itemhover_flg = false

@@ -15,7 +15,7 @@
           <p>ユーザー情報</p>
         </div>
       <% end %>
-      <%= link_to(mypage_checkitem_path) do %>
+      <%= link_to(mypage_checkitem_path,method: :post) do %>
         <div class="mypage_main_top_menunow">
           <i class="fas fa-clipboard-check"></i>
           <p>取り置きグッズ</p>
@@ -23,7 +23,44 @@
       <% end %>
     </div>
     <div class="mypage_main_checkitem">
-      
+      <%= search_form_for @search, url: mypage_checkitem_path ,html: { method: :post } do |f| %>
+        <%= f.select( :sorts, { '並び替え': 'id desc', '人気の高い順': 'click desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
+      <% end %>
+      <div class="main_category">
+        <% @item_checkitem.each do |item| %>
+            <div class="main_category_items">
+              <a href="<%=item.siteurl%>" target="_blank">
+                <%= image_tag "#{item.imageurl}" %>
+                <div class="main_category_items_cover">
+                  <div class="main_category_items_cover_item">
+                    <div class="main_category_items_cover_item_name">
+                      <i class="fas fa-clipboard-check yet_check"></i>
+                    </div>
+                  </div>
+                  <div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>
+                </div>
+              </a>
+              <div class="main_category_items_detail">
+                <%= "¥#{item.price.to_s(:delimited)}" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 </div>

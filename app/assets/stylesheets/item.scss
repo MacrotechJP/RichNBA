@@ -172,7 +172,6 @@ $baby-blue: #f8faff;
           }
         }
         &_hover{
-          overflow: auto;
           border:1px solid #FDBD19;
           box-sizing: border-box;
           margin-top:10px;
@@ -192,10 +191,11 @@ $baby-blue: #f8faff;
                 text-decoration: underline;
               }
             }
-            i{
+            i,img{
               width:20%;
-              margin-top:12.5px;
+              height:100%;
               float:left;
+              @include 上下左右中央();
             }
             &_word{
               width:calc(100% - 20%);
@@ -326,6 +326,11 @@ $baby-blue: #f8faff;
               }
             }
           }
+        }
+        #headauto{
+          overflow-y: scroll !important;
+          max-height: 235px;
+          z-index: 100;
         }
       }
     }
@@ -563,6 +568,8 @@ $baby-blue: #f8faff;
           color:white;
           opacity: 0;
           background-color: rgba(150, 150, 150, 0.5);
+          i{font-size: 35px;}
+          .yet_check{color:#f9a01b;}
           &_name,&_check{
             width: 100%;
             @include 上下左右中央();
@@ -578,12 +585,10 @@ $baby-blue: #f8faff;
               width: 30%;
               border: 1px solid black;
               border-radius: 50%;
-              font-size: 35px;
               &:hover{
                 color:#f9a01b;
                 background-color: rgba(150, 150, 150, 0.5);
               }
-              .yet_check{color:#f9a01b;}
             }
           }
         }

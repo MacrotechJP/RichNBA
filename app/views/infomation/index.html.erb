@@ -1,6 +1,6 @@
 <%= render partial: "item/index_header" %>
 <div class="mypage">
-  <h1 class="mypage_head">ログインユーザーサービス</h1>
+  <h1 class="mypage_head">ユーザーサービス</h1>
   <div class="mypage_main">
     <div class="mypage_main_top">
       <%= link_to(info_path) do %>
@@ -15,7 +15,7 @@
           <p>ユーザー情報</p>
         </div>
       <% end %>
-      <%= link_to(mypage_checkitem_path) do %>
+      <%= link_to(mypage_checkitem_path,method: :post) do %>
         <div class="mypage_main_top_menu">
           <i class="fas fa-clipboard-check"></i>
           <p>取り置きグッズ</p>
