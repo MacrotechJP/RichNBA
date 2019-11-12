@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="head_right_top_logo_hover_goods">
-    <%= link_to(mypage_checkitem_path) do %>
+    <%= link_to(mypage_checkitem_path,method: :post) do %>
       <%= content_tag(:i, '', class: 'fa fa-ellipsis-h') %>
       <div class="head_right_top_logo_hover_goods_word">
         <p class="head_right_top_logo_hover_goods_word_and">全<%= @item_checkitem.size() %>件の取り置き商品</p>
