@@ -5,16 +5,25 @@ $(function(){
   //トップページスクロール時非同期商品読込
   var site_page = 1
   $(window).on('load scroll', function () {
+    // alert(gon.keyword)
     var scrollHeight= $(document).height(),
         scrollPosition = $(window).height() + $(window).scrollTop(),
         scrollRatio = (scrollHeight - scrollPosition) / scrollHeight;
+    if(location.href.match(/search/)){
+      var location_url = "search_page";
+    }else{
+      var location_url = "top_page";
+    }
+
     if (scrollRatio <= 0.01) {
       site_page += 1
       $.ajax({
         url: '/item/additem',
         type: 'GET',
         data: {
-          url: site_page
+          next_url: site_page,
+          location_url: location_url,
+          search_keyword : gon.keyword
         },
         dataType: 'json'
       }).done(function(data){
@@ -25,7 +34,8 @@ $(function(){
             }else{
               var checkitem = '<i class="far fa-clipboard not_check"></i>'
             }
-            var add_item = 
+            //トップページ用商品要素
+            var additem_toppage = 
                           '<div class="main_category_items add">'+
                             '<a href='+item.siteurl+' target="_blank">'+
                               '<img src='+item.imageurl+'>'+
@@ -45,7 +55,29 @@ $(function(){
                             '¥'+item.price.toLocaleString()+
                             '</div>'+
                           '</div>'
-            $('.main_category.2').append(add_item);
+            //検索ページ用商品要素
+            var additem_searchpage = 
+                          '<div class="main_category_items searchs">'+
+                            '<a href='+item.siteurl+' target="_blank">'+
+                              '<img src='+item.imageurl+'>'+
+                              '<div class="main_category_items_cover">'+
+                                '<div class="main_category_items_cover_item">'+
+                                  '<div class="main_category_items_cover_item_name">'+
+                                    '<p>'+item.name+'</p>'+
+                                  '</div>'+
+                                  '<div class="main_category_items_cover_item_check">'+
+                                    '<div class="main_category_items_cover_item_check_circle">'+checkitem+'</div>'+
+                                  '</div>'+
+                                '</div>'+
+                                '<div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>'+
+                              '</div>'+
+                            '</a>'+
+                            '<div class="main_category_items_detail">'+
+                            '¥'+item.price.toLocaleString()+
+                            '</div>'+
+                          '</div>'
+            $('.main_category.2').append(additem_toppage);
+            $('.search_result_main').append(additem_searchpage);
           }) 
       }).fail(function(data){
           /* 通信失敗時 */

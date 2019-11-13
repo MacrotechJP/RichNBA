@@ -1,19 +1,27 @@
-<div class="main_category_items searchs">
-  <a href="#" target="_blank">
-    <%= image_tag "http://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" %>
-    <div class="main_category_items_cover">
-      <div class="main_category_items_cover_item">
-        <div class="main_category_items_cover_item_name"><p>カイリーアービングシューズ</p></div>
-        <div class="main_category_items_cover_item_check">
-          <div class="main_category_items_cover_item_check_circle">
-            <i class="fas fa-clipboard-check yet_check"></i>
+<% @items.each do |item| %>
+  <div class="main_category_items searchs">
+    <a href="<%=item.siteurl%>" target="_blank">
+      <%= image_tag "#{item.imageurl}" %>
+      <div class="main_category_items_cover">
+        <div class="main_category_items_cover_item">
+          <div class="main_category_items_cover_item_name"><p><%=item.name%></p></div>
+          <div class="main_category_items_cover_item_check">
+            <div class="main_category_items_cover_item_check_circle">
+              <% if user_signed_in? then %>
+                <% if ItemUser.where(item_id:item.id,user_id:current_user.id).exists? then %>  
+                  <i class="fas fa-clipboard-check yet_check"></i>
+                <% else %>
+                  <i class="far fa-clipboard not_check"></i>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
+        <div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>
       </div>
-      <div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>
+    </a>
+    <div class="main_category_items_detail">
+      <%= "¥#{item.price.to_s(:delimited)}" %>
     </div>
-  </a>
-  <div class="main_category_items_detail">
-    <%= "¥2,300" %>
   </div>
-</div>
+<% end %>

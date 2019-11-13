@@ -177,6 +177,7 @@ $baby-blue: #f8faff;
           margin-top:10px;
           position: absolute;
           visibility: hidden;
+          z-index: 100;
           &_info,&_goods{
             width: 216px;
             height:40px;
@@ -330,7 +331,6 @@ $baby-blue: #f8faff;
         #headauto{
           overflow-y: scroll !important;
           max-height: 235px;
-          z-index: 100;
         }
       }
     }

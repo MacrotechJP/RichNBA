@@ -1,24 +1,25 @@
-<%= render partial: "index_header" %>
+<%= render partial: "index_header",locals: { search_keyword: @keyword } %>
 <div class="search">
   <div class="search_sidebar">
     <%= params[:keyword] %>
   </div>
   <div class="search_result">
-    <div class="search_result_head">
-      <div class="search_result_head_sort">
-        <select name="select-profession" id="select-profession">
-          <option value="" disabled>並び替える</option>
-          <option value="hacker">人気の高い順</option>
-          <option value="gamer">価格の高い</option>
-          <option value="developer">価格の低い順</option>
-        </select>
+    <%= search_form_for @search, url: search_path ,html: { method: :get } do |f| %>
+      <div class="search_result_head">
+        <div class="search_result_head_sort">
+          <%# <select name="select-profession" id="select-profession" onchange="this.form.submit()">
+            <option value="id desc" disabled>並び替える</option>
+            <option value="click desc">人気の高い順</option>
+            <option value="price desc">価格の高い</option>
+            <option value="price asc">価格の低い順</option>
+          </select> %>
+          <input type="hidden" name="keyword" value="<%=params[:keyword]%>">
+          <%= f.select( :sorts, { '並び替える': 'id desc', '人気の高い順': 'click desc', '価格の高い順': 'price desc', '価格の安い順': 'price asc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="search_result_main">
-      <% for num in 1...20 do %>
-        <%= render partial: "search_item" %>
-        <%= render partial: "search_item" %>
-      <% end %>
+      <%= render partial: "search_item" %>
     </div>
   </div>
 </div>

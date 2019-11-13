@@ -43,6 +43,9 @@ $(function(){
     var $currentSel = $(this).closest('.search_result_head_sort');
     $currentSel.children('.sel__placeholder').text(txt);
     $currentSel.children('select').prop('selectedIndex', index + 1);
+
+    $("#q_sorts option").eq(3).attr("value");
+    // alert(11)
   });
   
 })
