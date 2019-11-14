@@ -23,7 +23,8 @@ $(function(){
         data: {
           next_url: site_page,
           location_url: location_url,
-          search_keyword : gon.keyword
+          search_keyword : gon.keyword,
+          search_sort : gon.sort
         },
         dataType: 'json'
       }).done(function(data){

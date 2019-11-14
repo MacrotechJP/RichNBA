@@ -44,8 +44,17 @@ $(function(){
     $currentSel.children('.sel__placeholder').text(txt);
     $currentSel.children('select').prop('selectedIndex', index + 1);
 
-    $("#q_sorts option").eq(3).attr("value");
-    // alert(11)
+    // 検索商品並び替え    
+    var select_text = $(this).text();
+    var select_sort = ["並び替える","人気の高い順","価格の高い順","価格の安い順"];
+    $.each(select_sort, function(index, value) {
+      if(select_text == value){
+        $("#q_sorts option").eq(index).attr('selected',"selected");
+        $("#item_search").submit();
+      }
+    })
   });
-  
+
+  // 現状並び替え条件を反映
+  $(".sel__placeholder").text($(".search_result_head_sort").find('[selected=selected]').text())
 })

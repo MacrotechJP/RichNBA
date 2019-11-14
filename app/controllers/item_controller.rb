@@ -10,15 +10,16 @@ class ItemController < ApplicationController
   def search
     # binding.pry
     if params[:q].present?
-      @search = Item.where("name LIKE ?", "%"+params[:keyword]+"%").page(params[:page]).ransack(params[:q])
-      @items = @search.result
+      @search = Item.where("name LIKE ?", "%"+params[:keyword]+"%").ransack(params[:q])
+      @items = @search.result.page(params[:page])
     else
       params[:q] = { sorts: 'id desc' }
-      @search = Item.where("name LIKE ?", "%"+params[:keyword]+"%").page(params[:page]).ransack(params[:q])
-      @items = @search.result
+      @search = Item.where("name LIKE ?", "%"+params[:keyword]+"%").ransack(params[:q])
+      @items = @search.result.page(params[:page])
     end
     @keyword = params[:keyword]
     gon.keyword = params[:keyword]
+    gon.sort = params[:q][:sorts]
   end
 
   # 非同期クリック処理
@@ -36,7 +37,7 @@ class ItemController < ApplicationController
       @ajax_items = [@items_all,@checkitem]
       render json: @ajax_items
     elsif params[:location_url]=="search_page" then
-      @items_all = Item.where("name LIKE ?", "%"+params[:search_keyword]+"%").page(params[:next_url])
+      @items_all = Item.where("name LIKE ?", "%"+params[:search_keyword]+"%").order(params[:search_sort].upcase).page(params[:next_url])
       @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
       @ajax_items = [@items_all,@checkitem]
       render json: @ajax_items
