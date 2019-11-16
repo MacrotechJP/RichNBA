@@ -5,16 +5,18 @@ $(function(){
   //トップページスクロール時非同期商品読込
   var site_page = 1
   $(window).on('load scroll', function () {
-    // alert(gon.keyword)
     var scrollHeight= $(document).height(),
         scrollPosition = $(window).height() + $(window).scrollTop(),
         scrollRatio = (scrollHeight - scrollPosition) / scrollHeight;
     if(location.href.match(/search/)){
       var location_url = "search_page";
+      var keyword = gon.keyword;
+      var sort = gon.sort;
     }else{
       var location_url = "top_page";
+      var keyword = "";
+      var sort = "";
     }
-
     if (scrollRatio <= 0.01) {
       site_page += 1
       $.ajax({
@@ -23,8 +25,8 @@ $(function(){
         data: {
           next_url: site_page,
           location_url: location_url,
-          search_keyword : gon.keyword,
-          search_sort : gon.sort
+          search_keyword : keyword,
+          search_sort : sort
         },
         dataType: 'json'
       }).done(function(data){

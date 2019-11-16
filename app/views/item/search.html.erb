@@ -1,7 +1,41 @@
 <%= render partial: "index_header",locals: { search_keyword: @keyword } %>
 <div class="search">
   <div class="search_sidebar">
-    <%= params[:keyword] %>
+    <div class="search_sidebar_item">
+      <div class="search_sidebar_item_label"><i class="fab fa-searchengin"></i> キーワード</div>
+      <input type="text" placeholder="例）kyrie">
+    </div>
+    <div class="search_sidebar_item">
+      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 価格</div>
+      <input type="text" placeholder="例）kyrie">
+    </div>
+    <div class="search_sidebar_item">
+      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> ECサイト</div>
+      <select>
+        <option selected>全て</option>
+        <% Ecsite.all.order(name: "ASC").each do |player| %>
+          <option><%= player.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="search_sidebar_item">
+      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> チーム</div>
+      <select>
+        <option selected>全て</option>
+        <% Team.all.order(name: "ASC").each do |player| %>
+          <option><%= player.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="search_sidebar_item">
+      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 選手</div>
+      <select id="select">
+        <option selected>全て</option>
+        <% Player.all.order(name: "ASC").each do |player| %>
+          <option><%= player.name %></option>
+        <% end %>
+      </select>
+    </div>
   </div>
   <div class="search_result">
     <%= search_form_for @search, url: search_path ,html: { method: :get } do |f| %>

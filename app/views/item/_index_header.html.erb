@@ -14,7 +14,7 @@
     <div class="head_center_top">
       <%= form_tag(search_path,method: :get) do %>
         <% if defined? search_keyword then %>
-          <input type="search" name="keyword" placeholder="kyrie" value="<%=search_keyword%>">
+          <input type="search" name="keyword" placeholder="例）kyrie" value="<%=search_keyword%>">
         <% else %>
           <input type="search" name="keyword" placeholder="kyrie">
         <% end %>
