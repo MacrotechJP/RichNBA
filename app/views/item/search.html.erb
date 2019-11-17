@@ -1,41 +1,70 @@
 <%= render partial: "index_header",locals: { search_keyword: @keyword } %>
 <div class="search">
   <div class="search_sidebar">
-    <div class="search_sidebar_item">
-      <div class="search_sidebar_item_label"><i class="fab fa-searchengin"></i> キーワード</div>
-      <input type="text" placeholder="例）kyrie">
-    </div>
-    <div class="search_sidebar_item">
-      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 価格</div>
-      <input type="text" placeholder="例）kyrie">
-    </div>
-    <div class="search_sidebar_item">
-      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> ECサイト</div>
-      <select>
-        <option selected>全て</option>
-        <% Ecsite.all.order(name: "ASC").each do |player| %>
-          <option><%= player.name %></option>
-        <% end %>
-      </select>
-    </div>
-    <div class="search_sidebar_item">
-      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> チーム</div>
-      <select>
-        <option selected>全て</option>
-        <% Team.all.order(name: "ASC").each do |player| %>
-          <option><%= player.name %></option>
-        <% end %>
-      </select>
-    </div>
-    <div class="search_sidebar_item">
-      <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 選手</div>
-      <select id="select">
-        <option selected>全て</option>
-        <% Player.all.order(name: "ASC").each do |player| %>
-          <option><%= player.name %></option>
-        <% end %>
-      </select>
-    </div>
+    <%= search_form_for @search, url: search_path ,html: { method: :get } do |f| %>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fab fa-searchengin"></i> キーワード</div>
+        <input type="text" placeholder="例）kyrie" name="keyword" value="<%=@keyword%>">
+      </div>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 価格</div>
+        <input type="text" placeholder="¥ Min" list="min_price" name="min_price">
+        <datalist id="min_price">
+          <option value="0">
+          <option value="500">
+          <option value="1000">
+          <option value="2000">
+          <option value="4000">
+          <option value="8000">
+          <option value="16000">
+          <option value="32000">
+        </datalist>
+        <p><i class="fas fa-angle-double-down"></i></p>
+        <input type="text" placeholder="¥ Max" list="max_price" name="max_price">
+        <datalist id="max_price">
+          <option value="500">
+          <option value="1000">
+          <option value="2000">
+          <option value="4000">
+          <option value="8000">
+          <option value="16000">
+          <option value="32000">
+          <option value="64000">
+        </datalist>
+      </div>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fas fa-desktop"></i> ECサイト</div>
+        <select name="ecsite">
+          <option selected value="">全て</option>
+          <% Ecsite.all.order(name: "ASC").each do |ecsite| %>
+            <option value="<%=ecsite.id%>"><%= ecsite.name %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fas fa-users"></i> チーム</div>
+        <select name="team">
+          <option selected value="">全て</option>
+          <% Team.all.order(name: "ASC").each do |team| %>
+            <option value="<%=team.id%>"><%= team.name %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fas fa-user"></i> 選手</div>
+        <select name="player">
+          <option selected value="">全て</option>
+          <% Player.all.order(name: "ASC").each do |player| %>
+            <option value="<%=player.id%>"><%= player.name %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="search_sidebar_item">
+        <div class="search_sidebar_item_label"><i class="fas fa-search"></i> 検索条件更新</div>
+        <%= f.submit "リセットする",type: :reset,class:"reset_submit" %>
+        <%= f.submit "検索する",class:"reset_submit" %>
+      </div>
+    <% end %>
   </div>
   <div class="search_result">
     <%= search_form_for @search, url: search_path ,html: { method: :get } do |f| %>
