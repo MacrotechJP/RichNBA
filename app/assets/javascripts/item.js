@@ -10,12 +10,22 @@ $(function(){
         scrollRatio = (scrollHeight - scrollPosition) / scrollHeight;
     if(location.href.match(/search/)){
       var location_url = "search_page";
-      var keyword = gon.keyword;
       var sort = gon.sort;
+      var keyword = gon.keyword;
+      var min_price = gon.min_price;
+      var max_price = gon.max_price;
+      var ecsite = gon.ecsite;
+      var team = gon.team;
+      var player = gon.player;
     }else{
       var location_url = "top_page";
-      var keyword = "";
       var sort = "";
+      var keyword = "";
+      var min_price = "";
+      var max_price = "";
+      var ecsite = "";
+      var team = "";
+      var player = "";
     }
     if (scrollRatio <= 0.01) {
       site_page += 1
@@ -25,8 +35,13 @@ $(function(){
         data: {
           next_url: site_page,
           location_url: location_url,
-          search_keyword : keyword,
-          search_sort : sort
+          search_sort : sort,
+          keyword : keyword,
+          min_price: min_price,
+          max_price: max_price,
+          ecsite: ecsite,
+          team: team,
+          player: player
         },
         dataType: 'json'
       }).done(function(data){

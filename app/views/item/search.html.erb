@@ -1,14 +1,14 @@
 <%= render partial: "index_header",locals: { search_keyword: @keyword } %>
 <div class="search">
   <div class="search_sidebar">
-    <%= search_form_for @search, url: search_path ,html: { method: :get } do |f| %>
+    <%= form_tag(search_path,method: :get) do %>
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fab fa-searchengin"></i> キーワード</div>
-        <input type="text" placeholder="例）kyrie" name="keyword" value="<%=@keyword%>">
+        <input type="text" placeholder="例）kyrie" name="keyword" value="<%=params[:keyword]%>">
       </div>
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fas fa-hand-holding-usd"></i> 価格</div>
-        <input type="text" placeholder="¥ Min" list="min_price" name="min_price">
+        <input type="text" placeholder="¥ Min" list="min_price" name="min_price" value="<%=params[:min_price]%>">
         <datalist id="min_price">
           <option value="0">
           <option value="500">
@@ -20,7 +20,7 @@
           <option value="32000">
         </datalist>
         <p><i class="fas fa-angle-double-down"></i></p>
-        <input type="text" placeholder="¥ Max" list="max_price" name="max_price">
+        <input type="text" placeholder="¥ Max" list="max_price" name="max_price" value="<%=params[:max_price]%>">
         <datalist id="max_price">
           <option value="500">
           <option value="1000">
@@ -35,34 +35,46 @@
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fas fa-desktop"></i> ECサイト</div>
         <select name="ecsite">
-          <option selected value="">全て</option>
+          <option value="">全て</option>
           <% Ecsite.all.order(name: "ASC").each do |ecsite| %>
-            <option value="<%=ecsite.id%>"><%= ecsite.name %></option>
+            <% if ecsite.id == params[:ecsite].to_i %>
+              <option selected value="<%=params[:ecsite]%>"><%= ecsite.name %></option>
+            <% else %>
+              <option value="<%=ecsite.id%>"><%= ecsite.name %></option>
+            <% end %>
           <% end %>
         </select>
       </div>
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fas fa-users"></i> チーム</div>
         <select name="team">
-          <option selected value="">全て</option>
+          <option value="">全て</option>
           <% Team.all.order(name: "ASC").each do |team| %>
-            <option value="<%=team.id%>"><%= team.name %></option>
+            <% if team.id == params[:team].to_i then %>
+              <option selected value="<%=team.id%>"><%= team.name %></option>
+            <% else %>
+              <option value="<%=team.id%>"><%= team.name %></option>
+            <% end %>
           <% end %>
         </select>
       </div>
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fas fa-user"></i> 選手</div>
         <select name="player">
-          <option selected value="">全て</option>
+          <option value="">全て</option>
           <% Player.all.order(name: "ASC").each do |player| %>
-            <option value="<%=player.id%>"><%= player.name %></option>
+            <% if player.id == params[:player].to_i then %>
+              <option selected value="<%=player.id%>"><%= player.name %></option>
+            <% else %>
+              <option value="<%=player.id%>"><%= player.name %></option>
+            <% end %>
           <% end %>
         </select>
       </div>
       <div class="search_sidebar_item">
         <div class="search_sidebar_item_label"><i class="fas fa-search"></i> 検索条件更新</div>
-        <%= f.submit "リセットする",type: :reset,class:"reset_submit" %>
-        <%= f.submit "検索する",class:"reset_submit" %>
+        <input type="reset" value="リセットする" class="reset_submit">
+        <input type="submit" value="検索する" class="reset_submit">
       </div>
     <% end %>
   </div>
@@ -71,8 +83,14 @@
       <div class="search_result_head">
         <div class="search_result_head_sort">
           <input type="hidden" name="keyword" value="<%=params[:keyword]%>">
+          <input type="hidden" name="min_price" value="<%=params[:min_price]%>">
+          <input type="hidden" name="max_price" value="<%=params[:max_price]%>">
+          <input type="hidden" name="ecsite" value="<%=params[:ecsite]%>">
+          <input type="hidden" name="team" value="<%=params[:team]%>">
+          <input type="hidden" name="player" value="<%=params[:player]%>">
           <%= f.select( :sorts, { '並び替える': 'id desc', '人気の高い順': 'click desc', '価格の高い順': 'price desc', '価格の安い順': 'price asc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
         </div>
+        <span>全<%=@items_count%>件</span>
       </div>
     <% end %>
     <div class="search_result_main">
