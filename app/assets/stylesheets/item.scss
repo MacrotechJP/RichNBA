@@ -569,7 +569,7 @@ $baby-blue: #f8faff;
                 }
                 .main_category_items_cover_item_name{
                   text-align: center;
-                  p{width:100%!important;height:100%!important;}
+                  p{white-space: normal;}
                 }
                 .main_category_items_cover_item_check_circle i{
                   font-size: 25px;
@@ -690,6 +690,7 @@ $baby-blue: #f8faff;
   img{
     height:314px;
     width:100%;
+    object-fit: contain;
   }
   iframe{
     // height:100%;

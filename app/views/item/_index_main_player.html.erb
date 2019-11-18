@@ -13,6 +13,7 @@
   </div>
   <div class="main_top_right_team_player_right_item">
     <div id="main_top_right_team_player_right_item<%=teamnumber%>">
+      <li></li>
       <% Item.where("team_id = ?",teamnumber).order(click:"DESC").limit(10).each do |item| %>
         <li>
           <div class="main_category_items autoscroll">
@@ -42,6 +43,7 @@
           </div>
         </li>
       <% end %>
+      <li></li>
     </div>
   </div>
 </div>
