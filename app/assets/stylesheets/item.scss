@@ -442,6 +442,7 @@ $baby-blue: #f8faff;
               width:90%;
               height:88%;
               overflow: scroll;
+              a{text-decoration: none;}
               &_star{
                 height: 15%;
                 width:100%;
@@ -553,6 +554,35 @@ $baby-blue: #f8faff;
             float: left;
             width:68%;
             height:100%;
+            li{
+              background:none!important;
+              .autoscroll{
+                width: 100%;
+                height:100%;
+                img{
+                  width:100%;
+                  height:85%
+                }
+                .main_category_items_cover{
+                  width:100%;
+                  height:85%
+                }
+                .main_category_items_cover_item_name{
+                  text-align: center;
+                  p{width:100%!important;height:100%!important;}
+                }
+                .main_category_items_cover_item_check_circle i{
+                  font-size: 25px;
+                }
+                .main_category_items_cover_item_check_circle{
+                  height:75%;
+                }
+                .main_category_items_detail{
+                  height:15%;
+                  font-size: 20px;
+                }
+              }
+            }
           }
         }
       }
