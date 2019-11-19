@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "item#index"
   get "/search" ,to:"item#search"
   get "/info" ,to:"infomation#index"
+  get "/info/1" ,to:"infomation#info1"
   get "/mypage" ,to:"mypage#index"
   post "/mypage/checkitem" ,to:"mypage#checkitem"
   

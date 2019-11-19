@@ -1,0 +1,41 @@
+<%= render partial: "item/index_header" %>
+<div class="mypage">
+  <h1 class="mypage_head">ユーザーサービス</h1>
+  <div class="mypage_main">
+    <div class="mypage_main_top">
+      <%= link_to(info_path) do %>
+        <div class="mypage_main_top_menunow">
+          <i class="fas fa-comment-dots"></i>
+          <p>お知らせ</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_path) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-user-lock"></i>
+          <p>ユーザー情報</p>
+        </div>
+      <% end %>
+      <%= link_to(mypage_checkitem_path,method: :post) do %>
+        <div class="mypage_main_top_menu">
+          <i class="fas fa-clipboard-check"></i>
+          <p>取り置きグッズ</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="mypage_main_info">
+      <h1>サイト新規開設についてのお知らせ</h1>
+      <p>この度、nba大好きファンによるnbaのグッズを購入したい人へ向けたサイトを開設いたしました。</p>
+      <p>一人で作り上げたWebサービスな為、使用規約等はございません。</p>
+      <p>モラルを守って、適切な使用をして下さいますようよろしくお願い致します。</p>
+      <p>簡単に、当サイトの特徴・説明をいたします。</p>
+      <p>＜RichNBAって何？＞</p>
+      <p>♦︎世界中のnbaグッズを取り扱うECサイトの商品を一様に検索することの出来るサービスです。</p>
+      <p>※世界中全てのECサイトの商品を取り扱う事は出来ない為nbaグッズ絶対数の多いものを選りすぐっております。</p>
+      <p>♦︎ユーザー登録する事で以下サービスを使用することが出来ます。</p>
+      <p>　・取り置きグッズサービス</p>
+      <p>　（気に入った商品を取り置きし、マイページより取り置き商品を閲覧出来ます）</p>
+      <p>♦︎多くのnbaグッズを見て、本当に欲しい商品を比較検討出来る究極のサービスを目指しております。</p>
+      <p>　どんな不具合・要望もサービス改善の手助けとなります。いくらでもお問い合わせ下さい。</p>
+    </div>
+  </div>
+</div>
