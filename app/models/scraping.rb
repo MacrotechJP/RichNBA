@@ -1,8 +1,8 @@
 class Scraping
 
-  Item.all.each do |item|
-    Item.where(id:item.id).update(team_id:rand(30)+1)
-  end 
+  # Item.all.each do |item|
+    # Item.where(id:item.id).update(player_id:nil,team_id:nil,ecsite_id:nil)
+  # end 
 
   ## Stage商品一覧より各商品URLをDBに保存
   # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
@@ -38,23 +38,25 @@ class Scraping
 
 
   ## BB KONG商品一覧より各商品URLをDBに保存
-  # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
-  # while true do
-  #   agent = Mechanize.new
-  #   page = agent.get(nexturl)
-  #   element = page.search('.FS2_pager_link_next')[0]
-  #   if element.nil? then
-  #     break
-  #   else
-  #     elementimage = page.search('.FS2_thumbnail_container a')
-  #     elementprice = page.search('.itemPrice')
-  #     elementimage.zip(elementprice).each do |eleimage, eleprice|
-  #       Item.create(siteurl:eleimage.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:11)
-  #     end
+  nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
+  while true do
+    agent = Mechanize.new
+    page = agent.get(nexturl)
+    element = page.search('.FS2_pager_link_next')[0]
+    if element.nil? then
+      break
+    else
+      elementsiteurl = page.search('.FS2_thumbnail_container a')
+      elementprice = page.search('.itemPrice')
+      elementimage = page.search('.FS2_thumbnail_container img')
+      elementname = page.search('.itemGroup a')
+      elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+        Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:11,imageurl:"https://www.bbkong.net"+eleimage.get_attribute(:src))
+      end
         
-  #     nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html"+element.get_attribute(:href)
-  #   end
-  # end
+      nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html"+element.get_attribute(:href)
+    end
+  end
   ## BB KONG各商品URLの画像を複数保存
   # Item.all.each do |item|
 
