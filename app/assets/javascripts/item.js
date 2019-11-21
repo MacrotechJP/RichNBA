@@ -77,7 +77,7 @@ $(function(){
             var additem_searchpage = 
                           '<div class="main_category_items searchs">'+
                             '<a href='+item.siteurl+' target="_blank">'+
-                              '<img src='+item.imageurl+'>'+
+                              '<img src="'+item.imageurl+'">'+
                               '<div class="main_category_items_cover">'+
                                 '<div class="main_category_items_cover_item">'+
                                   '<div class="main_category_items_cover_item_name">'+
