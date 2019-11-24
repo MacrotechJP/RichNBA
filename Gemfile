@@ -77,3 +77,4 @@ gem 'rails-i18n', '~> 5.1'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'ransack'
+gem 'sqlite3', group: [:development, :test]
