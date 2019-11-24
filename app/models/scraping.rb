@@ -5,24 +5,24 @@ class Scraping
   # end 
 
   ## Stage商品一覧より各商品URLをDBに保存
-  nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
-  while true do
-    agent = Mechanize.new
-    page = agent.get(nexturl)
-    element = page.search('.to_next_page.pager_btn')[0]
-    if element.nil? then
-      break
-    else
-      elementsiteurl = page.search('.item_data a')
-      elementprice = page.search('.selling_price span')
-      elementname = page.search('.goods_name')
-      elementimage = page.search('.global_photo.item_image_box')
-      elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-        Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:4,imageurl:eleimage.to_s.match(/http.*jpg/))
-      end
-      nexturl = "https://www.x-stage2.jp"+element.get_attribute(:href)
-    end
-  end
+  # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
+  # while true do
+  #   agent = Mechanize.new
+  #   page = agent.get(nexturl)
+  #   element = page.search('.to_next_page.pager_btn')[0]
+  #   if element.nil? then
+  #     break
+  #   else
+  #     elementsiteurl = page.search('.item_data a')
+  #     elementprice = page.search('.selling_price span')
+  #     elementname = page.search('.goods_name')
+  #     elementimage = page.search('.global_photo.item_image_box')
+  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #       Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:4,imageurl:eleimage.to_s.match(/http.*jpg/))
+  #     end
+  #     nexturl = "https://www.x-stage2.jp"+element.get_attribute(:href)
+  #   end
+  # end
 
   ## BB KONG商品一覧より各商品URLをDBに保存
   # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
