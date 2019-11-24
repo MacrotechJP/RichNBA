@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_130915) do
     t.string "imageurl"
     t.integer "price"
     t.integer "click", default: 0
+    t.integer "delete_flg", default: 0
     t.bigint "player_id"
     t.bigint "team_id"
     t.bigint "ecsite_id"
