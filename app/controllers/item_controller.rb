@@ -74,16 +74,17 @@ class ItemController < ApplicationController
   def additem
     if params[:location_url]=="top_page" then
       @items_all = Item.all.page(params[:page]).page(params[:next_url])
-      @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
-      @ajax_items = [@items_all,@checkitem]
-      render json: @ajax_items
     elsif params[:location_url]=="search_page" then
       search_detail()
       @items_all = @items_player.order(params[:search_sort].upcase).page(params[:next_url])
-      @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
-      @ajax_items = [@items_all,@checkitem]
-      render json: @ajax_items
     end
+    if user_signed_in? then
+      @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
+    else
+      @checkitem = []
+    end
+    @ajax_items = [@items_all,@checkitem]
+    render json: @ajax_items
   end
   # 非同期取り置きアイテムチェック処理
   def checkitem
@@ -94,7 +95,5 @@ class ItemController < ApplicationController
       ItemUser.where(item_id:@item,user_id:current_user.id).destroy_all	
     end
   end
-
-  
 
 end

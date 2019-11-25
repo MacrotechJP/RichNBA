@@ -29,6 +29,7 @@ $(function(){
     }
     if (scrollRatio <= 0.01) {
       site_page += 1
+      // alert(location_url)
       $.ajax({
         url: '/item/additem',
         type: 'GET',
@@ -100,6 +101,7 @@ $(function(){
       }).fail(function(data){
           /* 通信失敗時 */
           // alert("失敗");
+          console.log("非同期失敗");
       });
     }
   });
