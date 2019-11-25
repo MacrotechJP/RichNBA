@@ -3,26 +3,58 @@ class Scraping
   # Item.all.each do |item|
     # Item.where(id:item.id).update(player_id:nil,team_id:nil,ecsite_id:nil)
   # end 
-
-  ## Stage商品一覧より各商品URLをDBに保存
-  # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
-  # while true do
-  #   agent = Mechanize.new
-  #   page = agent.get(nexturl)
-  #   element = page.search('.to_next_page.pager_btn')[0]
-  #   if element.nil? then
-  #     break
-  #   else
-  #     elementsiteurl = page.search('.item_data a')
-  #     elementprice = page.search('.selling_price span')
-  #     elementname = page.search('.goods_name')
-  #     elementimage = page.search('.global_photo.item_image_box')
-  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:4,imageurl:eleimage.to_s.match(/http.*jpg/))
+  
+  ##チームランキング調整
+  # team = {
+  #   "Milwaukee Bucks": "ミルウォーキー・バックス", "Boston Celtics": "ボストン・セルティックス", "Miami Heat": "マイアミ・ヒート",
+  #   "Toronto Raptors": "トロント・ラプターズ", "Philadelphia 76ers": "フィラデルフィア・セブンティシクサーズ", "Indiana Pacers": "インディアナ・ペイサーズ",
+  #   "Brooklyn Nets": "ブルックリン・ネッツ", "Orlando Magic": "オーランド・マジック", "Washington Wizards": "ワシントン・ウィザーズ",
+  #   "Charlotte Hornets": "シャーロット・ホーネッツ", "Chicago Bulls": "シカゴ・ブルズ", "Cleveland Cavaliers": "クリーブランド・キャバリアーズ",
+  #   "Detroit Pistons": "デトロイト・ピストンズ", "Atlanta Hawks": "アトランタ・ホークス", "New York Knicks": "ニューヨーク・ニックス",
+  #   "Los Angeles Lakers": "ロサンゼルス・レイカーズ", "Denver Nuggets": "デンバー・ナゲッツ", "LA Clippers": "ロサンゼルス・クリッパーズ",
+  #   "Dallas Mavericks": "ダラス・マーベリックス", "Utah Jazz": "ユタ・ジャズ", "Houston Rockets": "ヒューストン・ロケッツ",
+  #   "Phoenix Suns": "フェニックス・サンズ", "Minnesota Timberwolves": "ミネソタ・ティンバーウルブズ", "Sacramento Kings": "サクラメント・キングス",
+  #   "New Orleans Pelicans": "ニューオーリンズ・ペリカンズ", "San Antonio Spurs": "サンアントニオ・スパーズ", "Memphis Grizzlies": "メンフィス・グリズリーズ",
+  #   "Oklahoma City Thunder": "オクラホマシティ・サンダー", "Portland Trail Blazers": "ポートランド・トレイルブレイザーズ", "Golden State Warriors": "ゴールデンステート・ウォリアーズ",
+  # }
+  # url = "https://www.espn.co.uk/nba/standings"
+  # agent = Mechanize.new
+  # page = agent.get(url)
+  # element = page.search('.Table__TBODY tr .AnchorLink img')
+  # element.each_with_index do |ele, rank|
+  #   rank -= 15 if rank >= 15 
+  #   team.each_with_index do |(key,val),i|
+  #     if ele.get_attribute(:title) == key.to_s then
+  #       Team.find_by(name:val).update(ranking:rank+1)
   #     end
-  #     nexturl = "https://www.x-stage2.jp"+element.get_attribute(:href)
   #   end
   # end
+
+  ## Stage商品一覧より各商品URLをDBに保存
+  nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
+  while true do
+    agent = Mechanize.new
+    page = agent.get(nexturl)
+    element = page.search('.to_next_page.pager_btn')[0]
+    if element.nil? then
+      break
+    else
+      elementsiteurl = page.search('.item_data a')
+      elementprice = page.search('.selling_price span')
+      elementname = page.search('.goods_name')
+      elementimage = page.search('.global_photo.item_image_box')
+      elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+        unless Item.where(name:elename.inner_text).exists?
+          Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:4,imageurl:eleimage.to_s.match(/http.*jpg/))
+        else
+          item = Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:4)
+          item.touch
+          item.save
+        end
+      end
+      nexturl = "https://www.x-stage2.jp"+element.get_attribute(:href)
+    end
+  end
 
   ## BB KONG商品一覧より各商品URLをDBに保存
   # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"

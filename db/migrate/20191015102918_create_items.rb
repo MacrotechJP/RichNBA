@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :imageurl
       t.integer :price
       t.integer :click, default: 0
+      t.boolean :delete_flg, default: false
       t.references :player, foreign_key: true
       t.references :team, foreign_key: true
       t.references :ecsite, foreign_key: true
