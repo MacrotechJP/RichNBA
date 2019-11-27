@@ -76,7 +76,17 @@ class ItemController < ApplicationController
       @items_all = Item.all.page(params[:page]).page(params[:next_url])
     elsif params[:location_url]=="search_page" then
       search_detail()
-      @items_all = @items_player.order(params[:search_sort].upcase).page(params[:next_url])
+      case params[:search_sort]
+      when "id desc" then
+        @order = "ID DESC"
+      when "click desc" then
+        @order = "CLICK DESC"
+      when "price desc" then
+        @order = "PRICE DESC"
+      when "price asc" then
+        @order = "ID DESC"
+      end
+      @items_all = @items_player.order(@order).page(params[:next_url])
     end
     if user_signed_in? then
       @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
