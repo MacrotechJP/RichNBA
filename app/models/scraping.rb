@@ -1,8 +1,18 @@
 class Scraping
 
+  ## 選手、チームカラム追加
   # Item.all.each do |item|
-    # Item.where(id:item.id).update(player_id:nil,team_id:nil,ecsite_id:nil)
-  # end 
+  #   Player.all.each do |player|
+  #     if item.name.include?(player.name) then
+  #       item.update(player_id:player.id,team_id:player.team_id)
+  #     end
+  #   end
+  #   Team.all.each do |team|
+  #     if item.name.include?(team.name.gsub(/・.*/,"")) || item.name.include?(team.name.gsub(/.*・/,"")) || item.name.include?(team.en_name) then
+  #       item.update(team_id:team.id)
+  #     end
+  #   end
+  # end
   
   ##チームランキング調整
   # team = {
@@ -31,6 +41,7 @@ class Scraping
   # end
 
   ## Stage商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:4).update(delete_flg:1)
   # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
   # while true do
   #   agent = Mechanize.new
@@ -44,19 +55,19 @@ class Scraping
   #     elementname = page.search('.goods_name')
   #     elementimage = page.search('.global_photo.item_image_box')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       unless Item.where(name:elename.inner_text).exists?
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
   #         Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:4,imageurl:eleimage.to_s.match(/http.*jpg/))
   #       else
-  #         item = Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:4)
-  #         item.touch
-  #         item.save
+  #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:4).update(delete_flg:0)
   #       end
   #     end
   #     nexturl = "https://www.x-stage2.jp"+element.get_attribute(:href)
   #   end
   # end
+  # Item.where(ecsite_id:4,delete_flg:1).destroy_all
 
   ## BB KONG商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:11).update(delete_flg:1)
   # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
   # while true do
   #   agent = Mechanize.new
@@ -70,14 +81,20 @@ class Scraping
   #     elementimage = page.search('.FS2_thumbnail_container img')
   #     elementname = page.search('.itemGroup a')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:11,imageurl:"https://www.bbkong.net"+eleimage.get_attribute(:src))
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub("円",""),ecsite_id:11,imageurl:"https://www.bbkong.net"+eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:11).update(delete_flg:0)
+  #       end
   #     end
         
   #     nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html"+element.get_attribute(:href)
   #   end
   # end
+  # Item.where(ecsite_id:11,delete_flg:1).destroy_all
 
   ## ROCKERS商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:1).update(delete_flg:1)
   # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=1"
   # while true do
   #   agent = Mechanize.new
@@ -91,11 +108,16 @@ class Scraping
   #     elementimage = page.search('.imgBox img')
   #     elementname = page.search('.product_list .name a')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub(",","").gsub("円(税込)",""),ecsite_id:1,imageurl:eleimage.get_attribute(:src))
+  #       unless Item.where(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(name:elename.inner_text,siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub(",","").gsub("円(税込)",""),ecsite_id:1,imageurl:eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),ecsite_id:1).update(delete_flg:0)
+  #       end
   #     end
   #     nexturl = "https://jordan.co.jp/"+element.to_s
   #   end
   # end
+  # Item.where(ecsite_id:1,delete_flg:1).destroy_all
 
   # 為替値取得
   # doll_agent = Mechanize.new
@@ -111,6 +133,7 @@ class Scraping
   #   "http://www.kyrieirving-shoes.us.com/russell-westbrook-shoes-c-124.html?page=1&sort=20a",
   #   "http://www.kyrieirving-shoes.us.com/air-jordan-shoes-c-74.html?page=1&sort=20a",
   #   "http://www.kyrieirving-shoes.us.com/women-c-128.html?page=1&sort=20a"]
+  # Item.where(ecsite_id:8).update(delete_flg:1)
   # nexturl = "http://www.kyrieirving-shoes.us.com/index.php?main_page=advanced_search_result&keyword=Enter%20search%20keywords%20here&search_in_description=1&inc_subcat=1&pfrom=0&pto=999999999&sort=20a&page=1"
   # while true do
   #   agent = Mechanize.new
@@ -124,7 +147,11 @@ class Scraping
   #     elementimage = page.search('.productimg a img')
   #     elementname = page.search('.itemTitle.productname a')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub("$","").gsub(".00","").to_i * doll_element,ecsite_id:8,imageurl:"http://www.kyrieirving-shoes.us.com/"+eleimage.get_attribute(:src))
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(name:elename.inner_text,siteurl:elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub("$","").gsub(".00","").to_i * doll_element,ecsite_id:8,imageurl:"http://www.kyrieirving-shoes.us.com/"+eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:8).update(delete_flg:0)
+  #       end
   #     end
   #     if element[element.size()-1].get_attribute(:title)  == " Next Page " then
   #       nexturl = element[element.size()-1].get_attribute(:href) 
@@ -133,8 +160,9 @@ class Scraping
   #     end
   #   end
   # end
+  # Item.where(ecsite_id:8,delete_flg:1).destroy_all
   
-  ## LockerRoom商品一覧より各商品URLをDBに保存
+  ## （要修正）LockerRoom商品一覧より各商品URLをDBに保存
   # pageNumber = 1
   # team_url = 
   #           {"11": "https://www.lids.com/nba-atlanta-hawks/o-1336+t-25033806+z-93057-3658341029?pageSize=72&pageNumber=",
@@ -168,6 +196,7 @@ class Scraping
   #             "25": "https://www.lids.com/nba-utah-jazz/o-2414+t-58580874+z-91618-3977262962?pageSize=72&pageNumber=",
   #             "15": "https://www.lids.com/nba-washington-wizards/o-3503+t-25923131+z-98939-2702724964?pageSize=72&pageNumber=",
   #           }
+  # Item.where(ecsite_id:15).update(delete_flg:1)
   # team_url.each_with_index do |(key,val),i|
   #   pageNumber = 0
   #   roop_flg = true
@@ -195,8 +224,10 @@ class Scraping
   #     end
   #   end
   # end
+  # Item.where(ecsite_id:15,delete_flg:1).destroy_all
 
   ## SLAM商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:12).update(delete_flg:1)
   # pageNumber = 0
   # while true do
   #   pageNumber += 1
@@ -212,16 +243,22 @@ class Scraping
   #     elementimage = page.search('.FS2_thumbnail_container img')
   #     elementname = page.search('.itemGroup a')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(name:elename.inner_text,
   #         siteurl:elesiteurl.get_attribute(:href),
   #         price:eleprice.inner_text.gsub("(消費税込:","").gsub(",","").gsub("円)",""),
   #         ecsite_id:12,
   #         imageurl:"http://www.slamjapan.com"+eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:8).update(delete_flg:0)
+  #       end
   #     end
   #   end
   # end
+  # Item.where(ecsite_id:12,delete_flg:1).destroy_all
 
-  ## (未実行)Rakuten商品一覧より各商品URLをDBに保存
+  ## Rakuten商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:5).update(delete_flg:1)
   # pageNumber = 0
   # while true do
   #   pageNumber += 1
@@ -237,14 +274,19 @@ class Scraping
   #     elementimage = page.search('.image img')
   #     elementname = page.search('.content.title a')
   #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       Item.create(name:elename.inner_text,
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(name:elename.inner_text,
   #         siteurl:elesiteurl.get_attribute(:href),
   #         price:eleprice.inner_text.gsub(",","").gsub("円",""),
   #         ecsite_id:5,
   #         imageurl:eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:5).update(delete_flg:0)
+  #       end
   #     end
   #   end
   # end
+  # Item.where(ecsite_id:5,delete_flg:1).destroy_all
 
   ## SELECTION商品一覧より各商品URLをDBに保存
   # team_url ={ 
@@ -279,6 +321,7 @@ class Scraping
   #             "25": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Utah+Jazz,New+Orleans+Jazz&page=",
   #             "15": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Washington+Wizards,Washington+Bullets&page=",
   #           }
+  # Item.where(ecsite_id:9).update(delete_flg:1)
   # team_url.each_with_index do |(key,val),i|
   #   pageNumber = 0
   #   roop_flg = true
@@ -302,16 +345,21 @@ class Scraping
   #       eq4 = elementname.size()
   #       if eq1==eq2 && eq1==eq3 && eq1==eq4 && eq2==eq3 && eq2==eq4 && eq3==eq4 then
   #         elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #           Item.create(
+  #           unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #             Item.create(
   #             name:elename.inner_text,
   #             siteurl:elesiteurl.get_attribute(:href),
   #             price:eleprice.inner_text.gsub(",","").gsub("円(税込)",""),
   #             team_id:team_key.to_s ,ecsite_id:9,
   #             imageurl:eleimage.get_attribute(:src))
+  #           else
+  #             Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:9).update(delete_flg:0)
+  #           end
   #         end
   #       end
   #     end
   #   end
   # end
+  # Item.where(ecsite_id:9,delete_flg:1).destroy_all
   
 end
