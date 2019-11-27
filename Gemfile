@@ -78,3 +78,4 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'ransack'
 gem 'sqlite3', group: [:development, :test]
+gem 'rack-attack' #Dos攻撃対策gem
