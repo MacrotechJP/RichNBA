@@ -36,7 +36,7 @@
         <div class="search_sidebar_item_label"><i class="fas fa-desktop"></i> ECサイト</div>
         <select name="ecsite">
           <option value="">全て</option>
-          <% Ecsite.all.order(name: "ASC").each do |ecsite| %>
+          <% Ecsite.where.not("name LIKE ?", "(未対応)%").order(name: "ASC").each do |ecsite| %>
             <% if ecsite.id == params[:ecsite].to_i %>
               <option selected value="<%=params[:ecsite]%>"><%= ecsite.name %></option>
             <% else %>
