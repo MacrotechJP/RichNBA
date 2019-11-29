@@ -11,7 +11,7 @@
           <%=f.email_field :email,autofocus:true,autocomplete:"email",placeholder:"Eメールアドレス",class:"field_item",required:"true" %>
         </div>
         <div class="field_submit">
-          <%= f.submit "再設定メール送信" %>
+          <%= f.submit "再設定メール送信", disabled: true %>
         </div>
       <% end %>
     </div>
