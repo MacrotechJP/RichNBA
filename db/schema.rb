@@ -14,7 +14,8 @@ ActiveRecord::Schema.define(version: 2019_11_08_130915) do
 
   create_table "ecsites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "url"
+    t.string "siteurl"
+    t.string "imageurl"
   end
 
   create_table "item_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
