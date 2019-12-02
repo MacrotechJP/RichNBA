@@ -362,4 +362,35 @@ class Scraping
   # end
   # Item.where(ecsite_id:9,delete_flg:1).destroy_all
   
+  ## XEBIO商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:23).update(delete_flg:1)
+  # pageNumber = 0
+  # roop_flg = true
+  # while roop_flg == true do
+  #   pageNumber += 1
+  #   nexturl = "https://ssx.xebio-online.com/ec/srDispProductSearchList.html?searchWord=%E3%80%90%EF%BC%AE%EF%BC%A2%EF%BC%A1%E3%80%91&filteringKey=2&limit=100&sortKey=1&pageNo="+pageNumber.to_s
+  #   agent = Mechanize.new
+  #   page = agent.get(nexturl)
+  #   element = page.search('.newSch_itemImg')
+  #   elementsiteurl = page.search('.newSch_itemset.cf')
+  #   elementprice = page.search('.newSch_itemPrice span')
+  #   elementimage = page.search('#pruductImg')
+  #   elementname = page.search('#pruductImg')
+  #   elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #     unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #       Item.create(name:elename.get_attribute(:alt),
+  #       siteurl:"https://ssx.xebio-online.com"+elesiteurl.get_attribute(:href),
+  #       price:eleprice.inner_text.gsub("¥","").gsub(",","").strip!,
+  #       ecsite_id:23,
+  #       imageurl:"https://ssx.xebio-online.com"+eleimage.get_attribute(:src))
+  #     else
+  #       Item.find_by(siteurl:"https://ssx.xebio-online.com"+elesiteurl.get_attribute(:href),ecsite_id:23).update(delete_flg:0)
+  #     end
+  #   end
+  #   if roop_flg == true && element.size() < 100 then
+  #     roop_flg = false
+  #   end
+  # end
+  # Item.where(ecsite_id:23,delete_flg:1).destroy_all
+  
 end

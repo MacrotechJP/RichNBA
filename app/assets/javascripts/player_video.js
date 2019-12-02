@@ -44,7 +44,7 @@ var ytData = [
     {id: 'Tkbtd6kg2xg',area: 'teamvideo_76ers'},{id: '2R1zAuRb7IE',area: 'teamvideo_Raptors'},{id: 'xZP1eybfkEo',area: 'teamvideo_Bulls'},
       {id: 'HC6SVcFCfHM',area: 'teamvideo_Cavaliers'},{id: '9NE_UOs3wPw',area: 'teamvideo_Pistons'},{id: 'WIWu0rkVoIU',area: 'teamvideo_Pacers'},
         {id: 'n5S5Sa6uDnM',area: 'teamvideo_Bucks'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Hawks'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Hornets'},
-          {id: 'mwXjQK_KHfg',area: 'teamvideo_Heat'},{id: 'HC6SVcFCfHM',area: 'teamvideo_Magic'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Wizards'},
+          {id: 'mwXjQK_KHfg',area: 'teamvideo_Heat'},{id: 'HC6SVcFCfHM',area: 'teamvideo_Magic'},{id: 'DaJ3EnOwoyk',area: 'teamvideo_Wizards'},
   {id: 'mwXjQK_KHfg',area: 'teamvideo_Mavericks'},{id: 'DGT_TTXmiOw',area: 'teamvideo_Rockets'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Grizzlies'},
     {id: 'mwXjQK_KHfg',area: 'teamvideo_Pelicans'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Spurs'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Nuggets'},
       {id: 'mwXjQK_KHfg',area: 'teamvideo_Timberwolves'},{id: 'mwXjQK_KHfg',area: 'teamvideo_Thunder'},{id: 'IJwFvRmBoUw',area: 'teamvideo_Blazers'},
