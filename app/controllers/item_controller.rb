@@ -105,5 +105,9 @@ class ItemController < ApplicationController
       ItemUser.where(item_id:@item,user_id:current_user.id).destroy_all	
     end
   end
+  # トップ画面ポップアップメッセージ非表示
+  def popupcheck
+    User.find(current_user.id).update(popupmessage_flg:params[:check_flg])
+  end
 
 end

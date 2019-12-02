@@ -11,6 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      t.boolean :popupmessage_flg, default: false # (1の時は「本日中は非表示」、0の時は「継続表示」)
       t.references :team, foreign_key: true
       t.references :player, foreign_key: true
       ## Rememberable

@@ -7,51 +7,9 @@
     <%= render partial: "index_category_items_StatsLeader" %>
     <%= render partial: "index_category_items_popular" %>
   </div>
-  <div class="top_popup">
-    <div class="top_popup_main">
-      <p class="title">全世界nbaグッズ取り扱いサイト</p>
-      <div class="top_popup_main_ecsites">
-        <div class="top_popup_main_ecsites_left">
-          <p>対応ECサイト：</p>
-        </div>
-        <div class="top_popup_main_ecsites_right">
-          <% Ecsite.where.not("name LIKE ?", "(未対応)%").order(name: "ASC").each do |ecsite| %>
-            <li>
-              <%= link_to "#{ecsite.siteurl}",target: :_blank do %>
-                <%= image_tag "#{ecsite.imageurl}" %>
-              <% end %>
-            </li>
-          <% end %>
-        </div>
-      </div>
-      <div class="top_popup_main_use">
-        <div class="top_popup_main_use_left">
-          <p>使い方：</p>
-        </div>
-        <div class="top_popup_main_use_right">
-          <p>(1)対応ECサイト内からnbaグッズを検索</p>
-          <p>(2)買いたい商品が決まれば、そのサイトへジャンプ！</p>
-          <p>(3)取り置きしたい商品は取り置きグッズへ(ログイン後使用可能)</p>
-          <p>(4)その日のチームランキングを確認</p>
-          <p>(5)</p>
-          <p>(1)</p>
-          <p>(2)</p>
-          <p>(3)</p>
-          <p>(4)</p>
-          <p>(5)</p>
-          <p>(1)</p>
-          <p>(2)</p>
-          <p>(3)</p>
-          <p>(4)</p>
-          <p>(5)</p>
-        </div>
-      </div>
-    </div>
-    <div class="top_popup_bottom">
-      <input type="checkbox">本日中は、非表示にする。(ログイン後、使用可能となります！)
-    </div>
-    <i class="fas fa-times-circle"></i>
-  </div>
+  <% unless current_user.popupmessage_flg == true %>
+    <%= render partial: "index_popup" %>
+  <% end %>
 </div>
 <script>
 var swiper = new Swiper('.swiper-container', {

@@ -29,7 +29,6 @@ $(function(){
     }
     if (scrollRatio <= 0.01) {
       site_page += 1
-      // alert(location_url)
       $.ajax({
         url: '/item/additem',
         type: 'GET',
