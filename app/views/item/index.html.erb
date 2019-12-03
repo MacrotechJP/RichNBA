@@ -7,7 +7,7 @@
     <%= render partial: "index_category_items_StatsLeader" %>
     <%= render partial: "index_category_items_popular" %>
   </div>
-  <% unless current_user.popupmessage_flg == true %>
+  <% if current_user == nil || current_user.popupmessage_flg == false %>
     <%= render partial: "index_popup" %>
   <% end %>
 </div>

@@ -392,5 +392,36 @@ class Scraping
   #   end
   # end
   # Item.where(ecsite_id:23,delete_flg:1).destroy_all
-  
+
+  ## SPALDING商品一覧より各商品URLをDBに保存
+  # Item.where(ecsite_id:24).update(delete_flg:1)
+  # pageNumber = 0
+  # roop_flg = true
+  # while roop_flg == true do
+  #   pageNumber += 1
+  #   nexturl = "https://www.spalding.co.jp/shop/shopbrand.html?page="+pageNumber.to_s+"&search=&sort=&money1=&money2=&prize1=&company1=&content1=&originalcode1=&category=&subcategory="
+  #   agent = Mechanize.new
+  #   page = agent.get(nexturl)
+  #   element = page.search('.imgWrap')
+  #   elementsiteurl = page.search('.imgWrap a')
+  #   elementprice = page.search('.detail .price')
+  #   elementimage = page.search('.imgWrap img')
+  #   elementname = page.search('.detail .name a')
+  #   elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #     unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #       Item.create(name:elename.inner_text,
+  #       siteurl:"https://www.spalding.co.jp"+elesiteurl.get_attribute(:href),
+  #       price:eleprice.inner_text.gsub(",","").gsub("円",""),
+  #       ecsite_id:24,
+  #       imageurl:eleimage.get_attribute(:src))
+  #     else
+  #       Item.find_by(siteurl:"https://www.spalding.co.jp"+elesiteurl.get_attribute(:href),ecsite_id:24).update(delete_flg:0)
+  #     end
+  #   end
+  #   if roop_flg == true && element.size() < 50 then
+  #     roop_flg = false
+  #   end
+  # end
+  # Item.where(ecsite_id:24,delete_flg:1).destroy_all
+
 end

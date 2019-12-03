@@ -107,7 +107,9 @@ class ItemController < ApplicationController
   end
   # トップ画面ポップアップメッセージ非表示
   def popupcheck
-    User.find(current_user.id).update(popupmessage_flg:params[:check_flg])
+    if user_signed_in? then
+      User.find(current_user.id).update(popupmessage_flg:params[:check_flg])
+    end
   end
 
 end
