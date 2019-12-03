@@ -84,7 +84,7 @@ class ItemController < ApplicationController
       when "price desc" then
         @order = "PRICE DESC"
       when "price asc" then
-        @order = "ID DESC"
+        @order = "PRICE ASC"
       end
       @items_all = @items_player.order(@order).page(params[:next_url])
     end
