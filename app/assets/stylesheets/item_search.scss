@@ -137,9 +137,6 @@
         }
       }
       .active{
-        &:before {
-          transform: rotateX(-180deg);
-        }
         .sel__placeholder {
           visibility: hidden;
           &:before {

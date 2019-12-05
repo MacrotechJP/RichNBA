@@ -1,6 +1,6 @@
 class Scraping
 
-  ## 選手、チームカラム追加
+  ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|
   #   Player.all.each do |player|
   #     if item.name.include?(player.name) then
@@ -10,6 +10,33 @@ class Scraping
   #   Team.all.each do |team|
   #     if item.name.include?(team.name.gsub(/・.*/,"")) || item.name.include?(team.name.gsub(/.*・/,"")) || item.name.include?(team.en_name) then
   #       item.update(team_id:team.id)
+  #     end
+  #   end
+  # end
+
+  ## (未完成)最新選手一覧登録
+  # team = {
+  #   "Milwaukee Bucks": "ミルウォーキー・バックス", "Boston Celtics": "ボストン・セルティックス", "Miami Heat": "マイアミ・ヒート",
+  #   "Toronto Raptors": "トロント・ラプターズ", "Philadelphia 76ers": "フィラデルフィア・セブンティシクサーズ", "Indiana Pacers": "インディアナ・ペイサーズ",
+  #   "Brooklyn Nets": "ブルックリン・ネッツ", "Orlando Magic": "オーランド・マジック", "Washington Wizards": "ワシントン・ウィザーズ",
+  #   "Charlotte Hornets": "シャーロット・ホーネッツ", "Chicago Bulls": "シカゴ・ブルズ", "Cleveland Cavaliers": "クリーブランド・キャバリアーズ",
+  #   "Detroit Pistons": "デトロイト・ピストンズ", "Atlanta Hawks": "アトランタ・ホークス", "New York Knicks": "ニューヨーク・ニックス",
+  #   "Los Angeles Lakers": "ロサンゼルス・レイカーズ", "Denver Nuggets": "デンバー・ナゲッツ", "LA Clippers": "ロサンゼルス・クリッパーズ",
+  #   "Dallas Mavericks": "ダラス・マーベリックス", "Utah Jazz": "ユタ・ジャズ", "Houston Rockets": "ヒューストン・ロケッツ",
+  #   "Phoenix Suns": "フェニックス・サンズ", "Minnesota Timberwolves": "ミネソタ・ティンバーウルブズ", "Sacramento Kings": "サクラメント・キングス",
+  #   "New Orleans Pelicans": "ニューオーリンズ・ペリカンズ", "San Antonio Spurs": "サンアントニオ・スパーズ", "Memphis Grizzlies": "メンフィス・グリズリーズ",
+  #   "Oklahoma City Thunder": "オクラホマシティ・サンダー", "Portland Trail Blazers": "ポートランド・トレイルブレイザーズ", "Golden State Warriors": "ゴールデンステート・ウォリアーズ",
+  # }
+  # url = "https://www.nba.com/players"
+  # agent = Mechanize.new
+  # page = agent.get(url)
+  # element = page.search('.row.playerList')
+  # puts element.size()
+  # element.each_with_index do |ele, rank|
+  #   rank -= 15 if rank >= 15 
+  #   team.each_with_index do |(key,val),i|
+  #     if ele.get_attribute(:title) == key.to_s then
+  #       Team.find_by(name:val).update(ranking:rank+1)
   #     end
   #   end
   # end
