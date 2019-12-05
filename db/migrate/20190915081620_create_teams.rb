@@ -6,6 +6,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :conference
       t.integer :ranking
       t.string :imageurl
+      t.string :youtube_url
     end
   end
 end

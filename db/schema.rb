@@ -46,8 +46,9 @@ ActiveRecord::Schema.define(version: 2019_11_08_130915) do
 
   create_table "players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "search_keyword"
     t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_130915) do
     t.string "conference"
     t.integer "ranking"
     t.string "imageurl"
+    t.string "youtube_url"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -42,6 +42,7 @@ class ItemController < ApplicationController
   def index
     @items_popular = Item.all.order(click: "DESC").limit(10) #人気の商品
     @items_all = Item.all.page(params[:page])                #最新の商品
+    gon.youtube = Team.all                                   #youtubeApiUrl取得
   end
 
   # 商品検索
