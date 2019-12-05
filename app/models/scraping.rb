@@ -1,5 +1,10 @@
 class Scraping
 
+  # 為替値取得
+  doll_agent = Mechanize.new
+  doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
+  doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+
   ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|
   #   Player.all.each do |player|
@@ -14,29 +19,73 @@ class Scraping
   #   end
   # end
 
-  ## (未完成)最新選手一覧登録
-  # team = {
-  #   "Milwaukee Bucks": "ミルウォーキー・バックス", "Boston Celtics": "ボストン・セルティックス", "Miami Heat": "マイアミ・ヒート",
-  #   "Toronto Raptors": "トロント・ラプターズ", "Philadelphia 76ers": "フィラデルフィア・セブンティシクサーズ", "Indiana Pacers": "インディアナ・ペイサーズ",
-  #   "Brooklyn Nets": "ブルックリン・ネッツ", "Orlando Magic": "オーランド・マジック", "Washington Wizards": "ワシントン・ウィザーズ",
-  #   "Charlotte Hornets": "シャーロット・ホーネッツ", "Chicago Bulls": "シカゴ・ブルズ", "Cleveland Cavaliers": "クリーブランド・キャバリアーズ",
-  #   "Detroit Pistons": "デトロイト・ピストンズ", "Atlanta Hawks": "アトランタ・ホークス", "New York Knicks": "ニューヨーク・ニックス",
-  #   "Los Angeles Lakers": "ロサンゼルス・レイカーズ", "Denver Nuggets": "デンバー・ナゲッツ", "LA Clippers": "ロサンゼルス・クリッパーズ",
-  #   "Dallas Mavericks": "ダラス・マーベリックス", "Utah Jazz": "ユタ・ジャズ", "Houston Rockets": "ヒューストン・ロケッツ",
-  #   "Phoenix Suns": "フェニックス・サンズ", "Minnesota Timberwolves": "ミネソタ・ティンバーウルブズ", "Sacramento Kings": "サクラメント・キングス",
-  #   "New Orleans Pelicans": "ニューオーリンズ・ペリカンズ", "San Antonio Spurs": "サンアントニオ・スパーズ", "Memphis Grizzlies": "メンフィス・グリズリーズ",
-  #   "Oklahoma City Thunder": "オクラホマシティ・サンダー", "Portland Trail Blazers": "ポートランド・トレイルブレイザーズ", "Golden State Warriors": "ゴールデンステート・ウォリアーズ",
-  # }
-  # url = "https://www.nba.com/players"
-  # agent = Mechanize.new
-  # page = agent.get(url)
-  # element = page.search('.row.playerList')
-  # puts element.size()
-  # element.each_with_index do |ele, rank|
-  #   rank -= 15 if rank >= 15 
-  #   team.each_with_index do |(key,val),i|
-  #     if ele.get_attribute(:title) == key.to_s then
-  #       Team.find_by(name:val).update(ranking:rank+1)
+  ## 最新選手一覧登録
+  # player_url = 
+  #           {"11": "https://www.espn.com/nba/team/roster/_/name/atl/atlanta-hawks",
+  #             "1": "https://www.espn.com/nba/team/roster/_/name/bos/boston-celtics",
+  #             "2": "https://www.espn.com/nba/team/roster/_/name/bkn/brooklyn-nets",
+  #             "12": "https://www.espn.com/nba/team/roster/_/name/cha/charlotte-hornets",
+  #             "6": "https://www.espn.com/nba/team/roster/_/name/chi/chicago-bulls",
+  #             "7": "https://www.espn.com/nba/team/roster/_/name/cle/cleveland-cavaliers",
+  #             "16": "https://www.espn.com/nba/team/roster/_/name/dal/dallas-mavericks",
+  #             "21": "https://www.espn.com/nba/team/roster/_/name/den/denver-nuggets",
+  #             "8": "https://www.espn.com/nba/team/roster/_/name/det/detroit-pistons",
+  #             "26": "https://www.espn.com/nba/team/roster/_/name/gs/golden-state-warriors",
+  #             "17": "https://www.espn.com/nba/team/roster/_/name/hou/houston-rockets",
+  #             "9": "https://www.espn.com/nba/team/roster/_/name/ind/indiana-pacers",
+  #             "27": "https://www.espn.com/nba/team/roster/_/name/lac/la-clippers",
+  #             "28": "https://www.espn.com/nba/team/roster/_/name/lal/los-angeles-lakers",
+  #             "18": "https://www.espn.com/nba/team/roster/_/name/mem/memphis-grizzlies",
+  #             "13": "https://www.espn.com/nba/team/roster/_/name/mia/miami-heat",
+  #             "10": "https://www.espn.com/nba/team/roster/_/name/mil/milwaukee-bucks",
+  #             "22": "https://www.espn.com/nba/team/roster/_/name/min/minnesota-timberwolves",
+  #             "19": "https://www.espn.com/nba/team/roster/_/name/no/new-orleans-pelicans",
+  #             "3": "https://www.espn.com/nba/team/roster/_/name/ny/new-york-knicks",
+  #             "23": "https://www.espn.com/nba/team/roster/_/name/okc/oklahoma-city-thunder",
+  #             "14": "https://www.espn.com/nba/team/roster/_/name/orl/orlando-magic",
+  #             "4": "https://www.espn.com/nba/team/roster/_/name/phi/philadelphia-76ers",
+  #             "29": "https://www.espn.com/nba/team/roster/_/name/phx/phoenix-suns",
+  #             "24": "https://www.espn.com/nba/team/roster/_/name/por/portland-trail-blazers",
+  #             "30": "https://www.espn.com/nba/team/roster/_/name/sac/sacramento-kings",
+  #             "20": "https://www.espn.com/nba/team/roster/_/name/sa/san-antonio-spurs",
+  #             "5": "https://www.espn.com/nba/team/roster/_/name/tor/toronto-raptors",
+  #             "25": "https://www.espn.com/nba/team/roster/_/name/utah/utah-jazz",
+  #             "15": "https://www.espn.com/nba/team/roster/_/name/wsh/washington-wizards",
+  #           }
+  # Player.all.update(team_id:nil)
+  # player_url.each_with_index do |(key,val),i|
+  #   nexturl = val
+  #   agent = Mechanize.new
+  #   page = agent.get(nexturl)
+  #   elementname = page.search('.Table__TR.Table__TR--lg.Table__even .Table__TD:nth-of-type(2) span a')
+  #   elementposition = page.search('.Table__TR.Table__TR--lg.Table__even .Table__TD:nth-of-type(3) span')
+  #   elementage = page.search('.Table__TR.Table__TR--lg.Table__even .Table__TD:nth-of-type(4) span')
+  #   elementsalary = page.search('.Table__TR.Table__TR--lg.Table__even .Table__TD:nth-of-type(8) span')
+  #   elementimageurl = page.search('.Table__TR.Table__TR--lg.Table__even .Table__TD:nth-of-type(1) img')
+  #   elementname.zip(elementposition,elementage,elementsalary,elementimageurl).each do |elename, eleposition,eleage,elesalary,eleimageurl|
+  #     if elesalary.inner_text.to_s == "--" then 
+  #       elesalary = nil 
+  #     else
+  #       elesalary = elesalary.inner_text.gsub("$","").gsub(",","").gsub(",","").to_i * doll_element
+  #     end
+  #     unless Player.where(name:elename.inner_text).exists?
+  #       Player.create(
+  #         name:elename.inner_text,
+  #         position:eleposition.inner_text,
+  #         age:eleage.inner_text,
+  #         salary:elesalary,
+  #         image_url:eleimageurl.get_attribute(:alt),
+  #         team_id:key.to_s
+  #       )
+  #     else
+  #       Player.find_by(name:elename.inner_text).update(
+  #         name:elename.inner_text,
+  #         position:eleposition.inner_text,
+  #         age:eleage.inner_text,
+  #         salary:elesalary,
+  #         image_url:eleimageurl.get_attribute(:alt),
+  #         team_id:key.to_s
+  #       )
   #     end
   #   end
   # end
@@ -145,11 +194,6 @@ class Scraping
   #   end
   # end
   # Item.where(ecsite_id:1,delete_flg:1).destroy_all
-
-  # 為替値取得
-  # doll_agent = Mechanize.new
-  # doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
-  # doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
 
   ## Kyrie4商品一覧より各商品URLをDBに保存
   # search_genre = ["http://www.kyrieirving-shoes.us.com/kyrie-irving-shoes-c-106.html?page=1&sort=20a",
