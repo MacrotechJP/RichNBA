@@ -46,8 +46,11 @@ $(function(){
         dataType: 'json'
       }).done(function(data){
           /* 通信成功時 */
+          // alert(gon.current_user)
           $.each(data[0], function(index, item){
-            if(data[1].indexOf(item.id) >= 0){
+            if(gon.current_user == false){
+              var checkitem = ""
+            }else if(data[1].indexOf(item.id) >= 0){
               var checkitem = '<i class="fas fa-clipboard-check yet_check"></i>'
             }else{
               var checkitem = '<i class="far fa-clipboard not_check"></i>'

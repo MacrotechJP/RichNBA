@@ -81,3 +81,4 @@ gem 'sqlite3', group: [:development, :test]
 gem 'rack-attack' #Dos攻撃対策gem
 gem 'brakeman', require: false # ソースコードを解析し、脆弱性になりかねない危険なコードを見つけ出す
 gem 'google-analytics-rails'
+gem 'nokogiri'

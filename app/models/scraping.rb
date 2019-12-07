@@ -1,20 +1,44 @@
 class Scraping
-
+  ## 目次 ##
+  # ライブラリ読み込み
   # 為替値取得
-  doll_agent = Mechanize.new
-  doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
-  doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+  # チーム最新試合ハイライト動画取得
+  # 最新選手一覧登録
+  # チームランキング調整
+  # Stage商品一覧より各商品情報をDBに保存
+  # BB KONG商品一覧より各商品情報をDBに保存
+  # ROCKERS商品一覧より各商品情報をDBに保存
+  # Kyrie4商品一覧より各商品情報をDBに保存
+  # LockerRoom商品一覧より各商品情報をDBに保存
+  # SLAM商品一覧より各商品情報をDBに保存
+  # Rakuten商品一覧より各商品情報をDBに保存
+  # SELECTION商品一覧より各商品情報をDBに保存
+  # XEBIO商品一覧より各商品情報をDBに保存
+  # SPALDING商品一覧より各商品情報をDBに保存
+  # 既存商品（選手、チームカラム追加）
 
-  ## 既存商品（選手、チームカラム追加）
-  # Item.all.each do |item|
-  #   Player.all.each do |player|
-  #     if item.name.include?(player.name) then
-  #       item.update(player_id:player.id,team_id:player.team_id)
-  #     end
+  ## ライブラリ読み込み
+  # require 'open-uri'  # URLにアクセスするためのライブラリの読み込み
+  # require 'nokogiri'  # Nokogiriライブラリの読み込み
+
+  ## 為替値取得
+  # doll_agent = Mechanize.new
+  # doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
+  # doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+
+  ## チーム最新試合ハイライト動画取得
+  # Team.all.each do |team|
+  #   url = 'https://www.youtube.com/results?search_query=nba+'+team.en_name
+  #   charset = nil
+  #   html = open(url) do |f|
+  #     charset = f.charset # 文字種別を取得
+  #     f.read              # htmlを読み込んで変数htmlに渡す
   #   end
-  #   Team.all.each do |team|
-  #     if item.name.include?(team.name.gsub(/・.*/,"")) || item.name.include?(team.name.gsub(/.*・/,"")) || item.name.include?(team.en_name) then
-  #       item.update(team_id:team.id)
+  #   doc = Nokogiri::HTML.parse(html, nil, charset)
+  #   doc.css(".yt-uix-sessionlink.spf-link").each do |link|
+  #     if link.inner_text == team.name
+  #       puts team.name+":"+link.get_attribute(:href).gsub(/.*=/,"")
+  #       team.update(youtube_url:link.get_attribute(:href).gsub(/.*=/,""))
   #     end
   #   end
   # end
@@ -90,7 +114,7 @@ class Scraping
   #   end
   # end
   
-  ##チームランキング調整
+  # ## チームランキング調整
   # team = {
   #   "Milwaukee Bucks": "ミルウォーキー・バックス", "Boston Celtics": "ボストン・セルティックス", "Miami Heat": "マイアミ・ヒート",
   #   "Toronto Raptors": "トロント・ラプターズ", "Philadelphia 76ers": "フィラデルフィア・セブンティシクサーズ", "Indiana Pacers": "インディアナ・ペイサーズ",
@@ -116,7 +140,7 @@ class Scraping
   #   end
   # end
 
-  ## Stage商品一覧より各商品URLをDBに保存
+  # ## Stage商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:4).update(delete_flg:1)
   # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
   # while true do
@@ -142,7 +166,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:4,delete_flg:1).destroy_all
 
-  ## BB KONG商品一覧より各商品URLをDBに保存
+  # ## BB KONG商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:11).update(delete_flg:1)
   # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
   # while true do
@@ -163,15 +187,14 @@ class Scraping
   #         Item.find_by(siteurl:elesiteurl.get_attribute(:href),ecsite_id:11).update(delete_flg:0)
   #       end
   #     end
-        
   #     nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html"+element.get_attribute(:href)
   #   end
   # end
   # Item.where(ecsite_id:11,delete_flg:1).destroy_all
 
-  ## ROCKERS商品一覧より各商品URLをDBに保存
-  # Item.where(ecsite_id:1).update(delete_flg:1)
-  # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=1"
+  ## ROCKERS商品一覧より各商品情報をDBに保存
+  # Item.where(ecsite_id:1).update(delete_flg:0)
+  # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=610"
   # while true do
   #   agent = Mechanize.new
   #   page = agent.get(nexturl)
@@ -183,19 +206,27 @@ class Scraping
   #     elementprice = page.search('.price .price_search')
   #     elementimage = page.search('.imgBox img')
   #     elementname = page.search('.product_list .name a')
-  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       unless Item.where(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href)).exists?
-  #         Item.create(name:elename.inner_text,siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub(",","").gsub("円(税込)",""),ecsite_id:1,imageurl:eleimage.get_attribute(:src))
-  #       else
-  #         Item.find_by(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),ecsite_id:1).update(delete_flg:0)
+  #     size1 = elementsiteurl.size()
+  #     size2 = elementprice.size()
+  #     size3 = elementimage.size()
+  #     size4 = elementname.size()
+  #     if size1==size2 && size1==size3 && size1==size4 && size2==size3 && size2==size4 && size3==size4 then 
+  #       elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #         unless Item.where(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href)).exists?
+  #           Item.create(name:elename.inner_text,siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),price:eleprice.inner_text.gsub(",","").gsub(",","").gsub("円(税込)",""),ecsite_id:1,imageurl:eleimage.get_attribute(:src))
+  #         else
+  #           Item.find_by(siteurl:"https://jordan.co.jp/"+elesiteurl.get_attribute(:href),ecsite_id:1).update(delete_flg:0)
+  #         end
   #       end
+  #     else
+  #       puts "no"
   #     end
   #     nexturl = "https://jordan.co.jp/"+element.to_s
   #   end
   # end
   # Item.where(ecsite_id:1,delete_flg:1).destroy_all
 
-  ## Kyrie4商品一覧より各商品URLをDBに保存
+  ## Kyrie4商品一覧より各商品情報をDBに保存
   # search_genre = ["http://www.kyrieirving-shoes.us.com/kyrie-irving-shoes-c-106.html?page=1&sort=20a",
   #   "http://www.kyrieirving-shoes.us.com/kevin-durant-shoes-c-98.html?page=1&sort=20a",
   #   "http://www.kyrieirving-shoes.us.com/kobe-bryant-shoes-c-101.html?page=1&sort=20a",
@@ -233,40 +264,40 @@ class Scraping
   # end
   # Item.where(ecsite_id:8,delete_flg:1).destroy_all
   
-  ## （要修正）LockerRoom商品一覧より各商品URLをDBに保存
+  ## LockerRoom商品一覧より各商品情報をDBに保存
   # pageNumber = 1
-  # team_url = 
-  #           {"11": "https://www.lids.com/nba-atlanta-hawks/o-1336+t-25033806+z-93057-3658341029?pageSize=72&pageNumber=",
-  #             "1": "https://www.lids.com/nba-boston-celtics/o-1314+t-03369442+z-753-2689677207?pageSize=72&pageNumber=",
-  #             "2": "https://www.lids.com/nba-brooklyn-nets/o-7958+t-69474976+z-8599-3395871562?pageSize=72&pageNumber=",
-  #             "12": "https://www.lids.com/nba-charlotte-hornets/o-1358+t-36032811+z-97397-2978431882?pageSize=72&pageNumber=",
-  #             "6": "https://www.lids.com/nba-chicago-bulls/o-2436+t-03035134+z-95761-2210095797?pageSize=72&pageNumber=",
-  #             "7": "https://www.lids.com/nba-cleveland-cavaliers/o-2469+t-58927391+z-94842-930820000?pageSize=72&pageNumber=",
-  #             "16": "https://www.lids.com/nba-dallas-mavericks/o-1381+t-70254036+z-93460-1649608898?pageSize=72&pageNumber=",
-  #             "21": "https://www.lids.com/nba-denver-nuggets/o-1303+t-58581771+z-98779-3142836763?pageSize=72&pageNumber=",
-  #             "8": "https://www.lids.com/nba-detroit-pistons/o-3547+t-47705116+z-92029-2092700075?pageSize=72&pageNumber=",
-  #             "26": "https://www.lids.com/nba-golden-state-warriors/o-2481+t-14699552+z-96875-4006188394?pageSize=72&pageNumber=",
-  #             "17": "https://www.lids.com/nba-houston-rockets/o-4614+t-81588486+z-99473-4231562024?pageSize=72&pageNumber=",
-  #             "9": "https://www.lids.com/nba-indiana-pacers/o-2458+t-92146265+z-98839-1905179705?pageSize=72&pageNumber=",
-  #             "27": "https://www.lids.com/nba-la-clippers/o-6869+t-69369678+z-8208-4048299098?pageSize=72&pageNumber=",
-  #             "28": "https://www.lids.com/nba-los-angeles-lakers/o-7936+t-58368591+z-8297-1132464865?pageSize=72&pageNumber=",
-  #             "18": "https://www.lids.com/nba-memphis-grizzlies/o-2469+t-92709636+z-96246-3283194474?pageSize=72&pageNumber=",
-  #             "13": "https://www.lids.com/nba-miami-heat/o-1381+t-70814137+z-93939-1789264869?pageSize=72&pageNumber=",
-  #             "10": "https://www.lids.com/nba-milwaukee-bucks/o-2481+t-36149627+z-96866-3406917104?pageSize=72&pageNumber=",
-  #             "22": "https://www.lids.com/nba-minnesota-timberwolves/o-4614+t-58256351+z-97942-4079700343?pageSize=72&pageNumber=",
-  #             "19": "https://www.lids.com/nba-new-orleans-pelicans/o-1347+t-58704174+z-92431-269462119?pageSize=72&pageNumber=",
-  #             "3": "https://www.lids.com/nba-new-york-knicks/o-3525+t-47366386+z-96537-3858685569?pageSize=72&pageNumber=",
-  #             "23": "https://www.lids.com/nba-oklahoma-city-thunder/o-3536+t-81817432+z-97947-4212551096?pageSize=72&pageNumber=",
-  #             "14": "https://www.lids.com/nba-orlando-magic/o-3581+t-14250855+z-98827-1195550213?pageSize=72&pageNumber=",
-  #             "4": "https://www.lids.com/nba-philadelphia-76ers/o-1358+t-92585323+z-96452-3140600193?pageSize=72&pageNumber=",
-  #             "29": "https://www.lids.com/nba-phoenix-suns/o-4603+t-81818624+z-96653-233883918?pageSize=72&pageNumber=",
-  #             "24": "https://www.lids.com/nba-portland-trail-blazers/o-3592+t-25363192+z-94828-550147839?pageSize=72&pageNumber=",
-  #             "30": "https://www.lids.com/nba-sacramento-kings/o-7969+t-70474271+z-790-2908558801?pageSize=72&pageNumber=",
-  #             "20": "https://www.lids.com/nba-san-antonio-spurs/o-4614+t-47813138+z-8930-196576080?pageSize=72&pageNumber=",
-  #             "5": "https://www.lids.com/nba-toronto-raptors/o-1347+t-25360839+z-98845-2874563825?pageSize=72&pageNumber=",
-  #             "25": "https://www.lids.com/nba-utah-jazz/o-2414+t-58580874+z-91618-3977262962?pageSize=72&pageNumber=",
-  #             "15": "https://www.lids.com/nba-washington-wizards/o-3503+t-25923131+z-98939-2702724964?pageSize=72&pageNumber=",
-  #           }
+  # team_url = {
+            #  "11": "https://www.lids.com/nba-atlanta-hawks/o-1336+t-25033806+z-93057-3658341029?pageSize=72&pageNumber=",
+            #   "1": "https://www.lids.com/nba-boston-celtics/o-1314+t-03369442+z-753-2689677207?pageSize=72&pageNumber=",
+            #   "2": "https://www.lids.com/nba-brooklyn-nets/o-7958+t-69474976+z-8599-3395871562?pageSize=72&pageNumber=",
+            #   "12": "https://www.lids.com/nba-charlotte-hornets/o-1358+t-36032811+z-97397-2978431882?pageSize=72&pageNumber=",
+            #   "6": "https://www.lids.com/nba-chicago-bulls/o-2436+t-03035134+z-95761-2210095797?pageSize=72&pageNumber=",
+            #   "7": "https://www.lids.com/nba-cleveland-cavaliers/o-2469+t-58927391+z-94842-930820000?pageSize=72&pageNumber=",
+            #   "16": "https://www.lids.com/nba-dallas-mavericks/o-1381+t-70254036+z-93460-1649608898?pageSize=72&pageNumber=",
+            #   "21": "https://www.lids.com/nba-denver-nuggets/o-1303+t-58581771+z-98779-3142836763?pageSize=72&pageNumber=",
+            #   "8": "https://www.lids.com/nba-detroit-pistons/o-3547+t-47705116+z-92029-2092700075?pageSize=72&pageNumber=",
+            #   "26": "https://www.lids.com/nba-golden-state-warriors/o-2481+t-14699552+z-96875-4006188394?pageSize=72&pageNumber=",
+            #   "17": "https://www.lids.com/nba-houston-rockets/o-4614+t-81588486+z-99473-4231562024?pageSize=72&pageNumber=",
+              # "9": "https://www.lids.com/nba-indiana-pacers/o-2458+t-92146265+z-98839-1905179705?pageSize=72&pageNumber=",
+              # "27": "https://www.lids.com/nba-la-clippers/o-6869+t-69369678+z-8208-4048299098?pageSize=72&pageNumber=",
+              # "28": "https://www.lids.com/nba-los-angeles-lakers/o-7936+t-58368591+z-8297-1132464865?pageSize=72&pageNumber=",
+              # "18": "https://www.lids.com/nba-memphis-grizzlies/o-2469+t-92709636+z-96246-3283194474?pageSize=72&pageNumber=",
+              # "13": "https://www.lids.com/nba-miami-heat/o-1381+t-70814137+z-93939-1789264869?pageSize=72&pageNumber=",
+              # "10": "https://www.lids.com/nba-milwaukee-bucks/o-2481+t-36149627+z-96866-3406917104?pageSize=72&pageNumber=",
+              # "22": "https://www.lids.com/nba-minnesota-timberwolves/o-4614+t-58256351+z-97942-4079700343?pageSize=72&pageNumber=",
+              # "19": "https://www.lids.com/nba-new-orleans-pelicans/o-1347+t-58704174+z-92431-269462119?pageSize=72&pageNumber=",
+              # "3": "https://www.lids.com/nba-new-york-knicks/o-3525+t-47366386+z-96537-3858685569?pageSize=72&pageNumber=",
+              # "23": "https://www.lids.com/nba-oklahoma-city-thunder/o-3536+t-81817432+z-97947-4212551096?pageSize=72&pageNumber=",
+              # "14": "https://www.lids.com/nba-orlando-magic/o-3581+t-14250855+z-98827-1195550213?pageSize=72&pageNumber=",
+            #   "4": "https://www.lids.com/nba-philadelphia-76ers/o-1358+t-92585323+z-96452-3140600193?pageSize=72&pageNumber=",
+            #   "29": "https://www.lids.com/nba-phoenix-suns/o-4603+t-81818624+z-96653-233883918?pageSize=72&pageNumber=",
+            #   "24": "https://www.lids.com/nba-portland-trail-blazers/o-3592+t-25363192+z-94828-550147839?pageSize=72&pageNumber=",
+            #   "30": "https://www.lids.com/nba-sacramento-kings/o-7969+t-70474271+z-790-2908558801?pageSize=72&pageNumber=",
+            #   "20": "https://www.lids.com/nba-san-antonio-spurs/o-4614+t-47813138+z-8930-196576080?pageSize=72&pageNumber=",
+            #   "5": "https://www.lids.com/nba-toronto-raptors/o-1347+t-25360839+z-98845-2874563825?pageSize=72&pageNumber=",
+            #   "25": "https://www.lids.com/nba-utah-jazz/o-2414+t-58580874+z-91618-3977262962?pageSize=72&pageNumber=",
+            #   "15": "https://www.lids.com/nba-washington-wizards/o-3503+t-25923131+z-98939-2702724964?pageSize=72&pageNumber=",
+            # }
   # Item.where(ecsite_id:15).update(delete_flg:1)
   # team_url.each_with_index do |(key,val),i|
   #   pageNumber = 0
@@ -282,22 +313,28 @@ class Scraping
   #       roop_flg = false
   #     else
   #       elementsiteurl = page.search('.product-image-container a')
-  #       elementprice = page.search('.column .price-tag span:first-child')
+  #       elementprice = page.search('.column .price-tag:first-child')
   #       elementimage = page.search('.product-image-container img')
   #       elementname = page.search('.product-card-title a')
   #       elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #         Item.create(name:elename.inner_text,
-  #           siteurl:"https://www.lids.com/"+elesiteurl.get_attribute(:href),
-  #           price:eleprice.inner_text.gsub("Sale:","").gsub("$","").to_i * doll_element,
-  #           team_id:team_key.to_s ,ecsite_id:15,
-  #           imageurl:"http:"+eleimage.get_attribute(:src))
+  #         unless Item.where(siteurl:"https://www.lids.com/"+elesiteurl.get_attribute(:href)).exists?
+  #           Item.create(
+  #             name:elename.inner_text,
+  #             siteurl:"https://www.lids.com/"+elesiteurl.get_attribute(:href),
+  #             price:eleprice.inner_text.gsub("Sale:","").gsub("$","").to_i * doll_element,
+  #             team_id:team_key.to_s ,ecsite_id:15,
+  #             imageurl:"http:"+eleimage.get_attribute(:src)
+  #           )
+  #         else
+  #           Item.find_by(siteurl:"https://www.lids.com/"+elesiteurl.get_attribute(:href),ecsite_id:15).update(delete_flg:0)
+  #         end
   #       end
   #     end
   #   end
   # end
   # Item.where(ecsite_id:15,delete_flg:1).destroy_all
 
-  ## SLAM商品一覧より各商品URLをDBに保存
+  ## SLAM商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:12).update(delete_flg:1)
   # pageNumber = 0
   # while true do
@@ -328,7 +365,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:12,delete_flg:1).destroy_all
 
-  ## Rakuten商品一覧より各商品URLをDBに保存
+  ## Rakuten商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:5).update(delete_flg:1)
   # pageNumber = 0
   # while true do
@@ -359,7 +396,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:5,delete_flg:1).destroy_all
 
-  ## SELECTION商品一覧より各商品URLをDBに保存
+  ## SELECTION商品一覧より各商品情報をDBに保存
   # team_url ={ 
   #           "11": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Atlanta+Hawks&page=",
   #             "1": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Boston+Celtics,BostonCeltics&page=",
@@ -433,7 +470,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:9,delete_flg:1).destroy_all
   
-  ## XEBIO商品一覧より各商品URLをDBに保存
+  ## XEBIO商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:23).update(delete_flg:1)
   # pageNumber = 0
   # roop_flg = true
@@ -464,7 +501,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:23,delete_flg:1).destroy_all
 
-  ## SPALDING商品一覧より各商品URLをDBに保存
+  ## SPALDING商品一覧より各商品情報をDBに保存
   # Item.where(ecsite_id:24).update(delete_flg:1)
   # pageNumber = 0
   # roop_flg = true
@@ -494,5 +531,44 @@ class Scraping
   #   end
   # end
   # Item.where(ecsite_id:24,delete_flg:1).destroy_all
+
+  ## 既存商品（選手、チームカラム追加）
+  # Item.all.each do |item|
+  #   Player.all.each do |player|
+  #     if item.name.include?(player.name) || (item.name.include?(player.search_keyword.to_s.gsub(/.*・/,"")) && item.name.include?(player.search_keyword.to_s.gsub(/・.*/,"")) && player.search_keyword.to_s != "") then  
+  #       item.update(player_id:player.id,team_id:player.team_id)
+  #     end
+  #   end
+  #   Team.all.each do |team|
+  #     if item.name.include?(team.name.gsub(/・.*/,"")) || item.name.include?(team.name.gsub(/.*・/,"")) || item.name.include?(team.en_name) && team.name.gsub(/・.*/,"") != "ロサンゼルス" then
+  #       item.update(team_id:team.id)
+  #     end
+  #   end
+  #   puts item.id
+  # end
+
+  # スクレイピング先のURL
+  # url = 'http://www.yahoo.co.jp/'
+  # url = 'https://www.youtube.com/results?search_query=Celtics'
+  # charset = nil
+  # html = open(url) do |f|
+  #   charset = f.charset # 文字種別を取得
+  #   f.read # htmlを読み込んで変数htmlに渡す
+  # end
+  # sleep(5)
+  # htmlをパース(解析)してオブジェクトを生成
+  # doc = Nokogiri::HTML.parse(html, nil, charset)
+  # flg = false
+  # doc.css(".yt-uix-sessionlink.spf-link").each do |link|
+  #   if link.inner_text == "ボストン・セルティックス"
+  #     puts link.get_attribute(:href)
+  #   end
+    # if flg == true
+    #   puts link
+    # end
+  # end
+  # タイトルを表示
+  # puts doc.include?("webCommandMetadata")
+  # puts doc
 
 end

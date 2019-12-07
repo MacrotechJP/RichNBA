@@ -19,11 +19,7 @@
               <% Player.where(team_id: team.id).order(salary: "DESC").each do |player| %>
                 <a href="/search?player=<%=player.id%>">
                   <div class="main_top_right_team_player_left_center_star">
-                    <% if player.name.gsub(/ .*/,"") == player.name.gsub(/.* /,"") then %>
-                      <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%></h3>
-                    <% else %>
-                      <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%><br><%=player.name.gsub(/.* /,"")%></h3>
-                    <% end %>
+                    <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%><br><%=player.name.gsub(/.* /,"")%></h3>
                   </div>
                 </a>
               <% end %>
@@ -89,11 +85,7 @@
               <% Player.where(team_id: team.id).order(salary: "DESC").each do |player| %>
                 <a href="/search?player=<%=player.id%>">
                   <div class="main_top_right_team_player_left_center_star">
-                    <% if player.name.gsub(/ .*/,"") == player.name.gsub(/.* /,"") then %>
-                      <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%></h3>
-                    <% else %>
-                      <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%><br><%=player.name.gsub(/.* /,"")%></h3>
-                    <% end %>
+                    <h3 id="<%=team.en_name%><%=player.id%>"><%=player.name.gsub(/ .*/,"")%><br><%=player.name.gsub(/.* /,"")%></h3>
                   </div>
                 </a>
               <% end %>

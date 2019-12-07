@@ -62,6 +62,11 @@ class ItemController < ApplicationController
     gon.ecsite = params[:ecsite]
     gon.team = params[:team]
     gon.player = params[:player]
+    if user_signed_in? then
+      gon.current_user = true
+    else
+      gon.current_user = false
+    end
   end
 
   # 非同期クリック処理
