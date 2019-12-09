@@ -21,18 +21,18 @@ class Scraping
   # 既存商品（選手、チームカラム追加）
 
   ## ライブラリ読み込み
-  require 'open-uri'  # URLにアクセスするためのライブラリの読み込み
-  require 'nokogiri'  # Nokogiriライブラリの読み込み
+  # require 'open-uri'  # URLにアクセスするためのライブラリの読み込み
+  # require 'nokogiri'  # Nokogiriライブラリの読み込み
 
   ## 為替値取得(ドル)
-  doll_agent = Mechanize.new
-  doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
-  doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+  # doll_agent = Mechanize.new
+  # doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
+  # doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
 
   ## 為替値取得(インド・ルピー)
-  rs_agent = Mechanize.new
-  rs_page = rs_agent.get("https://info.finance.yahoo.co.jp/fx/convert/?a=1&s=INR&t=JPY")
-  rs_element = rs_page.search('.price.noLine').inner_text.to_f
+  # rs_agent = Mechanize.new
+  # rs_page = rs_agent.get("https://info.finance.yahoo.co.jp/fx/convert/?a=1&s=INR&t=JPY")
+  # rs_element = rs_page.search('.price.noLine').inner_text.to_f
 
   ## チーム最新試合ハイライト動画取得
   # Team.all.each do |team|
@@ -579,7 +579,7 @@ class Scraping
   # Item.where(ecsite_id:25,delete_flg:1).destroy_all
 
   ## WSS商品登録・更新
-  # Item.where(ecsite_id:27).update(delete_flg:1)
+  # Item.where(ecsite_id:28).update(delete_flg:1)
   # pageNumber = 0
   # while true do
   #   pageNumber += 1
@@ -600,18 +600,18 @@ class Scraping
   #         name:elename.inner_text,
   #         siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
   #         price:eleprice.inner_text.gsub(",","").strip!,
-  #         ecsite_id:27,
+  #         ecsite_id:28,
   #         imageurl:eleimage.get_attribute(:src))
   #       else
   #         Item.find_by(
   #           siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
-  #           ecsite_id:27
+  #           ecsite_id:28
   #         ).update(delete_flg:0)
   #       end
   #     end
   #   end
   # end
-  # Item.where(ecsite_id:27,delete_flg:1).destroy_all
+  # Item.where(ecsite_id:28,delete_flg:1).destroy_all
 
   ## (未対応)myntra商品登録・更新
   # url = 'https://www.myntra.com/nba-shop-all?p=1'
