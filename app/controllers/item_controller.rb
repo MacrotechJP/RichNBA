@@ -41,7 +41,7 @@ class ItemController < ApplicationController
   # トップページ
   def index
     @items_popular = Item.all.order(click: "DESC").limit(10) #人気の商品
-    @items_all = Item.all.page(params[:page])                #最新の商品
+    @items_all = Item.all.order("RAND()").page(params[:page])                #最新の商品
     gon.youtube = Team.all                                   #youtubeApiUrl取得
   end
 
@@ -79,7 +79,7 @@ class ItemController < ApplicationController
   # 非同期スクロール商品読み込み
   def additem
     if params[:location_url]=="top_page" then
-      @items_all = Item.all.page(params[:page]).page(params[:next_url])
+      @items_all = Item.all.order(id:"DESC").page(params[:page]).page(params[:next_url])
     elsif params[:location_url]=="search_page" then
       search_detail()
       case params[:search_sort]

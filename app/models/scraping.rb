@@ -1,30 +1,38 @@
 class Scraping
   ## 目次 ##
   # ライブラリ読み込み
-  # 為替値取得
+  # 為替値取得(ドル)
+  # 為替値取得(インド・ルピー)
   # チーム最新試合ハイライト動画取得
   # 最新選手一覧登録
   # チームランキング調整
-  # Stage商品一覧より各商品情報をDBに保存
-  # BB KONG商品一覧より各商品情報をDBに保存
-  # ROCKERS商品一覧より各商品情報をDBに保存
-  # Kyrie4商品一覧より各商品情報をDBに保存
-  # LockerRoom商品一覧より各商品情報をDBに保存
-  # SLAM商品一覧より各商品情報をDBに保存
-  # Rakuten商品一覧より各商品情報をDBに保存
-  # SELECTION商品一覧より各商品情報をDBに保存
-  # XEBIO商品一覧より各商品情報をDBに保存
-  # SPALDING商品一覧より各商品情報をDBに保存
+  # Stage商品登録・更新           全体：約2600... nba：約200... 登録：（全体）...
+  # BB KONG商品登録
+  # ROCKERS商品登録・更新
+  # Kyrie4商品登録・更新
+  # LockerRoom商品登録・更新
+  # SLAM商品登録・更新
+  # Rakuten商品登録・更新
+  # SELECTION商品登録・更新
+  # XEBIO商品登録・更新
+  # SPALDING商品登録・更新
+  # SPORTEC商品登録・更新
+  # WSS商品登録・更新
   # 既存商品（選手、チームカラム追加）
 
   ## ライブラリ読み込み
-  # require 'open-uri'  # URLにアクセスするためのライブラリの読み込み
-  # require 'nokogiri'  # Nokogiriライブラリの読み込み
+  require 'open-uri'  # URLにアクセスするためのライブラリの読み込み
+  require 'nokogiri'  # Nokogiriライブラリの読み込み
 
-  ## 為替値取得
-  # doll_agent = Mechanize.new
-  # doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
-  # doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+  ## 為替値取得(ドル)
+  doll_agent = Mechanize.new
+  doll_page = doll_agent.get("https://info.finance.yahoo.co.jp/fx/")
+  doll_element = doll_page.search('#USDJPY_top_bid').inner_text.to_i
+
+  ## 為替値取得(インド・ルピー)
+  rs_agent = Mechanize.new
+  rs_page = rs_agent.get("https://info.finance.yahoo.co.jp/fx/convert/?a=1&s=INR&t=JPY")
+  rs_element = rs_page.search('.price.noLine').inner_text.to_f
 
   ## チーム最新試合ハイライト動画取得
   # Team.all.each do |team|
@@ -140,7 +148,7 @@ class Scraping
   #   end
   # end
 
-  # ## Stage商品一覧より各商品情報をDBに保存
+  # ## Stage商品登録・更新
   # Item.where(ecsite_id:4).update(delete_flg:1)
   # nexturl = "https://www.x-stage2.jp/product-list?keyword=&Submit=&page=1"
   # while true do
@@ -166,7 +174,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:4,delete_flg:1).destroy_all
 
-  # ## BB KONG商品一覧より各商品情報をDBに保存
+  # ## BB KONG商品登録・更新
   # Item.where(ecsite_id:11).update(delete_flg:1)
   # nexturl = "https://www.bbkong.net/fs/alleyoop/GoodsSearchList.html?pageno=1"
   # while true do
@@ -192,7 +200,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:11,delete_flg:1).destroy_all
 
-  ## ROCKERS商品一覧より各商品情報をDBに保存
+  ## ROCKERS商品登録・更新
   # Item.where(ecsite_id:1).update(delete_flg:0)
   # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=610"
   # while true do
@@ -226,15 +234,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:1,delete_flg:1).destroy_all
 
-  ## Kyrie4商品一覧より各商品情報をDBに保存
-  # search_genre = ["http://www.kyrieirving-shoes.us.com/kyrie-irving-shoes-c-106.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/kevin-durant-shoes-c-98.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/kobe-bryant-shoes-c-101.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/lebron-james-shoes-c-111.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/paul-george-shoes-c-120.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/russell-westbrook-shoes-c-124.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/air-jordan-shoes-c-74.html?page=1&sort=20a",
-  #   "http://www.kyrieirving-shoes.us.com/women-c-128.html?page=1&sort=20a"]
+  ## Kyrie4商品登録・更新
   # Item.where(ecsite_id:8).update(delete_flg:1)
   # nexturl = "http://www.kyrieirving-shoes.us.com/index.php?main_page=advanced_search_result&keyword=Enter%20search%20keywords%20here&search_in_description=1&inc_subcat=1&pfrom=0&pto=999999999&sort=20a&page=1"
   # while true do
@@ -264,7 +264,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:8,delete_flg:1).destroy_all
   
-  ## LockerRoom商品一覧より各商品情報をDBに保存
+  ## LockerRoom商品登録・更新
   # pageNumber = 1
   # team_url = {
             #  "11": "https://www.lids.com/nba-atlanta-hawks/o-1336+t-25033806+z-93057-3658341029?pageSize=72&pageNumber=",
@@ -334,7 +334,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:15,delete_flg:1).destroy_all
 
-  ## SLAM商品一覧より各商品情報をDBに保存
+  ## SLAM商品登録・更新
   # Item.where(ecsite_id:12).update(delete_flg:1)
   # pageNumber = 0
   # while true do
@@ -365,7 +365,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:12,delete_flg:1).destroy_all
 
-  ## Rakuten商品一覧より各商品情報をDBに保存
+  ## Rakuten商品登録・更新
   # Item.where(ecsite_id:5).update(delete_flg:1)
   # pageNumber = 0
   # while true do
@@ -396,7 +396,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:5,delete_flg:1).destroy_all
 
-  ## SELECTION商品一覧より各商品情報をDBに保存
+  ## SELECTION商品登録・更新
   # team_url ={ 
   #           "11": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Atlanta+Hawks&page=",
   #             "1": "https://www.selection-j.com/lib/zaiko/search.php?f1=item_category&k1=NBA&f2=z_team&k2=Boston+Celtics,BostonCeltics&page=",
@@ -470,7 +470,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:9,delete_flg:1).destroy_all
   
-  ## XEBIO商品一覧より各商品情報をDBに保存
+  ## XEBIO商品登録・更新
   # Item.where(ecsite_id:23).update(delete_flg:1)
   # pageNumber = 0
   # roop_flg = true
@@ -501,7 +501,7 @@ class Scraping
   # end
   # Item.where(ecsite_id:23,delete_flg:1).destroy_all
 
-  ## SPALDING商品一覧より各商品情報をDBに保存
+  ## SPALDING商品登録・更新
   # Item.where(ecsite_id:24).update(delete_flg:1)
   # pageNumber = 0
   # roop_flg = true
@@ -532,6 +532,142 @@ class Scraping
   # end
   # Item.where(ecsite_id:24,delete_flg:1).destroy_all
 
+  ## SPORTEC商品登録・更新
+  # search_genre = [
+  #   "https://shop.sportec.jp/?mode=cate&cbid=2533877&csid=0&sort=n&page=",
+  #   "https://shop.sportec.jp/?mode=cate&cbid=2533878&csid=0&sort=n&page=",
+  #   "https://shop.sportec.jp/?mode=cate&cbid=2533879&csid=0&sort=n&page="
+  # ]
+  # Item.where(ecsite_id:25).update(delete_flg:1)
+  # search_genre.each do |url|
+  # root_page = 0
+  #   while true do
+  #     root_page += 1
+  #     nexturl = url+root_page.to_s
+  #     agent = Mechanize.new
+  #     page = agent.get(nexturl)
+  #     element = page.search('.col.col-sm-4.col-lg-4.productlist_list')
+  #     if element.size() == 0 then
+  #       break
+  #     else
+  #       elementsiteurl = page.search('.col.col-sm-4.col-lg-4.productlist_list a:first-of-type')
+  #       elementprice = page.search('.col.col-sm-4.col-lg-4.productlist_list .item_price.show')
+  #       elementimage = page.search('.col.col-sm-4.col-lg-4.productlist_list img')
+  #       elementname = page.search('.col.col-sm-4.col-lg-4.productlist_list .item_name.show')
+  #       eq1 = elementsiteurl.size()
+  #       eq2 = elementprice.size()
+  #       eq3 = elementimage.size()
+  #       eq4 = elementname.size()
+  #       if eq1==eq2 && eq1==eq3 && eq1==eq4 && eq2==eq3 && eq2==eq4 && eq3==eq4 then
+  #         elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #           unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists? then
+  #             Item.create(
+  #               name:elename.inner_text,
+  #               siteurl:"https://shop.sportec.jp/"+elesiteurl.get_attribute(:href),
+  #               price:eleprice.inner_text.gsub(",","").gsub("円(内税)",""),
+  #               ecsite_id:25,
+  #               imageurl:eleimage.get_attribute(:src)
+  #             )
+  #           else
+  #             Item.find_by(siteurl:"https://shop.sportec.jp/"+elesiteurl.get_attribute(:href),ecsite_id:25).update(delete_flg:0)
+  #           end
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
+  # Item.where(ecsite_id:25,delete_flg:1).destroy_all
+
+  ## WSS商品登録・更新
+  # Item.where(ecsite_id:27).update(delete_flg:1)
+  # pageNumber = 0
+  # while true do
+  #   pageNumber += 1
+  #   nexturl = "https://www.wssmainshop.jp/SHOP/list.php?Search=NBA&Type=01&PAGE="+pageNumber.to_s
+  #   agent = Mechanize.new
+  #   page = agent.get(nexturl)
+  #   element = page.search('.auto.itemList .layout1')
+  #   if element.size() == 0 then
+  #     break
+  #   else
+  #     elementsiteurl = page.search('.auto.itemList .item a')
+  #     elementprice = page.search('.auto.itemList .price span:first-of-type')
+  #     elementimage = page.search('.auto.itemList .item a img')
+  #     elementname = page.search('.auto.itemList .goods a')
+  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+  #         Item.create(
+  #         name:elename.inner_text,
+  #         siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
+  #         price:eleprice.inner_text.gsub(",","").strip!,
+  #         ecsite_id:27,
+  #         imageurl:eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(
+  #           siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
+  #           ecsite_id:27
+  #         ).update(delete_flg:0)
+  #       end
+  #     end
+  #   end
+  # end
+  # Item.where(ecsite_id:27,delete_flg:1).destroy_all
+
+  ## (未対応)myntra商品登録・更新
+  # url = 'https://www.myntra.com/nba-shop-all?p=1'
+  # charset = nil
+  # html = open(url) do |f|
+  #   charset = f.charset # 文字種別を取得
+  #   f.read              # htmlを読み込んで変数htmlに渡す
+  # end
+  # doc = Nokogiri::HTML.parse(html, nil, charset)
+  # script = doc.to_s.slice(/<script>window.__myx.*script>/).gsub("<script>","").gsub("</script>","").slice(/"products":\[\{.*,"sortOptions"/)
+  # item = script.match(/"productName":".*",/)
+  # puts item[0]
+
+  # test = "あああexam = [0,1,2]あああ"
+  # test1 = test.gsub("あ","").gsub(" ","").gsub("exam","").gsub("=","")
+  # puts test1
+  # test2 = test1.column
+  # puts test2
+  # test3 = eval(test2)
+  # puts test3
+
+  # Item.where(ecsite_id:29).update(delete_flg:1)
+  # pageNumber = 0
+  # while true do
+    # pageNumber += 1
+    # nexturl = "https://www.myntra.com/nba-shop-all?p="+pageNumber.to_s
+    # agent = Mechanize.new
+    # page = agent.get(nexturl)
+    # element = page.search('.product-base')
+    # puts element.size()
+    # if element.size() == 0 then
+    #   # break
+    # else
+      # elementsiteurl = page.search('.auto.itemList .item a')
+      # elementprice = page.search('.auto.itemList .price span:first-of-type')
+      # elementimage = page.search('.auto.itemList .item a img')
+      # elementname = page.search('.auto.itemList .goods a')
+      # elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+      #   unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
+      #     Item.create(
+      #     name:elename.inner_text,
+      #     siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
+      #     price:eleprice.inner_text.gsub(",","").strip!,
+      #     ecsite_id:27,
+      #     imageurl:eleimage.get_attribute(:src))
+      #   else
+      #     Item.find_by(
+      #       siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
+      #       ecsite_id:27
+      #     ).update(delete_flg:0)
+      #   end
+      # end
+    # end
+  # end
+  # Item.where(ecsite_id:29,delete_flg:1).destroy_all
+
   ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|
   #   Player.all.each do |player|
@@ -546,29 +682,5 @@ class Scraping
   #   end
   #   puts item.id
   # end
-
-  # スクレイピング先のURL
-  # url = 'http://www.yahoo.co.jp/'
-  # url = 'https://www.youtube.com/results?search_query=Celtics'
-  # charset = nil
-  # html = open(url) do |f|
-  #   charset = f.charset # 文字種別を取得
-  #   f.read # htmlを読み込んで変数htmlに渡す
-  # end
-  # sleep(5)
-  # htmlをパース(解析)してオブジェクトを生成
-  # doc = Nokogiri::HTML.parse(html, nil, charset)
-  # flg = false
-  # doc.css(".yt-uix-sessionlink.spf-link").each do |link|
-  #   if link.inner_text == "ボストン・セルティックス"
-  #     puts link.get_attribute(:href)
-  #   end
-    # if flg == true
-    #   puts link
-    # end
-  # end
-  # タイトルを表示
-  # puts doc.include?("webCommandMetadata")
-  # puts doc
 
 end
