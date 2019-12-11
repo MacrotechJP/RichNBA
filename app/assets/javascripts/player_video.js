@@ -1,85 +1,67 @@
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('sample01', {
-    height: '313',
-    videoId: '3XFX5zax5bM',
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+$(function(){
+
+  // トップページチーム名ホバー時slider動画・画像追加
+  $('.youtube_logo').on("click",function(){
+    $(this).parent().find("#video_cover").hide()
+    $(this).hide()
+    src_data = $(this).parent().find("div:first-of-type iframe").attr("src_data");
+    $(this).parent().find("div:first-of-type iframe").attr("src",src_data);
+    $(this).parent().find("div:first-of-type iframe").removeAttr("src_data");
+  })
+
+  //チームホバー時チーム商品非同期読み込み
+  $(".main_top_left_team,.main_top_right_team").hover(
+    function() {
+      team_name = $(this).attr("alt");
+      $.ajax({
+        url: '/item/team_item_autoscroll',
+        type: 'GET',
+        data: {
+          name: team_name
+        },
+        dataType: 'json'
+      }).done(function(data){
+          /* 通信成功時 */
+          $.each(data[0], function(index, item){
+            if(gon.current_user == false){
+              var checkitem = ""
+            }else if(data[1].indexOf(item.id) >= 0){
+              var checkitem = '<i class="fas fa-clipboard-check yet_check"></i>'
+            }else{
+              var checkitem = '<i class="far fa-clipboard not_check"></i>'
+            }
+            var additem_teamscroll = 
+                '<li>'+
+                  '<div class="main_category_items autoscroll">'+
+                    '<a href="'+item.siteurl+'" target="_blank">'+
+                      '<img src="'+item.imageurl+'">'+
+                        '<div class="main_category_items_cover">'+
+                          '<div class="main_category_items_cover_item">'+
+                            '<div class="main_category_items_cover_item_name">'+
+                              '<p>'+item.name+'</p>'+
+                            '</div>'+
+                            '<div class="main_category_items_cover_item_check">'+
+                              '<div class="main_category_items_cover_item_check_circle">'+checkitem+'</div>'+
+                            '</div>'+
+                          '</div>'+
+                          '<div class="main_category_items_cover_bottom"><i class="fas fa-bars"></i></div>'+
+                        '</div>'+
+                    '</a>'+
+                    '<div class="main_category_items_detail">'+
+                    '¥'+item.price.toLocaleString()+
+                    '</div>'+
+                  '</div>'+
+                '</li>'
+            $("#main_top_right_team_player_right_item"+team_name).append(additem_teamscroll);
+          }) 
+      }).fail(function(data){
+          /* 通信失敗時 */
+          alert("通信失敗！")
+      });
     },
-    playerVars: {
-      controls: 0, //再生ボタンとか出さない
-      showinfo: 0, //動画名とか出さない
-      disablekb: 1, //ショートカットキー無効
-      rel: 0 //関連動画出さない
+    function() {
+      //ホバー解除時は何もしない
     }
-  });
-}
+  );
 
-function onPlayerReady(event) {
-  event.target.playVideo();
-  event.target.mute();
-}
-//ココまではほぼサンプルと同じ
-
-var loopCount = 0;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.ENDED) {//動画が停止したら
-    if(loopCount < 20) {//ループ上限
-      event.target.seekTo(0,true);//動画の初めにシーク
-      event.target.playVideo();//動画を再生
-      loopCount++;
-    }
-  }
-}
-
-// 各プレーヤーの格納
-var ytPlayer = [];
-// プレーヤーのサイズ
-var ytWidth = 640;
-var ytHeight = 313;
-// 各動画情報
-var ytData = [];
-$.each(gon.youtube, function(index, team){
-  ytData.push({id: team.youtube_url,area: 'teamvideo_'+team.en_name});
-}) 
- 
-// 各プレーヤーの埋め込み
-function onYouTubeIframeAPIReady() {
-    for(var i = 0; i < ytData.length; i++) {
-        ytPlayer[i] = new YT.Player(ytData[i]['area'], {
-            width: ytWidth,
-            height: ytHeight,
-            videoId: ytData[i]['id'],
-            playerVars: {
-                rel: 0
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            },
-            playerVars: {
-                    controls: 0, //再生ボタンとか出さない
-                    showinfo: 0, //動画名とか出さない
-                    disablekb: 1, //ショートカットキー無効
-                    rel: 0 //関連動画出さない
-                  }
-        });
-    }
-}
- 
-// 各プレーヤー準備完了後の処理
-function onPlayerReady(e) {
-  // e.target.playVideo();
-  //   e.target.mute();
-}
-var loopCount = 0;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.ENDED) {//動画が停止したら
-    if(loopCount < 20) {//ループ上限
-      event.target.seekTo(0,true);//動画の初めにシーク
-      event.target.playVideo();//動画を再生
-      loopCount++;
-    }
-  }
-}
+})

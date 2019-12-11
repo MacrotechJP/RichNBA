@@ -1,10 +1,10 @@
 <div class="main_top_left">
   <ul>
-    <div class="main_top_right_team">
+    <div class="main_top_left_team">
       <li><%= image_tag "nba_west" %><p>ウェスタンカンファレンス</p></li>
     </div>
     <% Team.where(conference:"WEST").order(ranking: "ASC").each_with_index do |team,rank| %>
-      <div class="main_top_left_team">
+      <div class="main_top_left_team" alt="<%=team.id%>">
         <a href="/search?team=<%=team.id%>"><li id="nba_map<%=team.id%>">
           <%=image_tag"#{team.imageurl}"%>
           <% if rank == 0 || rank == 1 || rank == 2 then %>
@@ -13,7 +13,7 @@
           <p id="rank"><%=team.name.gsub(/・.*/,"")%><br><%=team.name.gsub(/.*・/,"")%></p>
         </li></a>
         <div class="main_top_left_team_player">
-          <%= render partial: "index_main_player", locals: {teamname: team.en_name,teamnumber:team.id} %>
+          <%= render partial: "index_main_player", locals: {teamname: team.en_name,teamnumber:team.id,team_youtube_url:team.youtube_url} %>
           <div class="main_top_left_team_player_left">
             <div class="main_top_right_team_player_left_center">
               <% Player.where(team_id: team.id).order(salary: "DESC").each do |player| %>
@@ -69,7 +69,7 @@
       <li><p>イースタンカンファレンス</p><%= image_tag "nba_east" %></li>
     </div>
     <% Team.where(conference:"EAST").order(ranking: "ASC").each_with_index do |team,rank| %>
-      <div class="main_top_right_team">
+      <div class="main_top_right_team" alt="<%=team.id%>">
         <a href="/search?team=<%=team.id%>"><li id="nba_map<%=team.id%>">
           <% if rank == 0 || rank == 1 || rank == 2 then %>
             <p id="rank"><%=team.name.gsub(/・.*/,"")%><br><%=team.name.gsub(/.*・/,"")%></p>
@@ -91,7 +91,7 @@
               <% end %>
             </div>
           </div>
-          <%= render partial: "index_main_player", locals: {teamname: team.en_name,teamnumber:team.id} %>
+          <%= render partial: "index_main_player", locals: {teamname: team.en_name,teamnumber:team.id,team_youtube_url:team.youtube_url} %>
         </div>
       </div>
     <% end %>

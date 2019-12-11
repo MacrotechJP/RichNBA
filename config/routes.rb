@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get "item/checkitem" ,to:"item#checkitem"
   # ポップアップ非同期DB操作
   get "item/popupcheck" ,to:"item#popupcheck"
+  # チームホバー時商品非同期読み込み
+  get "item/team_item_autoscroll" ,to:"item#team_item_autoscroll"
 end

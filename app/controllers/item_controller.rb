@@ -40,9 +40,13 @@ class ItemController < ApplicationController
 
   # トップページ
   def index
-    @items_popular = Item.all.order(click: "DESC").limit(10) #人気の商品
-    @items_all = Item.all.order("RAND()").page(params[:page])                #最新の商品
-    gon.youtube = Team.all                                   #youtubeApiUrl取得
+    @items_popular = Item.all.order(click: "DESC").limit(10)      #人気の商品
+    @items_all = Item.all.order("RAND()").page(params[:page])     #最新の商品
+    if user_signed_in? then
+      gon.current_user = true
+    else
+      gon.current_user = false
+    end
   end
 
   # 商品検索
@@ -116,6 +120,17 @@ class ItemController < ApplicationController
     if user_signed_in? then
       User.find(current_user.id).update(popupmessage_flg:params[:check_flg])
     end
+  end
+  # トップ画面チームホバー時商品自動スクロール
+  def team_item_autoscroll
+    @items_all = Item.where(team_id:params[:name]).order("RAND()").limit(30)
+    if user_signed_in? then
+      @checkitem = ItemUser.where(user_id:current_user.id).pluck(:item_id)
+    else
+      @checkitem = []
+    end
+    @ajax_items = [@items_all,@checkitem]
+    render json: @ajax_items
   end
 
 end
