@@ -42,6 +42,7 @@ class ItemController < ApplicationController
   def index
     @items_popular = Item.all.order(click: "DESC").limit(10)      #人気の商品
     @items_all = Item.all.order("RAND()").page(params[:page])     #最新の商品
+    @ecsite = Ecsite.pluck(:imageurl)
     if user_signed_in? then
       gon.current_user = true
     else
@@ -52,7 +53,7 @@ class ItemController < ApplicationController
   # 商品検索
   def search
     unless params[:q].present?
-      params[:q] = { sorts: 'id desc' }
+      params[:q] = { sorts: 'RAND()' }
     end
     search_detail()
     @search = @items_player.ransack(params[:q])
@@ -71,6 +72,7 @@ class ItemController < ApplicationController
     else
       gon.current_user = false
     end
+    @ecsite = Ecsite.pluck(:imageurl)
   end
 
   # 非同期クリック処理
@@ -83,12 +85,12 @@ class ItemController < ApplicationController
   # 非同期スクロール商品読み込み
   def additem
     if params[:location_url]=="top_page" then
-      @items_all = Item.all.order(id:"DESC").page(params[:page]).page(params[:next_url])
+      @items_all = Item.all.order("RAND()").page(params[:page]).page(params[:next_url])
     elsif params[:location_url]=="search_page" then
       search_detail()
       case params[:search_sort]
       when "id desc" then
-        @order = "ID DESC"
+        @order = "RAND()"
       when "click desc" then
         @order = "CLICK DESC"
       when "price desc" then
@@ -103,7 +105,8 @@ class ItemController < ApplicationController
     else
       @checkitem = []
     end
-    @ajax_items = [@items_all,@checkitem]
+    @ecsite = Ecsite.pluck(:imageurl)
+    @ajax_items = [@items_all,@checkitem,@ecsite]
     render json: @ajax_items
   end
   # 非同期取り置きアイテムチェック処理
@@ -129,7 +132,8 @@ class ItemController < ApplicationController
     else
       @checkitem = []
     end
-    @ajax_items = [@items_all,@checkitem]
+    @ecsite = Ecsite.pluck(:imageurl)
+    @ajax_items = [@items_all,@checkitem,@ecsite]
     render json: @ajax_items
   end
 

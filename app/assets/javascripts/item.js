@@ -74,6 +74,7 @@ $(function(){
                             '</a>'+
                             '<div class="main_category_items_detail">'+
                             '¥'+item.price.toLocaleString()+
+                            '<img src="'+data[2][item.ecsite_id-1]+'">'+
                             '</div>'+
                           '</div>'
             //検索ページ用商品要素
@@ -95,6 +96,7 @@ $(function(){
                             '</a>'+
                             '<div class="main_category_items_detail">'+
                             '¥'+item.price.toLocaleString()+
+                            '<img src="'+data[2][item.ecsite_id-1]+'">'+
                             '</div>'+
                           '</div>'
             $('.main_category.2').append(additem_toppage);

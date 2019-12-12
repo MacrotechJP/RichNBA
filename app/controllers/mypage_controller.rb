@@ -26,6 +26,7 @@ class MypageController < ApplicationController
       @search = @q.ransack(params[:q])
       @item_checkitem = @search.result
     end
+    @ecsite = Ecsite.pluck(:imageurl)
   end
 
   private

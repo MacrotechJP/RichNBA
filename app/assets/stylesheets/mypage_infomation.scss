@@ -125,6 +125,16 @@
               height: 100px;
             }
           }
+          &_cover_item_ecsite{
+            height:40%;
+            width:100%;
+            @include 上下左右中央();
+            img{
+              width: 75%!important;
+              height:90%!important;
+              object-fit: contain;
+            }
+          }
           &_cover_bottom{
             i{font-size: 10px;}
           }

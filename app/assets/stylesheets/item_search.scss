@@ -181,6 +181,11 @@
         }
         .main_category_items_detail{
           height:15%;
+          img{
+            width: 35%;
+            height: 85%;
+            object-fit: contain;
+          }
         }
       }
     }

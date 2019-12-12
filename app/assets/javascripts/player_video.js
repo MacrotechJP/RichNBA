@@ -49,6 +49,7 @@ $(function(){
                     '</a>'+
                     '<div class="main_category_items_detail">'+
                     '¥'+item.price.toLocaleString()+
+                    '<img src="'+data[2][item.ecsite_id-1]+'">'+
                     '</div>'+
                   '</div>'+
                 '</li>'

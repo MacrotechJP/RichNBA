@@ -677,8 +677,9 @@ $baby-blue: #f8faff;
         border-top: 1px solid #f9a01b;
         box-sizing: border-box;
         img{
-          width:25px;
-          height:25px;
+          width: 35%;
+          height: 85%;
+          object-fit: contain;
         }
       }
     }
@@ -743,6 +744,11 @@ $baby-blue: #f8faff;
       width:160px;
       display: inline-block;
       border: none;
+      .main_category_items_detail img{
+        width: 35%;
+        height: 85%;
+        object-fit: contain;
+      }
     }
   }
 }
