@@ -88,7 +88,7 @@
           <input type="hidden" name="ecsite" value="<%=params[:ecsite]%>">
           <input type="hidden" name="team" value="<%=params[:team]%>">
           <input type="hidden" name="player" value="<%=params[:player]%>">
-          <%= f.select( :sorts, { '並び替える': 'id desc', '人気の高い順': 'click desc', '価格の高い順': 'price desc', '価格の安い順': 'price asc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
+          <%= f.select( :sorts, { '並び替える': 'RAND()', '人気の高い順': 'click desc', '価格の高い順': 'price desc', '価格の安い順': 'price asc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
         </div>
         <span>全<%=@items_count%>件</span>
       </div>
