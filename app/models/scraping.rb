@@ -18,6 +18,8 @@ class Scraping
   # SPALDING商品登録・更新
   # SPORTEC商品登録・更新
   # WSS商品登録・更新
+  # Yahoo!ショッピング商品登録・更新
+  # NBA Store商品登録・更新
   # 既存商品（選手、チームカラム追加）
 
   ## ライブラリ読み込み
@@ -202,7 +204,7 @@ class Scraping
 
   ## ROCKERS商品登録・更新
   # Item.where(ecsite_id:1).update(delete_flg:0)
-  # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=610"
+  # nexturl = "https://jordan.co.jp/?mode=srh&sort=n&cid=&keyword=&page=1"
   # while true do
   #   agent = Mechanize.new
   #   page = agent.get(nexturl)
@@ -613,60 +615,142 @@ class Scraping
   # end
   # Item.where(ecsite_id:28,delete_flg:1).destroy_all
 
-  ## (未対応)myntra商品登録・更新
-  # url = 'https://www.myntra.com/nba-shop-all?p=1'
-  # charset = nil
-  # html = open(url) do |f|
-  #   charset = f.charset # 文字種別を取得
-  #   f.read              # htmlを読み込んで変数htmlに渡す
+  ## Yahoo!ショッピング商品登録・更新
+  # search_genre = [
+  #   "https://shopping.yahoo.co.jp/search?p=nba&first=1&tab_ex=commerce&sc_i=shp_pc_top_searchBox_2&ts=1576332815&mcr=a7edc6541d87a98527e575902d54ca16&sretry=1&fr=shp-prop&area=13&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=5&p=nba+%E3%82%B0%E3%83%83%E3%82%BA&tab_ex=commerce&rs=1&sc_i=shp_pc_search_SearchKeyword_1&utype=rel&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=2&p=nba&ss_first=1&tab_ex=commerce&sc_i=shp_pc_search_sort_sortitem&area=13&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=3&p=nba&ss_first=1&tab_ex=commerce&sc_i=shp_pc_search_sort_sortitem&area=13&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=8&p=nba&ss_first=1&tab_ex=commerce&sc_i=shp_pc_search_sort_sortitem&area=13&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=9&p=nba&ss_first=1&tab_ex=commerce&sc_i=shp_pc_search_sort_sortitem&area=13&b=",
+  #   "https://shopping.yahoo.co.jp/search?X=10&p=nba&ss_first=1&tab_ex=commerce&sc_i=shp_pc_search_sort_sortitem&area=13&b="
+  # ]
+  # Item.where(ecsite_id:7).update(delete_flg:1)
+  # search_genre.each_with_index do |url,count|
+  #   pageNumber = 1
+  #   while true do
+  #     nexturl = url+pageNumber.to_s
+  #     pageNumber += 30
+  #     agent = Mechanize.new
+  #     page = agent.get(nexturl)
+  #     element = page.search('.LoopList__item')
+  #     if pageNumber > 1470 || element.size() == 0 then
+  #       break
+  #     else
+  #       elementsiteurl = page.search('.LoopList__item ._2Jq8OcJm3FsK a')
+  #       elementprice = page.search('.LoopList__item ._3-CgJZLU91dR')
+  #       elementimage = page.search('.LoopList__item ._2Jq8OcJm3FsK a img:nth-of-type(1)')
+  #       for num in 0..elementimage.size() do
+  #         if elementimage[num].to_s.include?(".gif")
+  #           elementimage.delete(elementimage[num])
+  #         end
+  #       end
+  #       elementname = elementimage
+  #       len1 = elementsiteurl.size()
+  #       len2 = elementprice.size()
+  #       len3 = elementimage.size()
+  #       len4 = elementname.size()
+  #       if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
+  #         elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #           puts count.to_s+":"+(pageNumber-30).to_s
+  #           unless Item.where(name:elename.get_attribute(:alt),ecsite_id:7).exists?
+  #             Item.create(
+  #             name:elename.get_attribute(:alt),
+  #             siteurl:elesiteurl.get_attribute(:href),
+  #             price:eleprice.inner_text.gsub(",",""),
+  #             ecsite_id:7,
+  #             imageurl:eleimage.get_attribute(:src))
+  #           else
+  #             Item.find_by(
+  #               name:elename.get_attribute(:alt),
+  #               ecsite_id:7
+  #             ).update(delete_flg:0)
+  #           end
+  #         end
+  #       end
+  #     end
+  #   end
   # end
-  # doc = Nokogiri::HTML.parse(html, nil, charset)
-  # script = doc.to_s.slice(/<script>window.__myx.*script>/).gsub("<script>","").gsub("</script>","").slice(/"products":\[\{.*,"sortOptions"/)
-  # item = script.match(/"productName":".*",/)
-  # puts item[0]
+  # Item.where(ecsite_id:7,delete_flg:1).destroy_all
 
-  # test = "あああexam = [0,1,2]あああ"
-  # test1 = test.gsub("あ","").gsub(" ","").gsub("exam","").gsub("=","")
-  # puts test1
-  # test2 = test1.column
-  # puts test2
-  # test3 = eval(test2)
-  # puts test3
+  ## NBA Store商品登録・更新
+  # Item.where(ecsite_id:14).update(delete_flg:1)
+  # nexturl = "https://www.nbastore.jp/stores/nba/ja/search/"
+  # agent = Mechanize.new
+  # page = agent.get(nexturl)
+  # element = page.search('.product.in.productData')
+  # puts element.size()
+  # agent.page.link_with(:text => "ここをクリックしたい").click
+  # if pageNumber > 1470 || element.size() == 0 then
+  #   break
+  # else
+  #   elementsiteurl = page.search('.LoopList__item ._2Jq8OcJm3FsK a')
+  #   elementprice = page.search('.LoopList__item ._3-CgJZLU91dR')
+  #   elementimage = page.search('.LoopList__item ._2Jq8OcJm3FsK a img:nth-of-type(1)')
+  #   for num in 0..elementimage.size() do
+  #     if elementimage[num].to_s.include?(".gif")
+  #       elementimage.delete(elementimage[num])
+  #     end
+  #   end
+  #   elementname = elementimage
+  #   len1 = elementsiteurl.size()
+  #   len2 = elementprice.size()
+  #   len3 = elementimage.size()
+  #   len4 = elementname.size()
+  #   if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
+  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #       puts count.to_s+":"+(pageNumber-30).to_s
+  #       unless Item.where(name:elename.get_attribute(:alt),ecsite_id:7).exists?
+  #         Item.create(
+  #         name:elename.get_attribute(:alt),
+  #         siteurl:elesiteurl.get_attribute(:href),
+  #         price:eleprice.inner_text.gsub(",",""),
+  #         ecsite_id:7,
+  #         imageurl:eleimage.get_attribute(:src))
+  #       else
+  #         Item.find_by(
+  #           name:elename.get_attribute(:alt),
+  #           ecsite_id:7
+  #         ).update(delete_flg:0)
+  #       end
+  #     end
+  #   end
+  # end
+  # Item.where(ecsite_id:14,delete_flg:1).destroy_all
 
-  # Item.where(ecsite_id:29).update(delete_flg:1)
-  # pageNumber = 0
+  ## NBA Store商品登録・更新
+  # 手順
+  # siteurlよりiMacroで全商品表示状態にする
+  # XHR内DoSearchのResponse情報をコピーし上部にペースト(変数名はitems[動的に1~])
+  # 以下、コードを実行
+  # count = 1
+  # Item.where(ecsite_id:14).update(delete_flg:1)
   # while true do
-    # pageNumber += 1
-    # nexturl = "https://www.myntra.com/nba-shop-all?p="+pageNumber.to_s
-    # agent = Mechanize.new
-    # page = agent.get(nexturl)
-    # element = page.search('.product-base')
-    # puts element.size()
-    # if element.size() == 0 then
-    #   # break
-    # else
-      # elementsiteurl = page.search('.auto.itemList .item a')
-      # elementprice = page.search('.auto.itemList .price span:first-of-type')
-      # elementimage = page.search('.auto.itemList .item a img')
-      # elementname = page.search('.auto.itemList .goods a')
-      # elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-      #   unless Item.where(siteurl:elesiteurl.get_attribute(:href)).exists?
-      #     Item.create(
-      #     name:elename.inner_text,
-      #     siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
-      #     price:eleprice.inner_text.gsub(",","").strip!,
-      #     ecsite_id:27,
-      #     imageurl:eleimage.get_attribute(:src))
-      #   else
-      #     Item.find_by(
-      #       siteurl:"https://www.wssmainshop.jp"+elesiteurl.get_attribute(:href),
-      #       ecsite_id:27
-      #     ).update(delete_flg:0)
-      #   end
-      # end
-    # end
+  #   item = eval("items#{count}[:Products]")
+  #   if item.size() == 0 then
+  #     break
+  #   else
+  #     for num in 0...item.size() do
+  #       unless Item.where(siteurl:"https://www.nbastore.jp/"+item[num][:Url]).exists?
+  #         puts count
+  #         Item.create(
+  #           name:item[num][:FullName],
+  #           siteurl:"https://www.nbastore.jp/"+item[num][:Url],
+  #           price:item[num][:Price].gsub(",","").gsub("¥",""),
+  #           ecsite_id:14,
+  #           imageurl:"https:"+item[num][:ImageUrl]
+  #         )
+  #       else
+  #         Item.find_by(
+  #           siteurl:"https://www.nbastore.jp/"+item[num][:Url],
+  #           ecsite_id:14
+  #         ).update(delete_flg:0)
+  #       end
+  #     end
+  #   end
+  #   count += 1
   # end
-  # Item.where(ecsite_id:29,delete_flg:1).destroy_all
+  # Item.where(ecsite_id:14,delete_flg:1).destroy_all
 
   ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|
@@ -676,11 +760,11 @@ class Scraping
   #     end
   #   end
   #   Team.all.each do |team|
-  #     if item.name.include?(team.name.gsub(/・.*/,"")) || item.name.include?(team.name.gsub(/.*・/,"")) || item.name.include?(team.en_name) && team.name.gsub(/・.*/,"") != "ロサンゼルス" then
+  #     if (item.name.include?(team.name.gsub(/・.*/,"")) && team.name.gsub(/・.*/,"") != "ロサンゼルス") || (item.name.include?(team.name.gsub(/.*・/,"")) && team.name.gsub(/・.*/,"") != "ロサンゼルス") || item.name.include?(team.en_name) then
   #       item.update(team_id:team.id)
   #     end
   #   end
   #   puts item.id
   # end
-
+  
 end
