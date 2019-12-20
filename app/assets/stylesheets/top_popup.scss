@@ -23,6 +23,13 @@
       -webkit-text-fill-color: transparent;
       font-size: 30px;
     }
+    .second_title{
+      line-height: 30px;
+      background: -webkit-linear-gradient(0deg, #FF0080, #FF8C00,#40E0D0 );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 20px;
+    }
     &_ecsites,&_use{
       width:100%;
       overflow: auto;

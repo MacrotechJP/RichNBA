@@ -674,51 +674,6 @@ class Scraping
   # Item.where(ecsite_id:7,delete_flg:1).destroy_all
 
   ## NBA Store商品登録・更新
-  # Item.where(ecsite_id:14).update(delete_flg:1)
-  # nexturl = "https://www.nbastore.jp/stores/nba/ja/search/"
-  # agent = Mechanize.new
-  # page = agent.get(nexturl)
-  # element = page.search('.product.in.productData')
-  # puts element.size()
-  # agent.page.link_with(:text => "ここをクリックしたい").click
-  # if pageNumber > 1470 || element.size() == 0 then
-  #   break
-  # else
-  #   elementsiteurl = page.search('.LoopList__item ._2Jq8OcJm3FsK a')
-  #   elementprice = page.search('.LoopList__item ._3-CgJZLU91dR')
-  #   elementimage = page.search('.LoopList__item ._2Jq8OcJm3FsK a img:nth-of-type(1)')
-  #   for num in 0..elementimage.size() do
-  #     if elementimage[num].to_s.include?(".gif")
-  #       elementimage.delete(elementimage[num])
-  #     end
-  #   end
-  #   elementname = elementimage
-  #   len1 = elementsiteurl.size()
-  #   len2 = elementprice.size()
-  #   len3 = elementimage.size()
-  #   len4 = elementname.size()
-  #   if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
-  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #       puts count.to_s+":"+(pageNumber-30).to_s
-  #       unless Item.where(name:elename.get_attribute(:alt),ecsite_id:7).exists?
-  #         Item.create(
-  #         name:elename.get_attribute(:alt),
-  #         siteurl:elesiteurl.get_attribute(:href),
-  #         price:eleprice.inner_text.gsub(",",""),
-  #         ecsite_id:7,
-  #         imageurl:eleimage.get_attribute(:src))
-  #       else
-  #         Item.find_by(
-  #           name:elename.get_attribute(:alt),
-  #           ecsite_id:7
-  #         ).update(delete_flg:0)
-  #       end
-  #     end
-  #   end
-  # end
-  # Item.where(ecsite_id:14,delete_flg:1).destroy_all
-
-  ## NBA Store商品登録・更新
   # 手順
   # siteurlよりiMacroで全商品表示状態にする
   # XHR内DoSearchのResponse情報をコピーし上部にペースト(変数名はitems[動的に1~])
@@ -751,6 +706,72 @@ class Scraping
   #   count += 1
   # end
   # Item.where(ecsite_id:14,delete_flg:1).destroy_all
+
+  ## Fanatics商品登録・更新
+  # search_genre = [
+  #     "https://www.fanatics.com/nba/o-1370+z-938737729-293541727?pageSize=96&pageNumber=",
+  #     "https://www.fanatics.com/nba/o-1370+z-938737729-293541727?pageSize=96&pageNumber=",
+  #     "https://www.fanatics.com/nba/o-1370+z-938737729-293541727?pageSize=96&pageNumber=",
+  #     "https://www.fanatics.com/nba/o-1370+z-938737729-293541727?pageSize=96&pageNumber="
+  #   ]
+  # Item.where(ecsite_id:13).update(delete_flg:1)
+  # search_genre.each_with_index do |url,count|
+  #   count += 2
+  #   page_number = 1
+  #   while true do
+  #     nexturl = url+page_number.to_s+"&sortOption=TopSellers&p2="+count.to_s
+  #     agent = Mechanize.new
+  #     page = agent.get(nexturl)
+  #     element = page.search('[data-talos="itemCount"]')
+  #     now_count = element[0].inner_text.gsub(" ","").gsub(/.*-/,"").gsub(/of.*/,"")
+  #     last_count = element[0].inner_text.gsub(" ","").gsub(/.*of/,"")
+  #     elementsiteurl = page.search('.column .product-image-container a')
+  #     elementprice = page.search('.column .price-tag')
+  #     elementimage = page.search('.column .product-image-container a img')
+  #     elementname = page.search('.product-card-title a')
+  #     len1 = elementsiteurl.size()
+  #     len2 = elementprice.size()
+  #     len3 = elementimage.size()
+  #     len4 = elementname.size()
+  #     if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
+  #       elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #         puts page_number.to_s
+  #         price = eleprice.inner_text.gsub(/[a-z]*/,"").gsub(/[A-Z]*/,"").gsub(" ","").gsub(":",",").gsub("$","").split(",")
+  #         if price.size() >= 3 then
+  #           price.delete("")
+  #           price.delete(price.min{|a, b| a.to_i <=> b.to_i })
+  #           price.delete(price.max{|a, b| a.to_i <=> b.to_i })
+  #           price = price[0]
+  #         elsif price.size() == 2 then
+  #           price.delete("")
+  #           price = price.min{|a, b| a.to_i <=> b.to_i }
+  #         elsif price.size() == 1 then
+  #           price.delete("")
+  #           price = price[0]
+  #         end
+  #         unless Item.where(siteurl:"https://www.fanatics.com"+elesiteurl.get_attribute(:href),ecsite_id:13).exists?
+  #           Item.create(
+  #             name:elename.inner_text,
+  #             siteurl:"https://www.fanatics.com"+elesiteurl.get_attribute(:href),
+  #             price: price.to_i * doll_element,
+  #             ecsite_id:13,
+  #             imageurl:"https:"+eleimage.get_attribute(:src)
+  #           )
+  #         else
+  #           Item.find_by(
+  #             siteurl:"https://www.fanatics.com"+elesiteurl.get_attribute(:href),
+  #             ecsite_id:13
+  #           ).update(delete_flg:0)
+  #         end
+  #       end
+  #     end
+  #     page_number += 1
+  #     if now_count == last_count then
+  #       break
+  #     end
+  #   end
+  # end
+  # Item.where(ecsite_id:13,delete_flg:1).destroy_all
 
   ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|

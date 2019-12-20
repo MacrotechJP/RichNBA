@@ -15,12 +15,16 @@
           <input type="checkbox" id="password-check" />パスワードを表示する
         </div>
         <div class="field">
+          <!--
           <%= f.label :お気に入りのチーム,class:"field" %>
           <%= f.collection_select :team_id,Team.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
+          -->
         </div>
         <div class="field">
+          <!--
           <%= f.label :お気に入りの選手,class:"field" %>
           <%= f.collection_select :player_id,Player.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
+          -->
         </div>
         <div class="field_submit">
           <%= f.submit "送信" %>
