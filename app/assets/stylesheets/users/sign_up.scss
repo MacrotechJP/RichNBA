@@ -35,6 +35,7 @@
             font-size: 15px;
             box-sizing: border-box;
           }
+          a{text-decoration: none;}
           &_sns_button {
             height: 40px;
             width:47%;
@@ -44,9 +45,6 @@
             outline: none;
             &:hover{
               cursor: pointer;
-            }
-            &:nth-of-type(2n){
-              margin-left:4%;
             }
             &_icon {
               float: left;
@@ -74,6 +72,7 @@
           &_sns_button.line{
             color:white;
             background-color: #00BE00;
+            margin-left: 4%;
           }
           &_sns_button.facebook{
             color:white;
@@ -83,6 +82,7 @@
             color:white;
             background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
             background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+            margin-left: 4%;
           }
           &_sns_button.twitter{
             color:white;
@@ -91,6 +91,7 @@
           &_sns_button.github{
             color:white;
             background-color: #2A2A2A;
+            margin-left: 4%;
           }
         }
         .field_submit{

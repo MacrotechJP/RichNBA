@@ -15,49 +15,61 @@
           <input type="checkbox" id="password-check" />パスワードを表示する
         </div>
         <div class="field">
-          <button type="button" class="field_sns_button google">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=10afuEVt5Zs3kZQ5YVMYtFshivG4HzMJt" %>
-            </p>
-            <p class="field_sns_button_text">Google Login</p>
-          </button>
-          <button type="button" class="field_sns_button line">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=1ORKkAb3VrPPRovl_xWW_5capkegDFvGq" %>
-            </p>
-            <p class="field_sns_button_text">Line Login</p>
-          </button>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button google">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=10afuEVt5Zs3kZQ5YVMYtFshivG4HzMJt" %>
+              </p>
+              <p class="field_sns_button_text">Google Login</p>
+            </button>
+          <% end %>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button line">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=1ORKkAb3VrPPRovl_xWW_5capkegDFvGq" %>
+              </p>
+              <p class="field_sns_button_text">Line Login</p>
+            </button>
+          <% end %>
         </div>
         <div class="field">
-          <button type="button" class="field_sns_button facebook">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=1EryxnDpYjIf7stfhjByaZnP7QhbcEjxi" %>
-            </p>
-            <p class="field_sns_button_text">Facebook Login</p>
-          </button>
-          <button type="button" class="field_sns_button instagram">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=1qrpdUZxE4xjrWVRHSosbF3nPuQCx6i9A" %>
-            </p>
-            <p class="field_sns_button_text">Instagram Login</p>
-          </button>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button facebook">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=1EryxnDpYjIf7stfhjByaZnP7QhbcEjxi" %>
+              </p>
+              <p class="field_sns_button_text">Facebook Login</p>
+            </button>
+          <% end %>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button instagram">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=1qrpdUZxE4xjrWVRHSosbF3nPuQCx6i9A" %>
+              </p>
+              <p class="field_sns_button_text">Instagram Login</p>
+            </button>
+          <% end %>
         </div>
         <div class="field">
-          <button type="button" class="field_sns_button twitter">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=1AUvHLlNwAHvS9dm_Yg-DdFLUBClw92Tk" %>
-            </p>
-            <p class="field_sns_button_text">Twitter Login</p>
-          </button>
-          <button type="button" class="field_sns_button github">
-            <p class="field_sns_button_icon">
-              <%= image_tag "https://drive.google.com/uc?export=view&id=13shF2_YWfWt1XF63WWw9FfnQOhloOUHO" %>
-            </p>
-            <p class="field_sns_button_text">Github Login</p>
-          </button>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button twitter">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=1AUvHLlNwAHvS9dm_Yg-DdFLUBClw92Tk" %>
+              </p>
+              <p class="field_sns_button_text">Twitter Login</p>
+            </button>
+          <% end %>
+          <%= link_to("#") do %>
+            <button type="button" class="field_sns_button github">
+              <p class="field_sns_button_icon">
+                <%= image_tag "https://drive.google.com/uc?export=view&id=13shF2_YWfWt1XF63WWw9FfnQOhloOUHO" %>
+              </p>
+              <p class="field_sns_button_text">Github Login</p>
+            </button>
+          <% end %>
         </div>
         <div class="field">
-          <%= link_to "パスワードお忘れの方", new_user_password_path %>
+          <%= link_to "パスワードお忘れの方", new_user_password_path, class:"forget_password" %>
         </div>
         <div class="field_submit">
           <%= f.submit "送信" %>
