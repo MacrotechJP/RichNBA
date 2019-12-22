@@ -35,6 +35,63 @@
             font-size: 15px;
             box-sizing: border-box;
           }
+          &_sns_button {
+            height: 40px;
+            width:47%;
+            border-width: 0;
+            border-radius: 5px;
+            padding: 0;
+            outline: none;
+            &:hover{
+              cursor: pointer;
+            }
+            &:nth-of-type(2n){
+              margin-left:4%;
+            }
+            &_icon {
+              float: left;
+              width: 20%;
+              height: 100%;
+              @include 上下左右中央();
+              img,i{
+                color:white;
+                width:20px;
+                height:20px;
+                object-fit: fill;
+              }
+            }
+            &_text {
+              line-height: 40px;
+              float: left;
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
+          &_sns_button.google{
+            color: #737373;
+            background-color: white;
+          }
+          &_sns_button.line{
+            color:white;
+            background-color: #00BE00;
+          }
+          &_sns_button.facebook{
+            color:white;
+            background-color: #3A5796;
+          }
+          &_sns_button.instagram{
+            color:white;
+            background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+            background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+          }
+          &_sns_button.twitter{
+            color:white;
+            background: #1DA1F2;
+          }
+          &_sns_button.github{
+            color:white;
+            background-color: #2A2A2A;
+          }
         }
         .field_submit{
           text-align: center;

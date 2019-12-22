@@ -82,3 +82,11 @@ gem 'rack-attack' #Dos攻撃対策gem
 gem 'brakeman', require: false # ソースコードを解析し、脆弱性になりかねない危険なコードを見つけ出す
 gem 'google-analytics-rails'
 gem 'nokogiri'
+
+gem 'omniauth'               #ソーシャルサービスログイン・登録
+gem 'omniauth-google-oauth2' #未実装
+# gem 'omniauth-line'          #未実装
+gem 'omniauth-facebook'      #未実装
+gem 'omniauth-instagram'     #未実装
+gem 'omniauth-twitter'       #未実装
+gem 'omniauth-github'        #未実装

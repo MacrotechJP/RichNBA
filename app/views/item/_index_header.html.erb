@@ -76,6 +76,7 @@
           <div class="head_right_top_logo_hover">
             <div class="head_right_top_logo_hover_log">
               <%= button_to "新規登録",{controller: 'devise/registrations', action: 'new'}, {method: :get, class: "log-button"} %>
+              <%= button_to "ログイン画面",{controller: 'devise/sessions', action: 'new'}, {method: :get, class: "log-button"} %>
             </div>
             <div class="head_right_top_logo_hover_log">
               <%= form_tag(user_session_path, method: :post) do %>

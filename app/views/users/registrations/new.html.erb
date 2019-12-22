@@ -15,17 +15,57 @@
           <input type="checkbox" id="password-check" />パスワードを表示する
         </div>
         <div class="field">
-          <!--
-          <%= f.label :お気に入りのチーム,class:"field" %>
-          <%= f.collection_select :team_id,Team.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
-          -->
+          <button type="button" class="field_sns_button google">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=10afuEVt5Zs3kZQ5YVMYtFshivG4HzMJt" %>
+            </p>
+            <p class="field_sns_button_text">Google Sign up</p>
+          </button>
+          <button type="button" class="field_sns_button line">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=1ORKkAb3VrPPRovl_xWW_5capkegDFvGq" %>
+            </p>
+            <p class="field_sns_button_text">Line Sign up</p>
+          </button>
         </div>
         <div class="field">
-          <!--
+          <button type="button" class="field_sns_button facebook">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=1EryxnDpYjIf7stfhjByaZnP7QhbcEjxi" %>
+            </p>
+            <p class="field_sns_button_text">Facebook Sign up</p>
+          </button>
+          <button type="button" class="field_sns_button instagram">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=1qrpdUZxE4xjrWVRHSosbF3nPuQCx6i9A" %>
+            </p>
+            <p class="field_sns_button_text">Instagram Sign up</p>
+          </button>
+        </div>
+        <div class="field">
+          <button type="button" class="field_sns_button twitter">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=1AUvHLlNwAHvS9dm_Yg-DdFLUBClw92Tk" %>
+            </p>
+            <p class="field_sns_button_text">Twitter Sign up</p>
+          </button>
+          <button type="button" class="field_sns_button github">
+            <p class="field_sns_button_icon">
+              <%= image_tag "https://drive.google.com/uc?export=view&id=13shF2_YWfWt1XF63WWw9FfnQOhloOUHO" %>
+            </p>
+            <p class="field_sns_button_text">Github Sign up</p>
+          </button>
+        </div>
+        <!--
+        <div class="field">
+          <%= f.label :お気に入りのチーム,class:"field" %>
+          <%= f.collection_select :team_id,Team.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
+        </div>
+        <div class="field">
           <%= f.label :お気に入りの選手,class:"field" %>
           <%= f.collection_select :player_id,Player.all.order(name: "ASC"), :id, :name,required:"true",prompt:"選択して下さい" %>
-          -->
         </div>
+        -->
         <div class="field_submit">
           <%= f.submit "送信" %>
         </div>
