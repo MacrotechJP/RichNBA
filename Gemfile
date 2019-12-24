@@ -84,9 +84,10 @@ gem 'google-analytics-rails'
 gem 'nokogiri'
 
 gem 'omniauth'               #ソーシャルサービスログイン・登録
-gem 'omniauth-google-oauth2' #未実装
+gem 'omniauth-google-oauth2' #実装済み
 # gem 'omniauth-line'          #未実装
 gem 'omniauth-facebook'      #未実装
 gem 'omniauth-instagram'     #未実装
 gem 'omniauth-twitter'       #未実装
 gem 'omniauth-github'        #未実装
+gem 'dotenv-rails' # .envで環境変数を管理する(ローカルのみ)
