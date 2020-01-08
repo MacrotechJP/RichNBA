@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :siteurl
       t.string :imageurl
+      t.string :google_driveurl
       t.integer :price
       t.integer :click, default: 0
       t.boolean :delete_flg, default: false

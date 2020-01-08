@@ -1,5 +1,5 @@
 .top_popup{
-  width: 70%;
+  width: 75%;
   height:70%;
   position: fixed;
   top: 50%;
@@ -16,6 +16,9 @@
     height:95%;
     margin:0 5%;
     overflow: scroll;
+    &::-webkit-scrollbar {
+      display:none;
+    }
     .title{
       line-height: 60px;
       background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);
@@ -54,6 +57,7 @@
           margin-bottom:10px;
           float: left;
           background-color:white;
+          overflow: hidden;
           &:nth-child(6n){
             margin-right: 0;
           }

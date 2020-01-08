@@ -1,0 +1,115 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+.top_popup{
+  @include tab {
+    height: 50%;
+  };
+  &_main{
+    .title{
+      @include pc {
+        font-size: 21px;
+      };
+      @include tab {
+        font-size: 25px;
+        line-height: 35px;
+        margin-top: 10px;
+      };
+      @include sp {
+        font-size: 20px;
+        line-height: 25px;
+      };
+    }
+    .second_title{
+      @include pc {
+        font-size: 16px;
+      };
+      @include tab {
+        font-size: 12px;
+      };
+      @include sp {
+        line-height: 15px;
+        margin-bottom: 5px;
+      };
+    }
+    &_ecsites,&_use{
+      &_left{
+        @include pc {
+          font-size: 22px;
+        };
+        @include tab {
+          width: 100%;
+          margin-bottom: 10px;
+        };
+        @include sp {
+          font-size: 17px;
+        };
+      }
+      &_right{
+        @include tab {
+          width: 100%;
+        };
+        li{
+          @include pc {
+            height: 60px;
+          };
+          @include tab {
+          };
+          @include sp {
+            width:23%;
+            &:nth-child(4n){
+              margin-right: 0;
+            }
+            &:nth-child(6n){
+              margin-right: 2%;
+              margin-bottom: 10px;
+            }
+          };
+        }
+        img{
+          @include pc {
+            width: 60%;
+          };
+          @include tab {
+          };
+          @include sp {
+          };
+        }
+        p{
+          @include sp {
+            font-size: 12px;
+          };
+        }
+      }
+    }
+  }
+  &_bottom{
+    @include pc {
+      font-size: 16px;
+    };
+    @include tab {
+      font-size: 11px;
+    };
+    @include sp {
+      height:auto;
+      position: absolute;
+      bottom: 0;
+    };
+  }
+}

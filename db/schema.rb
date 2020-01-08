@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_130915) do
     t.string "name"
     t.string "siteurl"
     t.string "imageurl"
+    t.string "google_driveurl"
     t.integer "price"
     t.integer "click", default: 0
     t.boolean "delete_flg", default: false
