@@ -36,7 +36,7 @@
   <div class="head_right">
     <div class="head_right_top">
       <div class="head_right_top_logo">
-        <%= link_to("/info") do %>
+        <%= link_to("/info", id:"link") do %>
           <%= content_tag(:i, '', class: 'fas fa-comment-dots fa-3x') do %>
             <%= content_tag(:i, '', class: 'fas fa-sync-alt fa-1x new_comment') %>
             <p>お知らせ</p>
@@ -47,7 +47,7 @@
         </div> 
       </div>
       <div class="head_right_top_logo">
-        <%= link_to(mypage_checkitem_path,method: :post) do %>
+        <%= link_to(mypage_checkitem_path,method: :post, id:"link") do %>
           <%= content_tag(:i, '', class: 'fas fa-clipboard-check fa-3x') do %>
             <p>取り置きグッズ</p>
           <% end %>
@@ -61,7 +61,7 @@
           <%= content_tag(:i, '', class: 'fas fa-user-check fa-3x') do %>
             <p>ログイン中</p>
           <% end %>
-          <div class="head_right_top_logo_hover 3">
+          <div class="head_right_top_logo_hover three">
             <div class="head_right_top_logo_hover_log">
               <%= link_to "マイページ",mypage_path, class: "log-button" %>
             </div>
@@ -73,12 +73,12 @@
           <%= content_tag(:i, '', class: 'fas fa-user-times fa-3x') do %>
             <p>未ログイン中</p>
           <% end %>
-          <div class="head_right_top_logo_hover">
+          <div class="head_right_top_logo_hover three">
             <div class="head_right_top_logo_hover_log">
               <%= button_to "新規登録",{controller: 'devise/registrations', action: 'new'}, {method: :get, class: "log-button"} %>
               <%= button_to "ログイン画面",{controller: 'devise/sessions', action: 'new'}, {method: :get, class: "log-button"} %>
             </div>
-            <div class="head_right_top_logo_hover_log">
+            <div class="head_right_top_logo_hover_log mini_none">
               <%= form_tag(user_session_path, method: :post) do %>
                 <input type="email" placeholder="email" name="user[email]" required>
                 <input type="password" placeholder="password" name="user[password]" required>

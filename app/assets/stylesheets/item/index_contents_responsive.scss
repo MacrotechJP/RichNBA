@@ -1,0 +1,63 @@
+.head{
+  &_left{
+    @include pc {
+      width:8%;
+      p{display: none;}
+    };
+    @include tab {
+    };
+    @include sp {
+    };
+  }
+  &_center{
+    @include pc {
+      width:55%;
+      .search_button i{
+        font-size: 2.5em;
+      }
+      &_bottom{
+        span:nth-last-of-type(-n+2),a:nth-last-of-type(-n+2){display: none;}
+      }
+    };
+    @include tab {
+    };
+    @include sp {
+    };
+  }
+  &_right{
+    @include pc {
+      width:37%;
+      &_top_logo{
+        padding: 10px 4% 10px;
+        #link{pointer-events: none;}
+        i{
+          font-size: 2.5em;
+          .new_comment{display: none;}
+          p{font-size: 10px;}
+          a{pointer-events: visible;}
+        }
+        &_hover.three{
+          right:10px;
+        }
+        &_hover_info,&_hover_goods,&_hover_log{
+          width: 195px;
+          height: 35px;
+          i{font-size: 20px;}
+        }
+        &_hover_log{
+          @include 上下左右中央();
+          .log-button{
+            width: 95%;
+            height: 80%;
+            margin: 0;
+          }
+        }
+        .mini_none{display: none;}
+      }
+    };
+    @include tab {
+    };
+    @include sp {
+    };
+  }
+}

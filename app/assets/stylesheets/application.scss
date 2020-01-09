@@ -1,8 +1,6 @@
 @import "font-awesome";
 @import "./reset";
-@import "./item";
-@import "./item_search";
+@import "./common";
+@import "./item/*";
+@import "./mypage/*";
 @import "./users/*";
-@import "./mypage_infomation";
-@import "./top_popup";
-@import "./top_popup_responsive";

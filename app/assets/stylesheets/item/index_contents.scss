@@ -1,79 +1,6 @@
-$button-bg:#ff0081;
-$button-text-color: #fff;
-$baby-blue: #f8faff;
-@keyframes rotate_anime {
-  0% {
-      transform:rotate(0deg);/* アニメーションの進みが0%の時の状態 */
-  }
-  100% {
-      transform:rotate(360deg);/* アニメーションの進みが100%の時の状態 */
-  }
-}
-@keyframes topBubbles {
-  0%{
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-  }
-    50% {
-      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
- 100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
-  }
-}
-@keyframes bottomBubbles {
-  0%{
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
- 100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
-  }
-}
-@mixin 上下左右中央 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-// トップへ戻る用ボタン
-#page_top{
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  right: 10px;
-  bottom: -50px;
-  background: #ef3f98;
-  opacity: 0.6;
-  border-radius: 50%;
-  z-index: 100;
-  a{
-    position: relative;
-    display: block;
-    width: 50px;
-    height: 50px;
-    text-decoration: none;
-    &:before{
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      content: '\f102';
-      font-size: 25px;
-      color: #fff;
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      top: -5px;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      margin: auto;
-      text-align: center;
-    }
-  }
-}
 .head{
   height:100px;
-  padding: 0 10%;
+  padding: 0 5%;
   border-bottom:1px solid silver;
   &_left{
     width:20%;
@@ -82,7 +9,7 @@ $baby-blue: #f8faff;
     a{text-decoration: none;}
     &_top{
       overflow: auto;
-      padding-top: 15px;
+      padding-top: 20px;
       img{
         width:50px;
         border-radius: 20px;
@@ -96,7 +23,7 @@ $baby-blue: #f8faff;
         background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 38px;
+        font-size: 2.6vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -106,7 +33,7 @@ $baby-blue: #f8faff;
     &_bottom{
       p{
         padding-left:60px;
-        font-size: 14px;
+        font-size: 1vw;
         color:#999999;
         &:hover{
           opacity: 0.6;
@@ -179,7 +106,7 @@ $baby-blue: #f8faff;
       overflow: auto;
       &_logo{
         margin-top:10px;
-        padding:10px 6% 10px;
+        padding:10px 5% 10px;
         float: left;
         &:hover{
           border:1px solid #FDBD19;
@@ -752,10 +679,3 @@ $baby-blue: #f8faff;
     }
   }
 }
-
-// #sample02{
-//   display: none;
-// }
-// [id^=teamvideo_]{
-//   display: none;
-// }
