@@ -71,6 +71,11 @@
             font-size: 12px;
           };
         }
+        #no_responsibe{
+          @include pc {
+            display: none;
+          };
+        }
       }
     }
   }

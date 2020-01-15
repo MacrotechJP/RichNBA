@@ -36,6 +36,11 @@ class Scraping
   # rs_page = rs_agent.get("https://info.finance.yahoo.co.jp/fx/convert/?a=1&s=INR&t=JPY")
   # rs_element = rs_page.search('.price.noLine').inner_text.to_f
 
+  ## 為替値取得(ユーロ)
+  # eu_agent = Mechanize.new
+  # eu_page = eu_agent.get("https://info.finance.yahoo.co.jp/fx/convert/?a=1&s=EUR&t=JPY")
+  # eu_element = eu_page.search('.price.noLine').inner_text.to_i
+
   ## チーム最新試合ハイライト動画取得
   # Team.all.each do |team|
   #   url = 'https://www.youtube.com/results?search_query=nba+'+team.en_name
@@ -977,7 +982,7 @@ class Scraping
   #       len4 = elementname.size()
   #       if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
   #         elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
-  #           puts page_number.to_s
+  #           puts count.to_s+":"+page_number.to_s
   #           price = eleprice.inner_text.gsub(/[a-z]*/,"").gsub(/[A-Z]*/,"").gsub(" ","").gsub(":",",").gsub("$","").split(",")
   #           if price.size() >= 3 then
   #             price.delete("")
@@ -1034,6 +1039,154 @@ class Scraping
   #   end
   # end
   # Item.where(ecsite_id:13,delete_flg:1).destroy_all
+
+  ## Zalando商品登録・更新
+  # search_genre = [
+  #     "https://en.zalando.de/women/?q=nba&p=",
+  #     "https://en.zalando.de/men/?q=nba&p=",
+  #     "https://en.zalando.de/kids/?q=nba&p="
+  #   ]
+  # Item.where(ecsite_id:39).update(delete_flg:1)
+  # search_genre.each_with_index do |url,count|
+  #   page_number = 1
+  #   while true do
+  #     begin
+  #     urls = url+page_number.to_s
+  #     charset = nil
+  #     html = open(urls) do |f|
+  #       charset = f.charset # 文字種別を取得
+  #       f.read              # htmlを読み込んで変数htmlに渡す
+  #     end
+  #     doc = Nokogiri::HTML.parse(html, nil, charset)
+  #     element = doc.at_css('.cat_item-25ZBj:nth-of-type(3) a')
+  #     elementsiteurl = doc.css('.cat_imageLink-OPGGa')
+  #     elementprice = doc.css('.cat_originalPrice-2Oy4G')
+  #     elementimage = doc.css('.cat_imageCnt-2orIb img')
+  #     elementname = doc.css('.cat_articleName--arFp.cat_ellipsis-MujnT')
+  #     len1 = elementsiteurl.size()
+  #     len2 = elementprice.size()
+  #     len3 = elementimage.size()
+  #     len4 = elementname.size()
+  #     puts len1.to_s+":"+len2.to_s+":"+len3.to_s+":"+len4.to_s
+  #     if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
+  #       elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #         puts count.to_s+":"+page_number.to_s
+  #         unless Item.where(siteurl:"https://en.zalando.de"+elesiteurl.get_attribute(:href),ecsite_id:39).exists?
+  #           Item.create(
+  #             name:elename.inner_text,
+  #             siteurl:"https://en.zalando.de"+elesiteurl.get_attribute(:href),
+  #             price: eleprice.inner_text.gsub(",",".").gsub(" €","").to_i * eu_element,
+  #             ecsite_id:39,
+  #             imageurl:eleimage.get_attribute(:src)
+  #           )
+  #         else
+  #           Item.find_by(
+  #             siteurl:"https://en.zalando.de"+elesiteurl.get_attribute(:href),
+  #             ecsite_id:39
+  #           ).update(
+  #             price: eleprice.inner_text.gsub(",",".").gsub(" €","").to_i * eu_element,
+  #             delete_flg:0
+  #           )
+  #         end
+  #       end
+  #     end
+  #     page_number += 1
+  #     if element[:href] == "" then
+  #       break
+  #     end
+  #     rescue Timeout::Error
+  #       puts "  caught Timeout::Error !"
+  #       false
+  #       next
+  #     rescue Mechanize::ResponseCodeError => e
+  #       case e.response_code
+  #       when "404"
+  #         puts "  caught Net::HTTPNotFound !"
+  #         false
+  #         next # ページが見付からないときは次へ
+  #       when "502"
+  #         puts "  caught Net::HTTPBadGateway !"
+  #         false
+  #         next # 上手くアクセスできないときはもう1回！
+  #       else
+  #         puts "  caught Excepcion !" + e.response_code
+  #         false
+  #         next
+  #       end
+  #     end
+  #   end
+  # end
+
+  ## KICKZ.COM商品登録・更新
+  # Item.where(ecsite_id:45).update(delete_flg:1)
+  # url = "https://www.kickz.com/en/catalog/fullTextSearch?initialQueryString=nba&selectedPage="
+  # page_number = 1
+  # while true do
+  #   begin
+  #   urls = url+page_number.to_s
+  #   page_number += 1
+  #   charset = nil
+  #   html = open(urls) do |f|
+  #     charset = f.charset # 文字種別を取得
+  #     f.read              # htmlを読み込んで変数htmlに渡す
+  #   end
+  #   doc = Nokogiri::HTML.parse(html, nil, charset)
+  #   element = doc.css('.detail_link_wrapper')
+  #   if element.size() == 0 then
+  #     break
+  #   end
+  #   elementsiteurl = doc.css('.no-h-over')
+  #   elementprice = doc.css('.categoryElementPrice .price')
+  #   elementimage = doc.css('img.productImage')
+  #   elementname = doc.css('.catalogItemName span')
+  #   len1 = elementsiteurl.size()
+  #   len2 = elementprice.size()
+  #   len3 = elementimage.size()
+  #   len4 = elementname.size()
+  #   puts len1.to_s+":"+len2.to_s+":"+len3.to_s+":"+len4.to_s
+  #   if len1==len2 && len1==len3 && len1==len4 && len2==len3 && len2==len4 && len3==len4 then
+  #     elementsiteurl.zip(elementprice,elementname,elementimage).each do |elesiteurl, eleprice,elename,eleimage|
+  #       puts urls
+  #       unless Item.where(siteurl:elesiteurl.get_attribute(:link),ecsite_id:45).exists?
+  #         Item.create(
+  #           name:elename.inner_text,
+  #           siteurl:elesiteurl.get_attribute(:link),
+  #           price: eleprice.inner_text.gsub(",",".").gsub(" €","").to_i * eu_element,
+  #           ecsite_id:45,
+  #           imageurl:eleimage.get_attribute(:src)
+  #         )
+  #       else
+  #         Item.find_by(
+  #           siteurl:elesiteurl.get_attribute(:link),
+  #           ecsite_id:45
+  #         ).update(
+  #           price: eleprice.inner_text.gsub(",",".").gsub(" €","").to_i * eu_element,
+  #           delete_flg:0
+  #         )
+  #       end
+  #     end
+  #   end
+  #   rescue Timeout::Error
+  #     puts "  caught Timeout::Error !"
+  #     false
+  #     next
+  #   rescue Mechanize::ResponseCodeError => e
+  #     case e.response_code
+  #     when "404"
+  #       puts "  caught Net::HTTPNotFound !"
+  #       false
+  #       next # ページが見付からないときは次へ
+  #     when "502"
+  #       puts "  caught Net::HTTPBadGateway !"
+  #       false
+  #       next # 上手くアクセスできないときはもう1回！
+  #     else
+  #       puts "  caught Excepcion !" + e.response_code
+  #       false
+  #       next
+  #     end
+  #   end
+  # end
 
   ## 既存商品（選手、チームカラム追加）
   # Item.all.each do |item|

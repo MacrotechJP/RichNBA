@@ -1,17 +1,18 @@
 <div class="top_popup">
   <div class="top_popup_main">
-    <p class="title">好きなチームのnbaグッズを世界中から探そう！</p>
+    <p class="title">好きなチームのnbaグッズが世界中から探せる！</p>
     <p class="second_title">貴方にとって、最高な一品が必ず見つかる検索特化型サイト</p>
     <div class="top_popup_main_ecsites">
       <div class="top_popup_main_ecsites_left">
         <p>対応ECサイト：</p>
       </div>
       <div class="top_popup_main_ecsites_right">
-        <% Ecsite.where.not("name LIKE ?", "(未対応)%").order(name: "ASC").each do |ecsite| %>
+        <% Ecsite.all.order(name: "ASC").each do |ecsite| %>
           <li>
             <%= link_to "#{ecsite.siteurl}",target: :_blank do %>
               <%= image_tag "#{ecsite.imageurl}" %>
             <% end %>
+            <p id="no_responsibe">掲載数<%= Item.where(ecsite_id:ecsite).count %></p>
           </li>
         <% end %>
       </div>
